@@ -1,0 +1,16 @@
+PODS:
+  - SaaS (1.0.0)
+
+DEPENDENCIES:
+  - SaaS (from `../`)
+
+EXTERNAL SOURCES:
+  SaaS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SaaS: 5bb309a602fa195dcf8d60cfb45deb3d0998a9f6
+
+PODFILE CHECKSUM: 42eb85c8a3cea264d101345dadf603d7f43af616
+
+COCOAPODS: 1.10.0

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elR-Vn-63M">
+                                <rect key="frame" x="139" y="94" width="136" height="30"/>
+                                <state key="normal" title="Fetch and Purchase"/>
+                                <connections>
+                                    <action selector="purchase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vbi-5z-Y4c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50A-RH-NHY">
+                                <rect key="frame" x="180.5" y="174" width="53" height="30"/>
+                                <state key="normal" title="Restore"/>
+                                <connections>
+                                    <action selector="restore:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bbq-ZS-tNC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-s6-CuB">
+                                <rect key="frame" x="108" y="254" width="198" height="30"/>
+                                <state key="normal" title="Current In App Purchase Info"/>
+                                <connections>
+                                    <action selector="info:" destination="BYZ-38-t0r" eventType="touchUpInside" id="buc-pg-ziU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsZ-RV-8uG">
+                                <rect key="frame" x="123.5" y="334" width="167" height="30"/>
+                                <state key="normal" title="Refresh sandbox receipt"/>
+                                <connections>
+                                    <action selector="refresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wel-m6-2Fl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="50A-RH-NHY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2rh-P7-qB7"/>
+                            <constraint firstItem="UsZ-RV-8uG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7B7-4E-96j"/>
+                            <constraint firstItem="elR-Vn-63M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8A3-sz-VHK"/>
+                            <constraint firstItem="Pif-s6-CuB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bnk-mP-WYQ"/>
+                            <constraint firstItem="elR-Vn-63M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="EZb-W2-l8m"/>
+                            <constraint firstItem="50A-RH-NHY" firstAttribute="top" secondItem="elR-Vn-63M" secondAttribute="bottom" constant="50" id="XRG-q7-7aA"/>
+                            <constraint firstItem="Pif-s6-CuB" firstAttribute="top" secondItem="50A-RH-NHY" secondAttribute="bottom" constant="50" id="d5t-Wm-XYU"/>
+                            <constraint firstItem="UsZ-RV-8uG" firstAttribute="top" secondItem="Pif-s6-CuB" secondAttribute="bottom" constant="50" id="ovH-uY-wpQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-133" y="72"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

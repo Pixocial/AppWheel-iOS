@@ -32,14 +32,6 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/Pixocial/testSaaS-iOS.git", :tag => "#{spec.version}" }
 
 
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  CocoaPods is smart about how it includes source code. For source files
-  #  giving a folder will include any swift, h, m, mm, c & cpp files.
-  #  For header files it will include any header in the folder.
-  #  Not including the public_header_files will make all headers public.
-  #
-
   # 第三方非开源framework(多个)
   spec.vendored_frameworks = 'sdk/PurchaseSDK.framework'
   # 系统动态库(多个)
@@ -48,8 +40,13 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '10.0'
 
   spec.resource_bundles = {
-    'SaaS' => ['sdk/PurchaseSDK.bundle']
+    'PurchaseSDK' => ['sdk/*.pem']
   }
+
+  spec.pod_target_xcconfig = {
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+  }
+  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
 
   # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
