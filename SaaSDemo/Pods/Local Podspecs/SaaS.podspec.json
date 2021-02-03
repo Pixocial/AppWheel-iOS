@@ -25,7 +25,7 @@
     "ios": "10.0"
   },
   "resource_bundles": {
-    "PurchaseSDK": [
+    "SaaS": [
       "sdk/*.pem"
     ]
   },

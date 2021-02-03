@@ -40,7 +40,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '10.0'
 
   spec.resource_bundles = {
-    'PurchaseSDK' => ['sdk/*.pem']
+    'SaaS' => ['sdk/*.pem']
   }
 
   spec.pod_target_xcconfig = {
