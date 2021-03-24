@@ -14,48 +14,65 @@
 #import "PurchasedProduct.h"
 #import "InAppPurchaseError.h"
 #import "InAppPurchaseObserver.h"
+#import "InAppPurchaseInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface InAppPurchaseKit : NSObject
 
-+ (BOOL)configureIAPKitWithApplicationIdentifier:(NSString *)applicationIdentifier
-                                          apiKey:(NSString *)apiKey
-                                           appId:(NSInteger)appId
-                                   inAppLanguage:(NSString * _Nullable)inAppLanguage
-                                      firebaseId:(NSString * _Nullable)firebaseId
-                                     appsflyerId:(NSString * _Nullable)appsflyerId
-                                             gid:(NSString * _Nullable)gid;
++ (void)setDebug:(BOOL)isDebug;
 
-+ (void)updateInAppLanguage:(NSString * _Nullable)inAppLanguage
-                 firebaseId:(NSString * _Nullable)firebaseId
-                appsflyerId:(NSString * _Nullable)appsflyerId
-                        gid:(NSString * _Nullable)gid;
++ (void)configureWithAppId:(NSInteger)appId
+                       uid:(NSString * _Nullable)appUserId
+                completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
+
+//+ (void)updateInAppLanguage:(NSString * _Nullable)inAppLanguage
+//                 firebaseId:(NSString * _Nullable)firebaseId
+//                appsflyerId:(NSString * _Nullable)appsflyerId
+//                        gid:(NSString * _Nullable)gid;
 
 + (void)setShouldAddStorePaymentBlock:(void (^)(Product * product, SKPayment * payment))completion;
 
 + (void)setRevokeEntitlementsBlock:(void (^)(NSArray<NSString *> * productIdentifiers))completion;
 
-+ (void)addInAppPurchaseObserver:(id<InAppPurchaseObserver>)observer;
++ (void)addPurchaseObserver:(id<InAppPurchaseObserver>)observer;
 
-+ (void)removeInAppPurchaseObserver:(id<InAppPurchaseObserver>)observer;
++ (void)removePurchaseObserver:(id<InAppPurchaseObserver>)observer;
 
-+ (void)fetchProductsInfoWithProductIdentifiers:(NSSet<NSString *> *)productIdentifiers
++ (void)getProductsInfoWithProductIdentifiers:(NSSet<NSString *> *)productIdentifiers
                                      completion:(void (^)(RetrievedProducts * retrievedProducts))completion;
+
++ (void)purchaseProduct:(Product *)product
+        paymentDiscount:(PaymentDiscountOffer * _Nullable)paymentDiscount
+               quantity:(NSInteger)quantity
+            productType:(NSString *)productType
+             completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
+
++ (void)purchaseProductWithProductIdentifier:(NSString *)productIdentifier
+                             paymentDiscount:(PaymentDiscountOffer * _Nullable)paymentDiscount
+                                    quantity:(NSInteger)quantity
+                                 productType:(NSString *)productType
+                                  completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
 + (void)subscribeProduct:(Product *)product
          paymentDiscount:(PaymentDiscountOffer * _Nullable)paymentDiscount
+             productType:(NSString *)productType
               completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
 + (void)subscribeProductIdentifier:(NSString *)productIdentifier
                    paymentDiscount:(PaymentDiscountOffer * _Nullable)paymentDiscount
+                       productType:(NSString *)productType
                         completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
 + (void)purchaseProductWithProductIdentifier:(NSString *)productIdentifier
                                     quantity:(NSInteger)quantity
+                                 productType:(NSString *)productType
                                   completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
-+ (void)subscribeProductFromAppStorePromotion:(Product *)product payment:(SKPayment *)skPayment completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
++ (void)subscribeProductFromAppStorePromotion:(Product *)product
+                                      payment:(SKPayment *)skPayment
+                                  productType:(NSString *)productType
+                                   completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
 + (void)fetchSubscriptionOfferWithProductIdentifier:(NSString *)productIdentifier
                         subscriptionOfferIdentifier:(NSString *)subscriptionOfferIdentifier
@@ -67,38 +84,43 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)changeToPreproduction:(BOOL)isPreHost;
 
-+ (void)refreshInAppPurchaseState;
++ (InAppPurchaseInfo *)getPurchaseInfo;
 
-+ (BOOL)isSubscriptionUnlockedUser;
+//+ (void)refreshInAppPurchaseState;
 
-+ (BOOL)userInGracePeriod;
+//+ (BOOL)isSubscriptionUnlockedUser;
 
-+ (BOOL)productUnlocked:(NSString *)productIdentifier;
+//+ (BOOL)userInGracePeriod;
 
-+ (NSInteger)productQuantity:(NSString *)productIdentifier;
+//+ (BOOL)productUnlocked:(NSString *)productIdentifier;
 
-+ (NSDate * _Nullable)originalTransactionDate;
+//+ (NSInteger)productQuantity:(NSString *)productIdentifier;
 
-+ (NSDate * _Nullable)currentSubscriptionExpiredDate;
+//+ (NSDate * _Nullable)originalTransactionDate;
 
-+ (NSDate * _Nullable)currentGracePeriodExpiredDate;
+//+ (NSDate * _Nullable)currentSubscriptionExpiredDate;
 
-+ (LatestSubscriptionInfo *)getLatestSubscriptionInfo;
+//+ (NSDate * _Nullable)currentGracePeriodExpiredDate;
 
-+ (NSArray<LatestSubscriptionInfo *> *)getCurrentValidSubscriptions;
+//+ (LatestSubscriptionInfo *)getLatestSubscriptionInfo;
+
+//+ (NSArray<LatestSubscriptionInfo *> *)getCurrentValidSubscriptions;
 
 + (void)refreshValidSubscriptions;
 
-+ (BOOL)isSubscriptionValid:(NSString *)productIdentifier;
+//+ (BOOL)isSubscriptionValid:(NSString *)productIdentifier;
 
-+ (NSArray *)purchasedItems;
+//+ (NSArray *)purchasedItems;
 
-+ (NSArray<LatestSubscriptionInfo *> *)getAllSubscriptions;
+//+ (NSArray<LatestSubscriptionInfo *> *)getAllSubscriptions;
 
 + (void)updateRemoteTime;
 
 + (void)presentCodeRedemptionSheet API_AVAILABLE(ios(14.0));
 
++ (void)delKC;
+
++ (void)getRetryPeriodWithCompletion:(nullable void (^)(BOOL isInRetryPeriod,  InAppPurchaseError *error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -1,5 +1,5 @@
 PODS:
-  - SaaS (1.0.0)
+  - SaaS (1.0.1)
 
 DEPENDENCIES:
   - SaaS (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SaaS: 61633c9dbdca15d3a99890b6afdf4ee205bc941e
+  SaaS: 59b08aeb6b73d88f6efb2b864406fcef48055b89
 
 PODFILE CHECKSUM: 42eb85c8a3cea264d101345dadf603d7f43af616
 

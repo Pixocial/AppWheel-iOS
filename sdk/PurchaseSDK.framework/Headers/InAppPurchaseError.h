@@ -49,6 +49,14 @@ typedef NS_ENUM(NSInteger, InAppPurchaseErrorType) {
     InAppPurchaseErrorTypePurchaseItemError = 30008,
     
     InAppPurchaseErrorTypeInvalidProductIdentifier = 30009,
+    ///商品类型错误
+    InAppPurchaseErrorTypeInvalidProductType = 30010,
+    /// 初始化错误
+    InAppPurchaseErrorTypeInit = 30011,
+    /// 未知的错误(网络错误啊之类的)
+    InAppPurchaseErrorTypeUnknow = 30012,
+    /// 解析get_ios_retry_period接口出错
+    InAppPurchaseErrorTypeRetryPeriod = 30013,
 };
 
 @interface InAppPurchaseError : NSObject

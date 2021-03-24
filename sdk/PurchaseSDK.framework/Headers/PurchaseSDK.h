@@ -14,5 +14,5 @@ FOUNDATION_EXPORT double PurchaseSDKVersionNumber;
 FOUNDATION_EXPORT const unsigned char PurchaseSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <PurchaseSDK/PublicHeader.h>
-
+#import <PurchaseSDK/InAppPurchaseKit.h>
 

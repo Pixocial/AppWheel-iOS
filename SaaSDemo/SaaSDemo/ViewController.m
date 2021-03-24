@@ -1,8 +1,8 @@
 //
 //  ViewController.m
-//  SaaSDemo
+//  PurchaseSDKDemo
 //
-//  Created by Yk Huang on 2021/2/2.
+//  Created by Yk Huang on 2021/1/25.
 //
 
 #import "ViewController.h"
@@ -10,8 +10,10 @@
 #import "ProductViewController.h"
 #import "InfoViewController.h"
 #import "UIAlertController+Global.h"
+#import "UIViewController+Loading.h"
 
 @interface ViewController ()<InAppPurchaseObserver>
+@property (weak, nonatomic) IBOutlet UITextField *userIdTV;
 
 @end
 
@@ -20,15 +22,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addNotification];
-    [InAppPurchaseKit configureIAPKitWithApplicationIdentifier:@"com.meitu.airvid" apiKey:@"563951481cde2bd702c56f460a657f97" appId:123 inAppLanguage:@"en" firebaseId:nil appsflyerId:nil gid:nil];
-    [InAppPurchaseKit addInAppPurchaseObserver:self];
+ 
+    [self.view setBackgroundColor:UIColor.whiteColor];
+    [InAppPurchaseKit addPurchaseObserver:self];
     /// 家庭共享权利的撤销
     [InAppPurchaseKit setRevokeEntitlementsBlock:^(NSArray<NSString *> * _Nonnull productIdentifiers) {
         NSArray * a = productIdentifiers;
     }];
+
+    [InAppPurchaseKit configureWithAppId:131 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+        // do something
+    }];
+    
     
     [InAppPurchaseKit setShouldAddStorePaymentBlock:^(Product * _Nonnull product, SKPayment * _Nonnull payment) {
-        [InAppPurchaseKit subscribeProductFromAppStorePromotion:product payment:payment completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+        [InAppPurchaseKit subscribeProductFromAppStorePromotion:product payment:payment productType:@"your productType" completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (!success) {
                     UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Failed" message:[NSString stringWithFormat:@"Purchase failed. Error message: %@", error.errorMessage] preferredStyle:UIAlertControllerStyleAlert];
@@ -51,6 +59,33 @@
         }];
     }];
 }
+#pragma mark - initSDK
+- (IBAction)initSDK:(id)sender {
+    [self showLoading];
+    __weak __typeof(self) weakSelf = self;
+    
+    [InAppPurchaseKit configureWithAppId:131 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        // do something
+        [strongSelf hideLoading];
+        if (success) {
+            [strongSelf showDialogWithTitle:@"Success" message:@"Init Success"];
+        } else {
+            [strongSelf showDialogWithTitle:@"Fail" message:[NSString stringWithFormat:@"Init SDK Faild: %@", error.errorMessage]];
+        }
+    }];
+}
+
+- (void)showDialogWithTitle:(NSString *)title
+                    message:(NSString *)msg {
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:action];
+    
+    [alert show:self];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -58,7 +93,7 @@
 }
 
 - (void)dealloc {
-    [InAppPurchaseKit removeInAppPurchaseObserver:self];
+    [InAppPurchaseKit removePurchaseObserver:self];
 }
 
 - (IBAction)purchase:(id)sender {
@@ -69,7 +104,9 @@
 }
 
 - (IBAction)restore:(id)sender {
+    [self showLoading];
     [InAppPurchaseKit restorePurchaseWithCompletion:^(BOOL success, NSArray * validSubscriptions, NSArray * purchasedItems, InAppPurchaseError * error) {
+        [self hideLoading];
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
 //                NSString * str = @"";
@@ -144,65 +181,48 @@
    //    [InAppPurchaseKit changeToPreproduction:NO];
 }
 
+- (IBAction)getRetryPeriodWithCompletion:(id)sender {
+    [InAppPurchaseKit getRetryPeriodWithCompletion:^(BOOL isInRetryPeriod, InAppPurchaseError * _Nonnull error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"retryPeriod" message:[NSString stringWithFormat:@"result:%d",isInRetryPeriod]  preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert2 addAction:action2];
+            
+            [alert2 show:self];
+        });
+    }];
+}
+
+
+
 #pragma mark - InAppPurchaseObserver
 
-- (void)iapUnlockedItemsUpdated:(nonnull NSArray<PurchasedProduct *> *)purchasedProducts {
+- (void)purchases:(InAppPurchaseInfo *)purchaseInfo {
     NSString * str = @"";
     
-    for (PurchasedProduct * product in purchasedProducts) {
+    for (PurchasedProduct * product in [purchaseInfo purchasedArray]) {
         NSString * productId = product.productIdentifier;
         str = [str stringByAppendingString:productId];
         str = [str stringByAppendingString:@"\n"];
     }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Item Unlocked" message:str preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alert2 addAction:action2];
-        
-        [alert2 show:self];
-    });
-}
-
-- (void)subscriptionStateUpdated {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Subscription update" message:@"Check in Latest Subscription Info VC" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alert2 addAction:action2];
-        
-        [alert2 show:self];
-    });
-}
-
-- (void)validSubscriptionsUpdated:(NSArray<LatestSubscriptionInfo *> *)validSubscriptions {
-    NSString * str = @"";
-    
-    for (LatestSubscriptionInfo * info in validSubscriptions) {
-        NSString * productId = info.productIdentifier;
-        str = [str stringByAppendingString:productId];
-        str = [str stringByAppendingString:@"\n"];
+    if (purchaseInfo.isSubscriptionUnlockedUser) {
+        str = [str stringByAppendingString:@"SubscriptionUnlock,Check in Purchase Info VC \n"];
     }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Valid Subscriptions" message:str preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alert2 addAction:action2];
-        
-        [alert2 show:self];
-    });
+    if (str.length > 0) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showDialogWithTitle:@"Item Unlocked" message:str];
+        });
+    }
 }
+
 
 #pragma mark - notification
 - (void)addNotification {
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleApplicationDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
-
+// update remote time when app become active
 - (void)handleApplicationDidBecomeActive {
     [InAppPurchaseKit updateRemoteTime];
 }

@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSDate * subscriptionGracePeriodExpiredTime;
 
+@property (nonatomic, strong) NSString * inAppOwnershipType;
+
+@property (nonatomic, strong) NSString * productType;
+
 - (instancetype)initWithSubscriptionInfo:(NSDictionary *)subscriptionInfo;
 
 @end
