@@ -86,33 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (InAppPurchaseInfo *)getPurchaseInfo;
 
-//+ (void)refreshInAppPurchaseState;
-
-//+ (BOOL)isSubscriptionUnlockedUser;
-
-//+ (BOOL)userInGracePeriod;
-
-//+ (BOOL)productUnlocked:(NSString *)productIdentifier;
-
-//+ (NSInteger)productQuantity:(NSString *)productIdentifier;
-
-//+ (NSDate * _Nullable)originalTransactionDate;
-
-//+ (NSDate * _Nullable)currentSubscriptionExpiredDate;
-
-//+ (NSDate * _Nullable)currentGracePeriodExpiredDate;
-
-//+ (LatestSubscriptionInfo *)getLatestSubscriptionInfo;
-
-//+ (NSArray<LatestSubscriptionInfo *> *)getCurrentValidSubscriptions;
-
 + (void)refreshValidSubscriptions;
-
-//+ (BOOL)isSubscriptionValid:(NSString *)productIdentifier;
-
-//+ (NSArray *)purchasedItems;
-
-//+ (NSArray<LatestSubscriptionInfo *> *)getAllSubscriptions;
 
 + (void)updateRemoteTime;
 
@@ -121,6 +95,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)delKC;
 
 + (void)getRetryPeriodWithCompletion:(nullable void (^)(BOOL isInRetryPeriod,  InAppPurchaseError *error))completion;
+
++ (NSString *)getUserId;
 @end
 
 NS_ASSUME_NONNULL_END

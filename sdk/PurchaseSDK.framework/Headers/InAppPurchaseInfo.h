@@ -91,8 +91,6 @@ typedef NS_ENUM(NSInteger, InAppPurchaseGracePeriodState) {
 
 - (NSArray<LatestSubscriptionInfo *> *)getCurrentValidSubscriptions;
 
-//- (void)refreshValidSubscriptions;
-
 - (BOOL)subscriptionValidCurrently:(NSString *)productId;
 
 

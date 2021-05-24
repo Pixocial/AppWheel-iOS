@@ -40,7 +40,8 @@
     [self initDropdownList];
     [InAppPurchaseKit addPurchaseObserver:self];
     self.textFiled.delegate = self;
-
+    
+    self.textFiled.text = @"com.meitu.chic.subscription.1month.fullprice";
 }
 
 - (void)dealloc {
