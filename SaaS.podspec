@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "AppWheel"
   spec.version      = "1.0.5.2"
-  spec.summary      = "A short description of SaaS."
+  spec.summary      = "A short description of AppWheel."
 
   spec.description  = 'An in-app purchase module for iOS project'
 
@@ -40,7 +40,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '10.0'
 
   spec.resource_bundles = {
-    'SaaS' => ['sdk/*.pem']
+    'AppWheel' => ['sdk/*.pem']
   }
 
   spec.pod_target_xcconfig = {
