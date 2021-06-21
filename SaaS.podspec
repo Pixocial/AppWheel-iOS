@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "SaaS"
-  spec.version      = "1.0.1.2"
+  spec.version      = "1.0.5.1"
   spec.summary      = "A short description of SaaS."
 
   spec.description  = 'An in-app purchase module for iOS project'
