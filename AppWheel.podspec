@@ -32,15 +32,15 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/Pixocial/testSaaS-iOS.git", :tag => "#{spec.version}" }
 
 
-  # 第三方非开源framework(多个)
-  spec.vendored_frameworks = 'sdk/PurchaseSDK.framework'
   # 系统动态库(多个)
   spec.frameworks = 'UIKit','StoreKit','Security'
 
   spec.ios.deployment_target = '10.0'
 
+  # 第三方非开源framework(多个)
+  spec.vendored_frameworks = 'sdk/purchaseSDK/PurchaseSDK.framework'
   spec.resource_bundles = {
-    'AppWheel' => ['sdk/*.pem']
+    'AppWheel' => ['sdk/purchaseSDK/*.pem']
   }
 
   spec.pod_target_xcconfig = {
@@ -48,6 +48,15 @@ Pod::Spec.new do |spec|
   }
   spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
+# 购买的SDK
+  # spec.subspec 'purchase' do |purchase|
+  #   # 第三方非开源framework(多个)
+  #   purchase.vendored_frameworks = 'sdk/purchaseSDK/PurchaseSDK.framework'
+  #   purchase.resource_bundles = {
+  #     'AppWheel' => ['sdk/purchaseSDK/*.pem']
+  #   }
+  # end
+# UI的SDK
 
   # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
   # spec.exclude_files = "Classes/Exclude"
