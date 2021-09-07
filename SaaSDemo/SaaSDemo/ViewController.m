@@ -11,6 +11,7 @@
 #import "InfoViewController.h"
 #import "UIAlertController+Global.h"
 #import "UIViewController+Loading.h"
+#import "AppWheelUI"
 
 @interface ViewController ()<InAppPurchaseObserver>
 @property (weak, nonatomic) IBOutlet UITextField *userIdTV;
@@ -104,6 +105,8 @@
 }
 
 - (IBAction)restore:(id)sender {
+    
+    
     [self showLoading];
     [InAppPurchaseKit restorePurchaseWithCompletion:^(BOOL success, NSArray * validSubscriptions, NSArray * purchasedItems, InAppPurchaseError * error) {
         [self hideLoading];

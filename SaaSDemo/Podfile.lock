@@ -1,16 +1,16 @@
 PODS:
-  - SaaS (1.0.1)
+  - AppWheel/purchase (1.0.5.3)
 
 DEPENDENCIES:
-  - SaaS (from `../`)
+  - AppWheel/purchase (from `../`)
 
 EXTERNAL SOURCES:
-  SaaS:
+  AppWheel:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SaaS: 59b08aeb6b73d88f6efb2b864406fcef48055b89
+  AppWheel: 1da2bc1d713188717ec7d70d820009156e9596cd
 
-PODFILE CHECKSUM: 42eb85c8a3cea264d101345dadf603d7f43af616
+PODFILE CHECKSUM: e58024cc000e74dbf6259220dd63162f67522ba8
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.2

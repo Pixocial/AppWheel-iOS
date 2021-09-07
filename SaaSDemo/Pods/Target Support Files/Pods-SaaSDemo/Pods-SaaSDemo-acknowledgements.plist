@@ -692,7 +692,7 @@ Public License instead of this License.  But first, please read
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>SaaS</string>
+			<string>AppWheel</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

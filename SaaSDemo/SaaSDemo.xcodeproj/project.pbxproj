@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64A4F5B926E7860C00E62482 /* AppWheelUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A4F5B226E7860C00E62482 /* AppWheelUI.framework */; };
+		64A4F5BA26E7860C00E62482 /* AppWheelUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 64A4F5B226E7860C00E62482 /* AppWheelUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4609A7B25C9387600019B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4609A7A25C9387600019B32 /* AppDelegate.m */; };
 		D4609A7E25C9387600019B32 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4609A7D25C9387600019B32 /* SceneDelegate.m */; };
 		D4609A8125C9387600019B32 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4609A8025C9387600019B32 /* ViewController.m */; };
@@ -26,8 +28,33 @@
 		EE3DFB7022ACB68B5F6243E4 /* libPods-SaaSDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F4C2F21ED86FA68AD1F666 /* libPods-SaaSDemo.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		64A4F5B726E7860C00E62482 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4609A6E25C9387600019B32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64A4F5B126E7860C00E62482;
+			remoteInfo = AppWheelUI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		64A4F5BB26E7860C00E62482 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				64A4F5BA26E7860C00E62482 /* AppWheelUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		09F4C2F21ED86FA68AD1F666 /* libPods-SaaSDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaaSDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64A4F5B226E7860C00E62482 /* AppWheelUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppWheelUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B246AEEE6756DEFECD5D8C /* Pods-SaaSDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaaSDemo.release.xcconfig"; path = "Target Support Files/Pods-SaaSDemo/Pods-SaaSDemo.release.xcconfig"; sourceTree = "<group>"; };
 		9C2171465F8D6C9455E21159 /* Pods-SaaSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaaSDemo.debug.xcconfig"; path = "Target Support Files/Pods-SaaSDemo/Pods-SaaSDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D4609A7625C9387600019B32 /* SaaSDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaaSDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,10 +86,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		64A4F5AF26E7860C00E62482 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4609A7325C9387600019B32 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64A4F5B926E7860C00E62482 /* AppWheelUI.framework in Frameworks */,
 				EE3DFB7022ACB68B5F6243E4 /* libPods-SaaSDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				D4609A7625C9387600019B32 /* SaaSDemo.app */,
+				64A4F5B226E7860C00E62482 /* AppWheelUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,7 +183,35 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		64A4F5AD26E7860C00E62482 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		64A4F5B126E7860C00E62482 /* AppWheelUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64A4F5BE26E7860C00E62482 /* Build configuration list for PBXNativeTarget "AppWheelUI" */;
+			buildPhases = (
+				64A4F5AD26E7860C00E62482 /* Headers */,
+				64A4F5AE26E7860C00E62482 /* Sources */,
+				64A4F5AF26E7860C00E62482 /* Frameworks */,
+				64A4F5B026E7860C00E62482 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppWheelUI;
+			productName = AppWheelUI;
+			productReference = 64A4F5B226E7860C00E62482 /* AppWheelUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		D4609A7525C9387600019B32 /* SaaSDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4609A8F25C9387800019B32 /* Build configuration list for PBXNativeTarget "SaaSDemo" */;
@@ -157,10 +221,12 @@
 				D4609A7325C9387600019B32 /* Frameworks */,
 				D4609A7425C9387600019B32 /* Resources */,
 				D4D8E3C35BAF25FCFC2F1EE7 /* [CP] Copy Pods Resources */,
+				64A4F5BB26E7860C00E62482 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				64A4F5B826E7860C00E62482 /* PBXTargetDependency */,
 			);
 			name = SaaSDemo;
 			productName = SaaSDemo;
@@ -175,6 +241,9 @@
 			attributes = {
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					64A4F5B126E7860C00E62482 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					D4609A7525C9387600019B32 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -194,11 +263,19 @@
 			projectRoot = "";
 			targets = (
 				D4609A7525C9387600019B32 /* SaaSDemo */,
+				64A4F5B126E7860C00E62482 /* AppWheelUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		64A4F5B026E7860C00E62482 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4609A7425C9387600019B32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,6 +335,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		64A4F5AE26E7860C00E62482 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4609A7225C9387600019B32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,6 +359,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64A4F5B826E7860C00E62482 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64A4F5B126E7860C00E62482 /* AppWheelUI */;
+			targetProxy = 64A4F5B726E7860C00E62482 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D4609A8725C9387800019B32 /* LaunchScreen.storyboard */ = {
@@ -296,6 +388,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		64A4F5BC26E7860C00E62482 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5V292QZ538;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AppWheelUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = q.AppWheelUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		64A4F5BD26E7860C00E62482 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5V292QZ538;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AppWheelUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = q.AppWheelUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		D4609A8D25C9387800019B32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -457,6 +605,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		64A4F5BE26E7860C00E62482 /* Build configuration list for PBXNativeTarget "AppWheelUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64A4F5BC26E7860C00E62482 /* Debug */,
+				64A4F5BD26E7860C00E62482 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D4609A7125C9387600019B32 /* Build configuration list for PBXProject "SaaSDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

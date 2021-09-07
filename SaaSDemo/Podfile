@@ -4,6 +4,6 @@ platform :ios, '10.0'
 
 target 'SaaSDemo' do
 #  pod 'SaaS', '~> 1.0'
-  pod 'SaaS', :path => '../'
+  pod 'AppWheel/purchase', :path => '../'
 
 end
