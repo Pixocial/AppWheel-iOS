@@ -38,6 +38,24 @@
           "sdk/purchaseSDK/*.pem"
         ]
       }
+    },
+    {
+      "name": "subscribeUI",
+      "source_files": "sdk/AppWheelUISDK/classes/**/*.{h,m}",
+      "dependencies": {
+        "AppWheel/purchase": [
+
+        ],
+        "Masonry": [
+          "1.1.0"
+        ],
+        "AFNetworking": [
+
+        ],
+        "SDWebImage": [
+
+        ]
+      }
     }
   ]
 }

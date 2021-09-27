@@ -6,15 +6,19 @@
 //
 
 #import "ViewController.h"
+#import "AppWheelUIKit.h"
 #import <PurchaseSDK/InAppPurchaseKit.h>
 #import "ProductViewController.h"
 #import "InfoViewController.h"
 #import "UIAlertController+Global.h"
 #import "UIViewController+Loading.h"
-#import "AppWheelUI"
+#import "ProductHistoryViewController.h"
+
+static NSString *const kIAPUidKey = @"kIAPUidKey";
 
 @interface ViewController ()<InAppPurchaseObserver>
 @property (weak, nonatomic) IBOutlet UITextField *userIdTV;
+@property (weak, nonatomic) IBOutlet UILabel *userIdLabel;
 
 @end
 
@@ -25,14 +29,28 @@
     [self addNotification];
  
     [self.view setBackgroundColor:UIColor.whiteColor];
+    //切换成测试服的地址
+    #if USE_API_SETTING
+    [InAppPurchaseKit setDebug:NO];
+    #else
+    [InAppPurchaseKit setDebug:YES];
+    #endif
     [InAppPurchaseKit addPurchaseObserver:self];
     /// 家庭共享权利的撤销
     [InAppPurchaseKit setRevokeEntitlementsBlock:^(NSArray<NSString *> * _Nonnull productIdentifiers) {
         NSArray * a = productIdentifiers;
     }];
-
-    [InAppPurchaseKit configureWithAppId:131 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+    
+    [InAppPurchaseKit configureWithAppId:121
+                                     uid:self.userIdTV.text
+                           applicationId:@"com.meitu.pomelo"
+                                  apiKey:@"6f47588911f7b8c0602276fb294396e0"
+                           inAppLanguage:@"en"
+                              firebaseId:@"firebaseTestId"
+                             appsflyerId:@"test"
+                              completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
         // do something
+        self.userIdLabel.text = [NSString stringWithFormat:@"userId:%@",[InAppPurchaseKit getUserId]];
     }];
     
     
@@ -59,21 +77,44 @@
             });
         }];
     }];
+    
+    //获取一下缓存里面的userid
+    NSString *uid = [NSUserDefaults.standardUserDefaults stringForKey:kIAPUidKey];
+    if (uid && uid.length > 0) {
+        self.userIdTV.text = uid;
+    }
 }
 #pragma mark - initSDK
 - (IBAction)initSDK:(id)sender {
     [self showLoading];
     __weak __typeof(self) weakSelf = self;
-    
-    [InAppPurchaseKit configureWithAppId:131 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+    if (self.userIdTV.text && self.userIdTV.text.length > 0) {
+        [NSUserDefaults.standardUserDefaults setValue:self.userIdTV.text forKey:kIAPUidKey];
+    }
+    [InAppPurchaseKit configureWithAppId:121
+                                     uid:self.userIdTV.text
+                           applicationId:@"com.meitu.pomelo"
+                                  apiKey:@"6f47588911f7b8c0602276fb294396e0"
+                           inAppLanguage:@"en"
+                              firebaseId:@"firebaseTestId"
+                             appsflyerId:@"test"  completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         // do something
         [strongSelf hideLoading];
         if (success) {
             [strongSelf showDialogWithTitle:@"Success" message:@"Init Success"];
+            
+            strongSelf.userIdLabel.text = [NSString stringWithFormat:@"userId:%@",[InAppPurchaseKit getUserId]];
         } else {
             [strongSelf showDialogWithTitle:@"Fail" message:[NSString stringWithFormat:@"Init SDK Faild: %@", error.errorMessage]];
         }
+    }];
+}
+- (IBAction)delKeyChain:(id)sender {
+//    [InAppPurchaseKit delKC];
+    
+    [AppWheelUIKit getPagesModelWithComplete:^(BOOL result, NSArray<AWPageModel *> * pageModels, NSError * error) {
+        [AppWheelUIKit presentSubscribeWithModel:pageModels[0] fromViewController:self];
     }];
 }
 
@@ -105,8 +146,6 @@
 }
 
 - (IBAction)restore:(id)sender {
-    
-    
     [self showLoading];
     [InAppPurchaseKit restorePurchaseWithCompletion:^(BOOL success, NSArray * validSubscriptions, NSArray * purchasedItems, InAppPurchaseError * error) {
         [self hideLoading];
@@ -198,6 +237,12 @@
     }];
 }
 
+- (IBAction)history:(id)sender {
+    ProductHistoryViewController * vc = [[ProductHistoryViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:^{
+        
+    }];
+}
 
 
 #pragma mark - InAppPurchaseObserver

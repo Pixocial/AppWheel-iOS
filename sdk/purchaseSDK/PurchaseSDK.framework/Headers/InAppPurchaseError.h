@@ -57,6 +57,8 @@ typedef NS_ENUM(NSInteger, InAppPurchaseErrorType) {
     InAppPurchaseErrorTypeUnknow = 30012,
     /// 解析get_ios_retry_period接口出错
     InAppPurchaseErrorTypeRetryPeriod = 30013,
+    /// 传的product为nil或者没有productId
+    InAppPurchaseErrorTypeProductError = 30014,
 };
 
 @interface InAppPurchaseError : NSObject

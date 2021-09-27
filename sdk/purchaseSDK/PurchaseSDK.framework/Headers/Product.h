@@ -81,6 +81,10 @@ typedef NS_ENUM(NSInteger, DiscountType) {
 
 @property (nonatomic, assign) BOOL  isFamilyShareable;
 
+@property (nonatomic, assign) NSInteger quantity;
+
+@property (nonatomic, assign) NSInteger productType;
+
 - (instancetype)initWithSKProduct:(SKProduct *)skProduct;
 
 @end

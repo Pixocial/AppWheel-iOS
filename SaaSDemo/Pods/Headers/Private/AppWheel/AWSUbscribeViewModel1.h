@@ -1,0 +1,1 @@
+../../../../../sdk/AppWheelUISDK/classes/viewModel/AWSUbscribeViewModel1.h

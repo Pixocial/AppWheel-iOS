@@ -57,7 +57,18 @@ Pod::Spec.new do |spec|
     }
   end
 # UI的SDK
-
+  spec.subspec 'subscribeUI' do |ui|
+    ui.source_files = 'sdk/AppWheelUISDK/classes/**/*.{h,m}'
+    # 支付的SDK
+    ui.dependency 'AppWheel/purchase'
+    #Masonry布局
+    ui.dependency 'Masonry', '1.1.0'
+    #AFNetworking布局
+    ui.dependency 'AFNetworking'
+    #webImage布局
+    ui.dependency 'SDWebImage'
+    
+  end
   # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
   # spec.exclude_files = "Classes/Exclude"
 end

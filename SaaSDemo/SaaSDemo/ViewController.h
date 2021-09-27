@@ -1,8 +1,8 @@
 //
 //  ViewController.h
-//  SaaSDemo
+//  PurchaseSDKDemo
 //
-//  Created by Yk Huang on 2021/2/2.
+//  Created by Yk Huang on 2021/1/25.
 //
 
 #import <UIKit/UIKit.h>
