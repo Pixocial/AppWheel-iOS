@@ -52,9 +52,10 @@ Pod::Spec.new do |spec|
   spec.subspec 'purchase' do |purchase|
     # 第三方非开源framework(多个)
     purchase.vendored_frameworks = 'sdk/purchaseSDK/PurchaseSDK.framework'
-    purchase.resource_bundles = {
-      'purchase' => ['sdk/purchaseSDK/*.pem']
-    }
+#    purchase.resource_bundles = {
+#      'AppWheel' => ['sdk/purchaseSDK/*.pem']
+#    }
+    purchase.resources = 'sdk/purchaseSDK/*.bundle'
   end
 # UI的SDK
   spec.subspec 'subscribeUI' do |ui|

@@ -34,14 +34,16 @@
       "name": "purchase",
       "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
       "resource_bundles": {
-        "AppWheel": [
+        "purchase": [
           "sdk/purchaseSDK/*.pem"
         ]
       }
     },
     {
       "name": "subscribeUI",
-      "source_files": "sdk/AppWheelUISDK/classes/**/*.{h,m}",
+      "source_files": "sdk/AppWheelUISDK/classes/**/*",
+      "public_header_files": "sdk/AppWheelUISDK/classes/**/*.h",
+      "resources": "sdk/AppWheelUISDK/*.bundle",
       "dependencies": {
         "AppWheel/purchase": [
 
