@@ -53,12 +53,14 @@ Pod::Spec.new do |spec|
     # 第三方非开源framework(多个)
     purchase.vendored_frameworks = 'sdk/purchaseSDK/PurchaseSDK.framework'
     purchase.resource_bundles = {
-      'AppWheel' => ['sdk/purchaseSDK/*.pem']
+      'purchase' => ['sdk/purchaseSDK/*.pem']
     }
   end
 # UI的SDK
   spec.subspec 'subscribeUI' do |ui|
-    ui.source_files = 'sdk/AppWheelUISDK/classes/**/*.{h,m}'
+    ui.source_files = 'sdk/AppWheelUISDK/classes/**/*'
+    ui.public_header_files = "sdk/AppWheelUISDK/classes/**/*.h"
+    ui.resources = 'sdk/AppWheelUISDK/*.bundle'
     # 支付的SDK
     ui.dependency 'AppWheel/purchase'
     #Masonry布局
