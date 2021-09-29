@@ -227,5 +227,12 @@
 - (NSString *)removeSpace {
     return [self stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
+/**
+ *从字符串中获取数字
+ */
+- (int)extractNumber {
+  NSCharacterSet *nonDigitCharacterSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+  return [[[self componentsSeparatedByCharactersInSet:nonDigitCharacterSet] componentsJoinedByString:@""] intValue];
+}
 
 @end

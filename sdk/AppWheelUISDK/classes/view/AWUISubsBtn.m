@@ -47,9 +47,12 @@
 - (void)changeBGState:(BOOL)isSelected {
     if (isSelected == YES) {
         [self.selectedView setHidden:NO];
+        
+        if (self.skuType == AWSKUType_Year || self.skuType == AWSKUType_Month) {
+            [self.rightTopLabel setHidden:NO];
+        }
         if (self.skuType == AWSKUType_Year) {
             [self.leftTopLabel setHidden:NO];
-            [self.rightTopLabel setHidden:NO];
         }
     } else {
         [self.selectedView setHidden:YES];

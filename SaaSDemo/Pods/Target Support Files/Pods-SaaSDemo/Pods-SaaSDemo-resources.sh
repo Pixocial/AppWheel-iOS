@@ -97,11 +97,11 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/AppWheel/purchase.bundle"
+  install_resource "${PODS_ROOT}/../../sdk/purchaseSDK/AWPurchase.bundle"
   install_resource "${PODS_ROOT}/../../sdk/AppWheelUISDK/AWUI.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/AppWheel/purchase.bundle"
+  install_resource "${PODS_ROOT}/../../sdk/purchaseSDK/AWPurchase.bundle"
   install_resource "${PODS_ROOT}/../../sdk/AppWheelUISDK/AWUI.bundle"
 fi
 

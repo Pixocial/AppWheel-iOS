@@ -9,4 +9,15 @@
 
 @implementation AWStyleModel
 
+- (instancetype)initWithDict: (NSDictionary *)dict {
+    if (self == [super init]) {
+        [self parse:dict];
+    }
+    return self;
+}
+- (void)parse: (NSDictionary *)dict {
+    self.fontSize = dict[@"fontSize"];
+    self.backgroundColor = dict[@"backgroundColor"];
+}
+
 @end

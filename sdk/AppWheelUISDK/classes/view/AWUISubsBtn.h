@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, AWSKUType) {
     AWSKUType_Year = 0,///年
     AWSKUType_Month = 1,// 月
     AWSKUType_Week = 2,// 周
+    AWSKUType_Day = 3,// 日
 };
 
 @interface AWUISubsBtn : UIButton

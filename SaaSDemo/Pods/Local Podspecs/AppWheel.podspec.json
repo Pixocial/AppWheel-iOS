@@ -33,11 +33,7 @@
     {
       "name": "purchase",
       "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
-      "resource_bundles": {
-        "purchase": [
-          "sdk/purchaseSDK/*.pem"
-        ]
-      }
+      "resources": "sdk/purchaseSDK/*.bundle"
     },
     {
       "name": "subscribeUI",

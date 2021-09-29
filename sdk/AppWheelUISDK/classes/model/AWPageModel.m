@@ -7,12 +7,6 @@
 
 #import "AWPageModel.h"
 
-/// 标题主体
-const NSString *awPage1BannerDiv = @"bannerDiv";
-/// 主标题
-const NSString *awPage1MainTitle = @"mainTitle";
-/// 副标题
-const NSString *awPage1TitleMessage = @"titleMessage";
 
 @implementation AWPageModel
 
@@ -35,7 +29,7 @@ const NSString *awPage1TitleMessage = @"titleMessage";
 - (void)parseComponents: (NSArray<NSDictionary *> *)array {
     NSMutableArray *modelArray = [[NSMutableArray alloc]init];
     for (NSDictionary *dict in array) {
-        AWBaseComponetModel *model = [[AWBaseComponetModel alloc] initWithDict:dict];
+        AWBaseComponentModel *model = [[AWBaseComponentModel alloc] initWithDict:dict];
         [modelArray addObject:model];
     }
     if (modelArray.count > 0) {

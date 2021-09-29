@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "AWSubscribeBtnModel.h"
 #import <PurchaseSDK/InAppPurchaseKit.h>
+#import "AWBaseComponentModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)restoreWithCompletion:(void (^)(BOOL isInSubscriptionPeriod, NSArray * validSubscriptions, NSArray * restoredPurchasedItems, InAppPurchaseError * restoredSubscriptionResult))completion;
 
+- (AWBaseComponentModel *)findModelInComponents:(NSArray<AWBaseComponentModel *> *)components
+                                       withName:(NSString *)name;
 @end
 
 NS_ASSUME_NONNULL_END

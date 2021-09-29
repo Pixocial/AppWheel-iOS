@@ -1,1 +1,0 @@
-../../../../../sdk/AppWheelUISDK/classes/model/AWBaseComponetModel.h

@@ -6,7 +6,7 @@
 //
 
 #import "AppWheelUIKit.h"
-#import "AWSubscribeCV1.h"
+#import "AWSubscribeVC1.h"
 #import "AWPagesRequestManger.h"
 
 
@@ -24,8 +24,8 @@
     }
     UIViewController *templateVC;
     if (uiModel.template == TEMPLATE_1) {
-        AWSubscribeCV1 *vc = [[AWSubscribeCV1 alloc] init];
-        vc.model = uiModel;
+        AWSubscribeVC1 *vc = [[AWSubscribeVC1 alloc] init];
+        vc.pageModel = uiModel;
         templateVC = vc;
     }
     if (!templateVC) {

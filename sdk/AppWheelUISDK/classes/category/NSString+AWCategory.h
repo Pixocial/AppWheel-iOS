@@ -70,6 +70,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return 返回 无空格字符串
  */
 - (NSString *)removeSpace;
+
+/**
+ *从字符串中获取数字
+ */
+- (int)extractNumber;
 @end
 
 NS_ASSUME_NONNULL_END

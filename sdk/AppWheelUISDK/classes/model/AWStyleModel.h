@@ -12,9 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AWStyleModel : NSObject
 
 /// 字体大小
-@property (weak, nonatomic) NSString *fontSize;
+@property (strong, nonatomic) NSString *fontSize;
 /// 颜色 16位进制
-@property (weak, nonatomic) NSString *backgroundColor;
+@property (strong, nonatomic) NSString *backgroundColor;
+
+- (instancetype)initWithDict: (NSDictionary *)dict;
+
 @end
 
 NS_ASSUME_NONNULL_END
