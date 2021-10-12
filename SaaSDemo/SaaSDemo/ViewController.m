@@ -30,7 +30,7 @@
         NSArray * a = productIdentifiers;
     }];
 
-    [InAppPurchaseKit configureWithAppId:131 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+    [InAppPurchaseKit configureWithAppId:121 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
         // do something
     }];
     
@@ -64,7 +64,7 @@
     [self showLoading];
     __weak __typeof(self) weakSelf = self;
     
-    [InAppPurchaseKit configureWithAppId:131 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+    [InAppPurchaseKit configureWithAppId:121 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         // do something
         [strongSelf hideLoading];

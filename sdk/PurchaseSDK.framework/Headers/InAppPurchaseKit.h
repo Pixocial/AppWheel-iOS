@@ -15,6 +15,8 @@
 #import "InAppPurchaseError.h"
 #import "InAppPurchaseObserver.h"
 #import "InAppPurchaseInfo.h"
+#import "AWProductManager.h"
+#import "AWCouponModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,14 +24,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)setDebug:(BOOL)isDebug;
 
-+ (void)configureWithAppId:(NSInteger)appId
-                       uid:(NSString * _Nullable)appUserId
-                completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
++ (NSString *)getVersion;
 
-//+ (void)updateInAppLanguage:(NSString * _Nullable)inAppLanguage
-//                 firebaseId:(NSString * _Nullable)firebaseId
-//                appsflyerId:(NSString * _Nullable)appsflyerId
-//                        gid:(NSString * _Nullable)gid;
++ (void)configureWithAppId:(NSInteger)appId
+                        uid:(NSString *)appUserId
+              applicationId:(NSString * _Nullable)applicationIdentifier
+                    apiKey:(NSString * _Nullable)apiKey
+             inAppLanguage:(NSString * _Nullable)inAppLanguage
+                firebaseId:(NSString * _Nullable)firebaseId
+               appsflyerId:(NSString * _Nullable)appsflyerId
+                completion:(void (^)(BOOL, InAppPurchaseError * _Nonnull))completion;
+
++ (void)configureWithAppId:(NSInteger)appId
+                       uid:(nullable NSString *)appUserId
+                completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
 + (void)setShouldAddStorePaymentBlock:(void (^)(Product * product, SKPayment * payment))completion;
 
@@ -44,34 +52,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)purchaseProduct:(Product *)product
         paymentDiscount:(PaymentDiscountOffer * _Nullable)paymentDiscount
-               quantity:(NSInteger)quantity
-            productType:(NSString *)productType
              completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
 + (void)purchaseProductWithProductIdentifier:(NSString *)productIdentifier
                              paymentDiscount:(PaymentDiscountOffer * _Nullable)paymentDiscount
                                     quantity:(NSInteger)quantity
-                                 productType:(NSString *)productType
+                                 productType:(NSInteger)productType
                                   completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
-
-+ (void)subscribeProduct:(Product *)product
-         paymentDiscount:(PaymentDiscountOffer * _Nullable)paymentDiscount
-             productType:(NSString *)productType
-              completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
-
-+ (void)subscribeProductIdentifier:(NSString *)productIdentifier
-                   paymentDiscount:(PaymentDiscountOffer * _Nullable)paymentDiscount
-                       productType:(NSString *)productType
-                        completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
 + (void)purchaseProductWithProductIdentifier:(NSString *)productIdentifier
                                     quantity:(NSInteger)quantity
-                                 productType:(NSString *)productType
+                                 productType:(NSInteger)productType
                                   completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
 + (void)subscribeProductFromAppStorePromotion:(Product *)product
                                       payment:(SKPayment *)skPayment
-                                  productType:(NSString *)productType
+                                  productType:(NSInteger)productType
                                    completion:(nullable void (^)(BOOL success, InAppPurchaseError * error))completion;
 
 + (void)fetchSubscriptionOfferWithProductIdentifier:(NSString *)productIdentifier
@@ -97,6 +93,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getRetryPeriodWithCompletion:(nullable void (^)(BOOL isInRetryPeriod,  InAppPurchaseError *error))completion;
 
 + (NSString *)getUserId;
+
++ (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
+
+/// 请求优惠券
++ (void)queryCouponDetail:(nullable void (^)(BOOL success,AWCouponModel * _Nullable model, InAppPurchaseError * _Nullable error))completion;
+
++ (void)updateConponStateWithTaskId:(long)taskId
+                     withCompletion:(nullable void (^)(BOOL success, InAppPurchaseError * _Nullable error))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

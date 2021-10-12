@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64B7240E27152F8C0084BCEA /* ProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B7240C27152F8C0084BCEA /* ProductDetailVC.m */; };
+		64B7241027152FC10084BCEA /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B7240F27152FC10084BCEA /* ProductViewController.xib */; };
 		D4609A7B25C9387600019B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4609A7A25C9387600019B32 /* AppDelegate.m */; };
 		D4609A7E25C9387600019B32 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4609A7D25C9387600019B32 /* SceneDelegate.m */; };
 		D4609A8125C9387600019B32 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4609A8025C9387600019B32 /* ViewController.m */; };
@@ -20,7 +22,6 @@
 		D4FF9120260B609F00686502 /* dropdownFlag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4FF911C260B609F00686502 /* dropdownFlag@3x.png */; };
 		D4FF9121260B609F00686502 /* dropdownFlag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4FF911D260B609F00686502 /* dropdownFlag@2x.png */; };
 		D4FF9122260B609F00686502 /* EBDropdownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FF911E260B609F00686502 /* EBDropdownListView.m */; };
-		D4FF9129260B616100686502 /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FF9128260B616100686502 /* ProductViewController.xib */; };
 		D4FF912C260B616900686502 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FF912B260B616900686502 /* InfoViewController.xib */; };
 		D4FF9136260B638100686502 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4FF9134260B638100686502 /* Main.storyboard */; };
 		EE3DFB7022ACB68B5F6243E4 /* libPods-SaaSDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F4C2F21ED86FA68AD1F666 /* libPods-SaaSDemo.a */; };
@@ -28,6 +29,9 @@
 
 /* Begin PBXFileReference section */
 		09F4C2F21ED86FA68AD1F666 /* libPods-SaaSDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaaSDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B7240C27152F8C0084BCEA /* ProductDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailVC.m; sourceTree = "<group>"; };
+		64B7240D27152F8C0084BCEA /* ProductDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailVC.h; sourceTree = "<group>"; };
+		64B7240F27152FC10084BCEA /* ProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductViewController.xib; sourceTree = "<group>"; };
 		84B246AEEE6756DEFECD5D8C /* Pods-SaaSDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaaSDemo.release.xcconfig"; path = "Target Support Files/Pods-SaaSDemo/Pods-SaaSDemo.release.xcconfig"; sourceTree = "<group>"; };
 		9C2171465F8D6C9455E21159 /* Pods-SaaSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaaSDemo.debug.xcconfig"; path = "Target Support Files/Pods-SaaSDemo/Pods-SaaSDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D4609A7625C9387600019B32 /* SaaSDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaaSDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +57,6 @@
 		D4FF911D260B609F00686502 /* dropdownFlag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdownFlag@2x.png"; sourceTree = "<group>"; };
 		D4FF911E260B609F00686502 /* EBDropdownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBDropdownListView.m; sourceTree = "<group>"; };
 		D4FF911F260B609F00686502 /* EBDropdownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBDropdownListView.h; sourceTree = "<group>"; };
-		D4FF9128260B616100686502 /* ProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductViewController.xib; sourceTree = "<group>"; };
 		D4FF912B260B616900686502 /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		D4FF9135260B638100686502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,10 +111,13 @@
 		D4609A7825C9387600019B32 /* SaaSDemo */ = {
 			isa = PBXGroup;
 			children = (
+				64B7240D27152F8C0084BCEA /* ProductDetailVC.h */,
+				64B7240C27152F8C0084BCEA /* ProductDetailVC.m */,
 				D4609AB225C954ED00019B32 /* InfoViewController.h */,
 				D4609AB525C954ED00019B32 /* InfoViewController.m */,
 				D4609AAF25C954EC00019B32 /* ProductViewController.h */,
 				D4609AB325C954ED00019B32 /* ProductViewController.m */,
+				64B7240F27152FC10084BCEA /* ProductViewController.xib */,
 				D4609AB625C954ED00019B32 /* UIAlertController+Global.h */,
 				D4609AB425C954ED00019B32 /* UIAlertController+Global.m */,
 				D4609A7925C9387600019B32 /* AppDelegate.h */,
@@ -126,7 +132,6 @@
 				D4609A8725C9387800019B32 /* LaunchScreen.storyboard */,
 				D4609A8A25C9387800019B32 /* Info.plist */,
 				D4FF9134260B638100686502 /* Main.storyboard */,
-				D4FF9128260B616100686502 /* ProductViewController.xib */,
 				D4FF912B260B616900686502 /* InfoViewController.xib */,
 				D4609A8B25C9387800019B32 /* main.m */,
 				D4FF911B260B609F00686502 /* dropdownView */,
@@ -205,11 +210,11 @@
 			files = (
 				D4FF9136260B638100686502 /* Main.storyboard in Resources */,
 				D4FF9120260B609F00686502 /* dropdownFlag@3x.png in Resources */,
+				64B7241027152FC10084BCEA /* ProductViewController.xib in Resources */,
 				D4609A8925C9387800019B32 /* LaunchScreen.storyboard in Resources */,
 				D4609A8625C9387800019B32 /* Assets.xcassets in Resources */,
 				D4FF9121260B609F00686502 /* dropdownFlag@2x.png in Resources */,
 				D4FF912C260B616900686502 /* InfoViewController.xib in Resources */,
-				D4FF9129260B616100686502 /* ProductViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +272,7 @@
 				D4609A7B25C9387600019B32 /* AppDelegate.m in Sources */,
 				D4FF9119260B605E00686502 /* UIViewController+Loading.m in Sources */,
 				D4609AB925C954ED00019B32 /* ProductViewController.m in Sources */,
+				64B7240E27152F8C0084BCEA /* ProductDetailVC.m in Sources */,
 				D4609A8C25C9387800019B32 /* main.m in Sources */,
 				D4FF9122260B609F00686502 /* EBDropdownListView.m in Sources */,
 				D4609ABB25C954ED00019B32 /* InfoViewController.m in Sources */,
@@ -424,9 +430,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.chic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.pomelo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match2 Development com.meitu.*";
+				PROVISIONING_PROFILE_SPECIFIER = "match3 Development com.meitu.*";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -447,9 +453,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.chic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.pomelo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match2 Development com.meitu.*";
+				PROVISIONING_PROFILE_SPECIFIER = "match3 Development com.meitu.*";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
