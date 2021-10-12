@@ -43,9 +43,7 @@ Pod::Spec.new do |spec|
   #   'AppWheel' => ['sdk/purchaseSDK/*.pem']
   # }
 
-  spec.pod_target_xcconfig = {
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-  }
+  spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
 # 购买的SDK
@@ -59,7 +57,7 @@ Pod::Spec.new do |spec|
   end
 # UI的SDK
   spec.subspec 'subscribeUI' do |ui|
-    ui.source_files = 'sdk/AppWheelUISDK/classes/**/*'
+    ui.source_files = 'sdk/AppWheelUISDK/classes/**/*.{h,m}'
     ui.public_header_files = "sdk/AppWheelUISDK/classes/**/*.h"
     ui.resources = 'sdk/AppWheelUISDK/*.bundle'
     # 支付的SDK
@@ -71,7 +69,7 @@ Pod::Spec.new do |spec|
     #webImage布局
     ui.dependency 'SDWebImage'
     
+    ui.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+    ui.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   end
-  # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  # spec.exclude_files = "Classes/Exclude"
 end
