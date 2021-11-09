@@ -1,2 +1,2 @@
 ${PODS_ROOT}/Target Support Files/Pods-SaaSDemo/Pods-SaaSDemo-resources.sh
-${PODS_CONFIGURATION_BUILD_DIR}/SaaS/SaaS.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/AppWheel/awPurchase.bundle

@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AppWheel"
-  spec.version      = "2.0.0.2"
+  spec.version      = "2.0.0.3"
   spec.summary      = "A short description of AppWheel."
 
   spec.description  = 'An in-app purchase module for iOS project'
@@ -40,7 +40,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '10.0'
 
   spec.resource_bundles = {
-    'AppWheel' => ['sdk/*.pem']
+    'awPurchase' => ['sdk/*.pem']
   }
 
   spec.pod_target_xcconfig = {
