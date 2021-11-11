@@ -6,13 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PurchaseSDK/InAppPurchaseKit.h>
+#import <PurchaseSDK/AWPurchaseKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProductDetailVC : UIViewController
 
-@property(strong, nonatomic)Product *product;
+@property(strong, nonatomic)AWProduct *product;
 @end
 
 NS_ASSUME_NONNULL_END

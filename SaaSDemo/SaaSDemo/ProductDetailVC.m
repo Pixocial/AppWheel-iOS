@@ -9,7 +9,7 @@
 #import "UIViewController+Loading.h"
 #import "UIAlertController+Global.h"
 
-@interface ProductDetailVC()<InAppPurchaseObserver>
+@interface ProductDetailVC()<AWPurchaseObserver>
 
 @property(strong, nonatomic)UITextView *skuDetailLabel;
 @property(strong, nonatomic)UIButton *purchaseBtn;
@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     self.view.backgroundColor = [UIColor whiteColor];
-    [InAppPurchaseKit addPurchaseObserver:self];
+    [AWPurchaseKit addPurchaseObserver:self];
     [self setLabelTextWithProduct:self.product];
     
     [self.purchaseBtn addTarget:self action:@selector(purchase) forControlEvents:UIControlEventTouchUpInside];
@@ -29,7 +29,7 @@
 }
 
 - (void)dealloc {
-    [InAppPurchaseKit removePurchaseObserver:self];
+    [AWPurchaseKit removePurchaseObserver:self];
 }
 - (UIButton *)backBtn {
     if (!_backBtn) {
@@ -59,7 +59,7 @@
     return _skuDetailLabel;
 }
 
-- (void)setLabelTextWithProduct:(Product *)product {
+- (void)setLabelTextWithProduct:(AWProduct *)product {
     self.product = product;
     
     NSString * productID = self.product.productIdentifier;
@@ -180,7 +180,7 @@
 - (void)purchase {
     [self showLoading];
     if (self.product.productType == 0 || self.product.productType == 1) {
-        [InAppPurchaseKit purchaseProduct:self.product paymentDiscount:nil completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+        [AWPurchaseKit purchaseProduct:self.product paymentDiscount:nil completion:^(BOOL success, AWError * _Nonnull error) {
                 [self hideLoading];
                 if (!success) {
                     [self showDialogWithTitle:@"Failed" message:[NSString stringWithFormat:@"Purchase failed. Error message: %@", error.errorMessage]];
@@ -198,7 +198,7 @@
     [self showLoading];
     /// no discounts
     UIAlertAction * normalPurchase = [UIAlertAction actionWithTitle:@"Purchase normal price" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [InAppPurchaseKit purchaseProduct:self.product paymentDiscount:nil completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+        [AWPurchaseKit purchaseProduct:self.product paymentDiscount:nil completion:^(BOOL success, AWError * _Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self hideLoading];
                     if (!success) {
@@ -214,7 +214,7 @@
     for (ProductDiscount * subscriptionDiscount in self.product.discounts) {
         UIAlertAction * action = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Purchase promotional offer: %@", subscriptionDiscount.discountIdentifier] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             // Get Discounts Signature
-            [InAppPurchaseKit fetchSubscriptionOfferWithProductIdentifier:self.product.productIdentifier subscriptionOfferIdentifier:subscriptionDiscount.discountIdentifier completion:^(PaymentDiscountOffer * _Nullable paymentDiscount, InAppPurchaseError * error) {
+            [AWPurchaseKit fetchSubscriptionOfferWithProductIdentifier:self.product.productIdentifier subscriptionOfferIdentifier:subscriptionDiscount.discountIdentifier completion:^(AWPaymentDiscountOffer * _Nullable paymentDiscount, AWError * error) {
                 
                 if (error.errorCode != 0) {
                     [self hideLoading];
@@ -223,7 +223,7 @@
                     });
                 }else {
                     //purchase with discounts
-                    [InAppPurchaseKit purchaseProduct:self.product paymentDiscount:paymentDiscount completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+                    [AWPurchaseKit purchaseProduct:self.product paymentDiscount:paymentDiscount completion:^(BOOL success, AWError * _Nonnull error) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self hideLoading];
                                 if (!success) {
@@ -261,7 +261,7 @@
 }
 
 #pragma mark - InAppPurchaseObserver
-- (void)purchases:(InAppPurchaseInfo *)purchaseInfo {
+- (void)purchases:(AWPurchaseInfo *)purchaseInfo {
     NSString * str = @"";
     
     for (PurchasedProduct * product in [purchaseInfo purchasedArray]) {

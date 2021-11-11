@@ -6,13 +6,13 @@
 //
 
 #import "ViewController.h"
-#import <PurchaseSDK/InAppPurchaseKit.h>
+#import <PurchaseSDK/AWPurchaseKit.h>
 #import "ProductViewController.h"
 #import "InfoViewController.h"
 #import "UIAlertController+Global.h"
 #import "UIViewController+Loading.h"
 
-@interface ViewController ()<InAppPurchaseObserver>
+@interface ViewController ()<AWPurchaseObserver>
 @property (weak, nonatomic) IBOutlet UITextField *userIdTV;
 
 @end
@@ -24,19 +24,19 @@
     [self addNotification];
  
     [self.view setBackgroundColor:UIColor.whiteColor];
-    [InAppPurchaseKit addPurchaseObserver:self];
+    [AWPurchaseKit addPurchaseObserver:self];
     /// 家庭共享权利的撤销
-    [InAppPurchaseKit setRevokeEntitlementsBlock:^(NSArray<NSString *> * _Nonnull productIdentifiers) {
+    [AWPurchaseKit setRevokeEntitlementsBlock:^(NSArray<NSString *> * _Nonnull productIdentifiers) {
         NSArray * a = productIdentifiers;
     }];
 
-    [InAppPurchaseKit configureWithAppId:121 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+    [AWPurchaseKit configureWithAppId:121 uid:self.userIdTV.text completion:^(BOOL success, AWError * _Nonnull error) {
         // do something
     }];
     
     
-    [InAppPurchaseKit setShouldAddStorePaymentBlock:^(Product * _Nonnull product, SKPayment * _Nonnull payment) {
-        [InAppPurchaseKit subscribeProductFromAppStorePromotion:product payment:payment productType:@"your productType" completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+    [AWPurchaseKit setShouldAddStorePaymentBlock:^(AWProduct * _Nonnull product, SKPayment * _Nonnull payment) {
+        [AWPurchaseKit subscribeProductFromAppStorePromotion:product payment:payment productType:@"your productType" completion:^(BOOL success, AWError * _Nonnull error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (!success) {
                     UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Failed" message:[NSString stringWithFormat:@"Purchase failed. Error message: %@", error.errorMessage] preferredStyle:UIAlertControllerStyleAlert];
@@ -64,7 +64,7 @@
     [self showLoading];
     __weak __typeof(self) weakSelf = self;
     
-    [InAppPurchaseKit configureWithAppId:121 uid:self.userIdTV.text completion:^(BOOL success, InAppPurchaseError * _Nonnull error) {
+    [AWPurchaseKit configureWithAppId:121 uid:self.userIdTV.text completion:^(BOOL success, AWError * _Nonnull error) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         // do something
         [strongSelf hideLoading];
@@ -93,7 +93,7 @@
 }
 
 - (void)dealloc {
-    [InAppPurchaseKit removePurchaseObserver:self];
+    [AWPurchaseKit removePurchaseObserver:self];
 }
 
 - (IBAction)purchase:(id)sender {
@@ -105,7 +105,7 @@
 
 - (IBAction)restore:(id)sender {
     [self showLoading];
-    [InAppPurchaseKit restorePurchaseWithCompletion:^(BOOL success, NSArray * validSubscriptions, NSArray * purchasedItems, InAppPurchaseError * error) {
+    [AWPurchaseKit restorePurchaseWithCompletion:^(BOOL success, NSArray * validSubscriptions, NSArray * purchasedItems, AWError * error) {
         [self hideLoading];
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -140,7 +140,7 @@
 }
 
 - (IBAction)refresh:(id)sender {
-    [InAppPurchaseKit refreshInAppPurchaseInfoWithCompletion:^(BOOL success, InAppPurchaseError * error) {
+    [AWPurchaseKit refreshInAppPurchaseInfoWithCompletion:^(BOOL success, AWError * error) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Refresh Success" message:@"" preferredStyle:UIAlertControllerStyleAlert];
@@ -174,7 +174,7 @@
 
 - (IBAction)prehost:(id)sender {
 //    [InAppPurchaseKit changeToPreproduction:YES];
-     [InAppPurchaseKit refreshValidSubscriptions];
+     [AWPurchaseKit refreshValidSubscriptions];
 }
 
 - (IBAction)debugHost:(id)sender {
@@ -182,7 +182,7 @@
 }
 
 - (IBAction)getRetryPeriodWithCompletion:(id)sender {
-    [InAppPurchaseKit getRetryPeriodWithCompletion:^(BOOL isInRetryPeriod, InAppPurchaseError * _Nonnull error) {
+    [AWPurchaseKit getRetryPeriodWithCompletion:^(BOOL isInRetryPeriod, AWError * _Nonnull error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"retryPeriod" message:[NSString stringWithFormat:@"result:%d",isInRetryPeriod]  preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -199,7 +199,7 @@
 
 #pragma mark - InAppPurchaseObserver
 
-- (void)purchases:(InAppPurchaseInfo *)purchaseInfo {
+- (void)purchases:(AWPurchaseInfo *)purchaseInfo {
     NSString * str = @"";
     
     for (PurchasedProduct * product in [purchaseInfo purchasedArray]) {
@@ -224,7 +224,7 @@
 }
 // update remote time when app become active
 - (void)handleApplicationDidBecomeActive {
-    [InAppPurchaseKit updateRemoteTime];
+    [AWPurchaseKit updateRemoteTime];
 }
 
 @end

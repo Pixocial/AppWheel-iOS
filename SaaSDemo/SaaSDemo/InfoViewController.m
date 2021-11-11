@@ -7,10 +7,10 @@
 //
 
 #import "InfoViewController.h"
-#import <PurchaseSDK/InAppPurchaseKit.h>
+#import <PurchaseSDK/AWPurchaseKit.h>
 #import "UIAlertController+Global.h"
 
-@interface InfoViewController ()<InAppPurchaseObserver>
+@interface InfoViewController ()<AWPurchaseObserver>
 
 @property (weak, nonatomic) IBOutlet UITextView *labelt;
 
@@ -21,14 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [InAppPurchaseKit addPurchaseObserver:self];
+    [AWPurchaseKit addPurchaseObserver:self];
     
     [self.view setBackgroundColor:UIColor.whiteColor];
     [self setLabelText];
 }
 
 - (void)setLabelText {
-    InAppPurchaseInfo *purchaseInfo = [InAppPurchaseKit getPurchaseInfo];
+    AWPurchaseInfo *purchaseInfo = [AWPurchaseKit getPurchaseInfo];
     NSString * infoStr = @"Latest subscription info: \n\n";
     LatestSubscriptionInfo * info = [purchaseInfo getLatestSubscriptionInfo];
     if (info) {
@@ -65,7 +65,7 @@
 }
 
 - (void)dealloc {
-    [InAppPurchaseKit removePurchaseObserver:self];
+    [AWPurchaseKit removePurchaseObserver:self];
 }
 
 - (IBAction)back:(id)sender {
@@ -74,7 +74,7 @@
     }];
 }
 
-- (void)purchases:(InAppPurchaseInfo *)purchaseInfo {
+- (void)purchases:(AWPurchaseInfo *)purchaseInfo {
     NSArray<PurchasedProduct *> * purchasedProducts = purchaseInfo.purchasedArray;
     NSString * str = @"";
     

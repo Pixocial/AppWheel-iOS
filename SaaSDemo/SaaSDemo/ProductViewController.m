@@ -7,7 +7,7 @@
 //
 
 #import "ProductViewController.h"
-#import <PurchaseSDK/InAppPurchaseKit.h>
+#import <PurchaseSDK/AWPurchaseKit.h>
 #import "UIAlertController+Global.h"
 #import "UIViewController+Loading.h"
 #import "EBDropdownListView.h"
@@ -19,7 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *skuCV;
 
-@property (nonatomic, strong) Product * product;
+@property (nonatomic, strong) AWProduct * product;
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
@@ -27,7 +27,7 @@
 
 @property(strong, nonatomic) NSSet<NSString *> *skuSet;
 
-@property (nonatomic, strong) NSArray<Product *> * validProducts;
+@property (nonatomic, strong) NSArray<AWProduct *> * validProducts;
 
 @end
 
@@ -68,7 +68,7 @@
 - (void)querySKU {
     if (self.skuSet) {
         [self showLoading];
-        [InAppPurchaseKit getProductsInfoWithProductIdentifiers:self.skuSet completion:^(RetrievedProducts * _Nonnull retrievedProducts) {
+        [AWPurchaseKit getProductsInfoWithProductIdentifiers:self.skuSet completion:^(RetrievedProducts * _Nonnull retrievedProducts) {
             [self hideLoading];
             if (retrievedProducts.error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -110,7 +110,7 @@
                                @"com.commsource.pomelo.subscription.1month.test"];
         NSArray *nonRenewable = @[@"com.commsource.pomelo.filterPack"];
         // set productType and quantity
-        for (Product *product in self.validProducts) {
+        for (AWProduct *product in self.validProducts) {
             product.quantity = 1;
             if ([consumables containsObject: product.productIdentifier] ) {
                 product.productType = 0;
@@ -146,7 +146,7 @@
 
 #pragma mark - 优惠代码
 - (IBAction)redeem:(id)sender {
-    [InAppPurchaseKit presentCodeRedemptionSheet];
+    [AWPurchaseKit presentCodeRedemptionSheet];
 }
 
 - (void)showDialogWithTitle:(NSString *)title
@@ -177,7 +177,7 @@
     [label setFont:[UIFont systemFontOfSize:12]];
     [cell addSubview:label];
     
-    Product *product = [self.validProducts objectAtIndex:indexPath.row];
+    AWProduct *product = [self.validProducts objectAtIndex:indexPath.row];
     [label setText:product.productIdentifier];
     cell.backgroundColor = [UIColor grayColor];
     return cell;
