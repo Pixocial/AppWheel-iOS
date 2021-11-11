@@ -65,7 +65,7 @@ InAppPurchaseKit.purchaseProduct(Product,
 2.  productIdentifier: Product SKU
 3.  paymentDiscount: Discounts. Only for subscription products and can be acquired through Product.discounts. No transferable nil. 
 4.  quantity: Quantity of purchases. The number of non-consumable products is usually 1. 
-5. productType: Type of products. There are usually four types: 0(consumable),1( non-consumable), 2(auto-renewable) and 3(non-renewable). Users can tell the type according to the SKU.
+5. productType: Type of products. There are usually four types: 0:(consumable),1:( non-consumable), 2(auto-renewable) and 3(non-renewable). Users can tell the type according to the SKU.
 - Subscription Products
 1.Obtain Signature of Subscription Offers
 + (void)fetchSubscriptionOfferWithProductIdentifier:(NSString *)productIdentifier
