@@ -1,0 +1,6 @@
+framework module PurchaseSDK {
+  umbrella header "PurchaseSDK.h"
+
+  export *
+  module * { export * }
+}

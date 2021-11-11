@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elR-Vn-63M">
+                                <rect key="frame" x="139" y="98" width="136" height="30"/>
+                                <state key="normal" title="Fetch and Purchase"/>
+                                <connections>
+                                    <action selector="purchase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vbi-5z-Y4c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50A-RH-NHY">
+                                <rect key="frame" x="180.5" y="138" width="53" height="30"/>
+                                <state key="normal" title="Restore"/>
+                                <connections>
+                                    <action selector="restore:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bbq-ZS-tNC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-s6-CuB">
+                                <rect key="frame" x="108" y="178" width="198" height="30"/>
+                                <state key="normal" title="Current In App Purchase Info"/>
+                                <connections>
+                                    <action selector="info:" destination="BYZ-38-t0r" eventType="touchUpInside" id="buc-pg-ziU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsZ-RV-8uG">
+                                <rect key="frame" x="123.5" y="218" width="167" height="30"/>
+                                <state key="normal" title="Refresh sandbox receipt"/>
+                                <connections>
+                                    <action selector="refresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wel-m6-2Fl"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="input UserID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tUG-3b-yGq">
+                                <rect key="frame" x="10" y="54" width="334" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-s0-TkE">
+                                <rect key="frame" x="354" y="54" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="7FT-gc-Kam"/>
+                                    <constraint firstAttribute="height" constant="30" id="dy6-gO-HDv"/>
+                                </constraints>
+                                <state key="normal" title="init"/>
+                                <connections>
+                                    <action selector="initSDK:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Rd-cT-0dl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="elR-Vn-63M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Wq-bq-Wmn"/>
+                            <constraint firstItem="tUG-3b-yGq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="6Tm-o0-5lY"/>
+                            <constraint firstItem="Pif-s6-CuB" firstAttribute="top" secondItem="50A-RH-NHY" secondAttribute="bottom" constant="10" id="CF1-08-crp"/>
+                            <constraint firstItem="50A-RH-NHY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NeI-hy-PkB"/>
+                            <constraint firstItem="Pif-s6-CuB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NwN-zV-Edr"/>
+                            <constraint firstItem="UsZ-RV-8uG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OFf-dJ-aHV"/>
+                            <constraint firstItem="UsZ-RV-8uG" firstAttribute="top" secondItem="Pif-s6-CuB" secondAttribute="bottom" constant="10" id="VEq-Xw-YlE"/>
+                            <constraint firstItem="elR-Vn-63M" firstAttribute="top" secondItem="tUG-3b-yGq" secondAttribute="bottom" constant="10" id="bfX-gg-wkd"/>
+                            <constraint firstItem="Tzx-s0-TkE" firstAttribute="leading" secondItem="tUG-3b-yGq" secondAttribute="trailing" constant="10" id="iqy-fs-8VE"/>
+                            <constraint firstItem="50A-RH-NHY" firstAttribute="top" secondItem="elR-Vn-63M" secondAttribute="bottom" constant="10" id="jIA-oH-HQx"/>
+                            <constraint firstItem="Tzx-s0-TkE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="udw-tZ-rKT"/>
+                            <constraint firstItem="tUG-3b-yGq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="udz-3g-QwU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tzx-s0-TkE" secondAttribute="trailing" constant="20" id="w0k-x8-dnH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="userIdTV" destination="tUG-3b-yGq" id="eVp-OP-RPW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-133" y="72"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
