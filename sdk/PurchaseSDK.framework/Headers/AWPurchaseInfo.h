@@ -85,10 +85,10 @@ typedef NS_ENUM(NSInteger, InAppPurchaseGracePeriodState) {
 
 - (void)saveCurrentValidSubscriptions:(NSArray<NSDictionary *> *)currentValidSubscriptions;
 
-- (NSArray<LatestSubscriptionInfo *> *)getValidSubscriptions;
-
 - (void)removeSubscriptionValidCurrently;
-
+/// 给manager 使用的
+- (NSArray<LatestSubscriptionInfo *> *)getValidSubscriptions;
+/// 给外部的用户使用的
 - (NSArray<LatestSubscriptionInfo *> *)getCurrentValidSubscriptions;
 
 - (BOOL)subscriptionValidCurrently:(NSString *)productId;

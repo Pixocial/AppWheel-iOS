@@ -1,5 +1,5 @@
 //
-//  LatestSubscriptionInfo.h
+//  AWLatestSubscriptionInfo.h
 //  AirBrush
 //
 //  Created by Ellise on 2020/5/25.

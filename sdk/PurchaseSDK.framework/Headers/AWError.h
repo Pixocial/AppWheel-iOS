@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, AWErrorType) {
     AWErrorTypeUnknown = 0,
     
     AWErrorTypeClientInvalid = 1,
-    AWTypePaymentCancelled = 2,
+    AWErrorTypePaymentCancelled = 2,
     AWErrorTypePaymentInvalid = 3,
     AWErrorTypePaymentNotAllowed = 4,
     AWErrorTypeStoreProductNotAvailable = 5,

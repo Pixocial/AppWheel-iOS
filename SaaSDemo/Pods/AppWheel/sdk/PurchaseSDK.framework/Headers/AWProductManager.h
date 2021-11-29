@@ -6,15 +6,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PaymentDiscountOffer.h"
-#import "InAppPurchaseError.h"
-#import "Product.h"
-#import "ProductsRequest.h"
+#import "AWPaymentDiscountOffer.h"
+#import "AWError.h"
+#import "AWProduct.h"
+#import "AWProductsRequest.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^PaymentDiscountBlock)(PaymentDiscountOffer * _Nullable paymentDiscount, InAppPurchaseError * error);
+typedef void(^PaymentDiscountBlock)(AWPaymentDiscountOffer * _Nullable paymentDiscount, AWError * error);
 
 typedef enum : NSUInteger {
     /// 没有被试用过
