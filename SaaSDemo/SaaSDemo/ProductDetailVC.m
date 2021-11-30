@@ -14,6 +14,8 @@
 @property(strong, nonatomic)UITextView *skuDetailLabel;
 @property(strong, nonatomic)UIButton *purchaseBtn;
 @property(strong, nonatomic)UIButton *backBtn;
+@property(assign, nonatomic)AWProductType productType;
+@property (nonatomic, assign)NSInteger quantity;
 
 @end
 
@@ -26,6 +28,8 @@
     
     [self.purchaseBtn addTarget:self action:@selector(purchase) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backBtn];
+    
+    [self getProductTypeAndQuantity];
 }
 
 - (void)dealloc {
@@ -45,6 +49,40 @@
 
 - (void)back {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)getProductTypeAndQuantity {
+    // sort up product
+    NSArray *consumables = @[@"com.commsource.pomelo.timespackages"];
+    NSArray *nonConsumables = @[@"Fade",@"Freeze",@"Leak",
+                                @"com.commsource.pomelo.lifetime.test",@"pro_lifetime",@"Brightness"];
+    NSArray *renewable = @[@"com.commsource.pomelo.subscription.1year.test",
+                           @"com.commsource.pomelo.subscription.1year.newuser",
+                           @"com.commsource.pomelo.subscription.1year.newuser.test",
+                           @"subscription_ye",
+                           @"subscription_mo",
+                           @"com.commsource.pomelo.subscription.1month.test"];
+    NSArray *nonRenewable = @[@"com.commsource.pomelo.filterPack"];
+    // set productType and quantity
+    
+    self.product.quantity = 1;
+    if ([consumables containsObject: self.product.productIdentifier] ) {
+        self.productType = AWProductTypeConsumable;
+        return;;
+    }
+    if ([nonConsumables containsObject: self.product.productIdentifier] ) {
+        self.productType = AWProductTypeNonConsumable;
+        return;
+    }
+    if ([renewable containsObject: self.product.productIdentifier] ) {
+        self.productType = AWProductTypeAutoRenewable;
+        return;
+    }
+    if ([nonRenewable containsObject: self.product.productIdentifier] ) {
+        self.productType = AWProductTypeNonRenewable;
+        return;
+    }
+    
 }
 #pragma mark:- show product detail
 - (UITextView *)skuDetailLabel {
@@ -179,8 +217,8 @@
 
 - (void)purchase {
     [self showLoading];
-    if (self.product.productType == 0 || self.product.productType == 1) {
-        [AWPurchaseKit purchaseProduct:self.product paymentDiscount:nil completion:^(BOOL success, AWError * _Nonnull error) {
+    if (self.productType == 0 || self.productType == 1) {
+        [AWPurchaseKit purchaseProduct:self.product quantity:1 productType:self.product.productType paymentDiscount:nil completion:^(BOOL success, AWError * _Nonnull error) {
                 [self hideLoading];
                 if (!success) {
                     [self showDialogWithTitle:@"Failed" message:[NSString stringWithFormat:@"Purchase failed. Error message: %@", error.errorMessage]];
@@ -198,7 +236,7 @@
     [self showLoading];
     /// no discounts
     UIAlertAction * normalPurchase = [UIAlertAction actionWithTitle:@"Purchase normal price" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [AWPurchaseKit purchaseProduct:self.product paymentDiscount:nil completion:^(BOOL success, AWError * _Nonnull error) {
+        [AWPurchaseKit purchaseProduct:self.product quantity:self.quantity productType:self.productType paymentDiscount:nil completion:^(BOOL success, AWError * _Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self hideLoading];
                     if (!success) {
@@ -223,7 +261,7 @@
                     });
                 }else {
                     //purchase with discounts
-                    [AWPurchaseKit purchaseProduct:self.product paymentDiscount:paymentDiscount completion:^(BOOL success, AWError * _Nonnull error) {
+                    [AWPurchaseKit purchaseProduct:self.product quantity:self.quantity productType:self.productType paymentDiscount:paymentDiscount completion:^(BOOL success, AWError * _Nonnull error) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self hideLoading];
                                 if (!success) {
@@ -260,7 +298,7 @@
     [alert show:self];
 }
 
-#pragma mark - InAppPurchaseObserver
+#pragma mark - AWPurchaeObserver
 - (void)purchases:(AWPurchaseInfo *)purchaseInfo {
     NSString * str = @"";
     

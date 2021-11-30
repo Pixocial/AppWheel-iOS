@@ -10,7 +10,7 @@
 #import <PurchaseSDK/AWPurchaseKit.h>
 #import "UIAlertController+Global.h"
 #import "UIViewController+Loading.h"
-#import "EBDropdownListView.h"
+
 #import "ProductDetailVC.h"
 
 @interface ProductViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -55,6 +55,7 @@
         @"Freeze",
         @"Fade",
         @"com.commsource.pomelo.timespackages", nil];
+        
     }
     return _skuSet;
 }
@@ -98,38 +99,6 @@
 
 - (void)updateUI {
     if (self.validProducts) {
-        // sort up product
-        NSArray *consumables = @[@"com.commsource.pomelo.timespackages"];
-        NSArray *nonConsumables = @[@"Fade",@"Freeze",@"Leak",
-                                    @"com.commsource.pomelo.lifetime.test",@"pro_lifetime",@"Brightness"];
-        NSArray *renewable = @[@"com.commsource.pomelo.subscription.1year.test",
-                               @"com.commsource.pomelo.subscription.1year.newuser",
-                               @"com.commsource.pomelo.subscription.1year.newuser.test",
-                               @"subscription_ye",
-                               @"subscription_mo",
-                               @"com.commsource.pomelo.subscription.1month.test"];
-        NSArray *nonRenewable = @[@"com.commsource.pomelo.filterPack"];
-        // set productType and quantity
-        for (AWProduct *product in self.validProducts) {
-            product.quantity = 1;
-            if ([consumables containsObject: product.productIdentifier] ) {
-                product.productType = 0;
-                continue;;
-            }
-            if ([nonConsumables containsObject: product.productIdentifier] ) {
-                product.productType = 1;
-                continue;
-            }
-            if ([renewable containsObject: product.productIdentifier] ) {
-                product.productType = 2;
-                continue;
-            }
-            if ([nonRenewable containsObject: product.productIdentifier] ) {
-                product.productType = 3;
-                continue;
-            }
-        }
-        
         
         //then update UI
         self.skuCV.delegate = self;

@@ -13,60 +13,63 @@
 			buildPhases = (
 			);
 			dependencies = (
-				1F2B6661F680057323BDF892098365BF /* PBXTargetDependency */,
+				76B6F3BE5A5A9C6E478E0BDC10B75AD4 /* PBXTargetDependency */,
 			);
 			name = AppWheel;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		050C7CA6D58236462083128FFE459ED5 /* defaultRSA.pem in Resources */ = {isa = PBXBuildFile; fileRef = E4C48738DE263F5851107FBC74AF12A2 /* defaultRSA.pem */; };
 		767A1A106654F20A008FB39A606D6224 /* Pods-SaaSDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF388DF9704AB4FB23A17A910D6847 /* Pods-SaaSDemo-dummy.m */; };
-		983C7B5256FDC1734C2E1E81F1F0E21E /* defaultRSA.pem in Resources */ = {isa = PBXBuildFile; fileRef = 9A3359D9B6EE2F34EFE2827C508198AD /* defaultRSA.pem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6097B3A99FD3206F1E6F7741CB948C76 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 748E919ACA1CD3267A002737A17C90A9;
-			remoteInfo = "AppWheel-awPurchase";
-		};
-		A5D42E04D42B6D2855928E1BB65D35B7 /* PBXContainerItemProxy */ = {
+		81F7472805C67E42DFA246DB3570518E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 07A8788AD1A5BE839B866F2892F35278;
 			remoteInfo = AppWheel;
 		};
+		D910DD28F93430853529CF5E4C7A0EAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 748E919ACA1CD3267A002737A17C90A9;
+			remoteInfo = "AppWheel-awPurchase";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		08DD52B83FA4EDCC581C5BAEF57BF60F /* libPods-SaaSDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SaaSDemo.a"; path = "libPods-SaaSDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		24262E2F60A257F316F72AAF9E4DFFE9 /* ResourceBundle-awPurchase-AppWheel-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-awPurchase-AppWheel-Info.plist"; sourceTree = "<group>"; };
-		3119E25D718536E9F1C4BE26677E9F0F /* PurchaseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PurchaseSDK.framework; path = sdk/PurchaseSDK.framework; sourceTree = "<group>"; };
 		36C5971A98E682B9044E94A59E4BF6D9 /* Pods-SaaSDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SaaSDemo-resources.sh"; sourceTree = "<group>"; };
 		3ECF388DF9704AB4FB23A17A910D6847 /* Pods-SaaSDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SaaSDemo-dummy.m"; sourceTree = "<group>"; };
+		44CD38492AF843E6D58EBDE7FC091E06 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		4F6690995B24B00775A77747A8EA9EAA /* Pods-SaaSDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SaaSDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5A5E7EE1106BBEF9DF751F482E283BF7 /* awPurchase.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = awPurchase.bundle; path = "AppWheel-awPurchase.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BB9F75D419D6CE6A9E5427D6BA1666 /* Pods-SaaSDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SaaSDemo-acknowledgements.plist"; sourceTree = "<group>"; };
-		96A0E9523BAC4B53CE045E414053CE07 /* AppWheel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppWheel.debug.xcconfig; sourceTree = "<group>"; };
+		756F16F89F356F3560DDEC6D8D55CA94 /* AppWheel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppWheel.release.xcconfig; sourceTree = "<group>"; };
+		7C384BC488770A37679AD683ECA20B4A /* ResourceBundle-awPurchase-AppWheel-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-awPurchase-AppWheel-Info.plist"; sourceTree = "<group>"; };
 		984A74050327E4C787092FD5E3E55CF1 /* Pods-SaaSDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SaaSDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9A3359D9B6EE2F34EFE2827C508198AD /* defaultRSA.pem */ = {isa = PBXFileReference; includeInIndex = 1; name = defaultRSA.pem; path = sdk/defaultRSA.pem; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AF843BB2709EDAA1F122B7FE8F79EA3F /* Pods-SaaSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SaaSDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		EF54F70E262D19DD9D1A3321FFADAF32 /* AppWheel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppWheel.release.xcconfig; sourceTree = "<group>"; };
+		B8173F3C037A455F6F1EFE2CA93556F8 /* AppWheel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppWheel.debug.xcconfig; sourceTree = "<group>"; };
+		C0E40CC59A66D5930C9EFEA54A1E6311 /* PurchaseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PurchaseSDK.framework; path = sdk/PurchaseSDK.framework; sourceTree = "<group>"; };
+		C1884D446B58B92A4BB2F5FEA956FA76 /* AppWheel.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = AppWheel.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DDDF67955F87BE9D24EAC76D344F7261 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		E4C48738DE263F5851107FBC74AF12A2 /* defaultRSA.pem */ = {isa = PBXFileReference; includeInIndex = 1; name = defaultRSA.pem; path = sdk/defaultRSA.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1D51A417F96C48DBDCF49AE54BB2E496 /* Frameworks */ = {
+		C42284331EC1A49FAE6788B9171CCAD5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C42284331EC1A49FAE6788B9171CCAD5 /* Frameworks */ = {
+		F97A3F72600BF78A6DADE8DF9A1DC346 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,39 +79,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12828E4DADFAE7087B2635D1F5804F97 /* Pods */ = {
+		48AA34822649E0A2884A3D8E48BDC848 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FED4209EA02A782AB8A632BC5203033B /* AppWheel */,
+				CEDE97FDFF7CE537F75CABCCB23EC667 /* AppWheel */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		2C9B9375889E1A18A7F77BA07EAADF37 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				96A0E9523BAC4B53CE045E414053CE07 /* AppWheel.debug.xcconfig */,
-				EF54F70E262D19DD9D1A3321FFADAF32 /* AppWheel.release.xcconfig */,
-				24262E2F60A257F316F72AAF9E4DFFE9 /* ResourceBundle-awPurchase-AppWheel-Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AppWheel";
-			sourceTree = "<group>";
-		};
-		5553C7A79DB230C42FF335284B0D4713 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9A3359D9B6EE2F34EFE2827C508198AD /* defaultRSA.pem */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		9001DA3BBEA9CD4E36E211998F82C9AA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3119E25D718536E9F1C4BE26677E9F0F /* PurchaseSDK.framework */,
-			);
-			name = Frameworks;
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		902597EA95D99E21E14A356A7E3ED608 /* Pods-SaaSDemo */ = {
@@ -142,12 +118,43 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		B2907216ED189D6398C9206CF4F7BBD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0E40CC59A66D5930C9EFEA54A1E6311 /* PurchaseSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B93BA127F304D59CB2249796379DD838 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B8173F3C037A455F6F1EFE2CA93556F8 /* AppWheel.debug.xcconfig */,
+				756F16F89F356F3560DDEC6D8D55CA94 /* AppWheel.release.xcconfig */,
+				7C384BC488770A37679AD683ECA20B4A /* ResourceBundle-awPurchase-AppWheel-Info.plist */,
+			);
+			name = "Support Files";
+			path = "SaaSDemo/Pods/Target Support Files/AppWheel";
+			sourceTree = "<group>";
+		};
+		CEDE97FDFF7CE537F75CABCCB23EC667 /* AppWheel */ = {
+			isa = PBXGroup;
+			children = (
+				E4C48738DE263F5851107FBC74AF12A2 /* defaultRSA.pem */,
+				B2907216ED189D6398C9206CF4F7BBD0 /* Frameworks */,
+				F4C66E506C845BCEC447F9C42D7B13F1 /* Pod */,
+				B93BA127F304D59CB2249796379DD838 /* Support Files */,
+			);
+			name = AppWheel;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				48AA34822649E0A2884A3D8E48BDC848 /* Development Pods */,
 				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
-				12828E4DADFAE7087B2635D1F5804F97 /* Pods */,
 				91FE149779C08614B425CCF7A75E002C /* Products */,
 				A8633092E06A9F434932C15BB1CE9569 /* Targets Support Files */,
 			);
@@ -160,15 +167,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FED4209EA02A782AB8A632BC5203033B /* AppWheel */ = {
+		F4C66E506C845BCEC447F9C42D7B13F1 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				9001DA3BBEA9CD4E36E211998F82C9AA /* Frameworks */,
-				5553C7A79DB230C42FF335284B0D4713 /* Resources */,
-				2C9B9375889E1A18A7F77BA07EAADF37 /* Support Files */,
+				C1884D446B58B92A4BB2F5FEA956FA76 /* AppWheel.podspec */,
+				44CD38492AF843E6D58EBDE7FC091E06 /* LICENSE */,
+				DDDF67955F87BE9D24EAC76D344F7261 /* README.md */,
 			);
-			name = AppWheel;
-			path = AppWheel;
+			name = Pod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +201,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				395693F8ADD6814F5579286648BD6118 /* PBXTargetDependency */,
+				EA371878536C94E9B4DBE98BC08E944A /* PBXTargetDependency */,
 			);
 			name = "Pods-SaaSDemo";
 			productName = "Pods-SaaSDemo";
@@ -204,11 +210,11 @@
 		};
 		748E919ACA1CD3267A002737A17C90A9 /* AppWheel-awPurchase */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 546F5EDEEC1E8B18682DB23DC863B414 /* Build configuration list for PBXNativeTarget "AppWheel-awPurchase" */;
+			buildConfigurationList = 99AE1D077F14C83419482244E0A4B369 /* Build configuration list for PBXNativeTarget "AppWheel-awPurchase" */;
 			buildPhases = (
-				555A1E263C6CA7127AE316D71B9994EA /* Sources */,
-				1D51A417F96C48DBDCF49AE54BB2E496 /* Frameworks */,
-				DDF1C317B7FCD33714C1DED91DEC655D /* Resources */,
+				C74EBB50C6BF31BAE84B7D6EE2091D7F /* Sources */,
+				F97A3F72600BF78A6DADE8DF9A1DC346 /* Frameworks */,
+				FDB2248DBDCF34E5AA6978651F5C56B5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -249,24 +255,17 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DDF1C317B7FCD33714C1DED91DEC655D /* Resources */ = {
+		FDB2248DBDCF34E5AA6978651F5C56B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				983C7B5256FDC1734C2E1E81F1F0E21E /* defaultRSA.pem in Resources */,
+				050C7CA6D58236462083128FFE459ED5 /* defaultRSA.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		555A1E263C6CA7127AE316D71B9994EA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B4B69BEAAFB0EAAB4C21EB9E80470843 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,40 +274,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C74EBB50C6BF31BAE84B7D6EE2091D7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1F2B6661F680057323BDF892098365BF /* PBXTargetDependency */ = {
+		76B6F3BE5A5A9C6E478E0BDC10B75AD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "AppWheel-awPurchase";
 			target = 748E919ACA1CD3267A002737A17C90A9 /* AppWheel-awPurchase */;
-			targetProxy = 6097B3A99FD3206F1E6F7741CB948C76 /* PBXContainerItemProxy */;
+			targetProxy = D910DD28F93430853529CF5E4C7A0EAE /* PBXContainerItemProxy */;
 		};
-		395693F8ADD6814F5579286648BD6118 /* PBXTargetDependency */ = {
+		EA371878536C94E9B4DBE98BC08E944A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AppWheel;
 			target = 07A8788AD1A5BE839B866F2892F35278 /* AppWheel */;
-			targetProxy = A5D42E04D42B6D2855928E1BB65D35B7 /* PBXContainerItemProxy */;
+			targetProxy = 81F7472805C67E42DFA246DB3570518E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		006EAF39415AC91343664D8FEF70D567 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF54F70E262D19DD9D1A3321FFADAF32 /* AppWheel.release.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AppWheel";
-				IBSC_MODULE = AppWheel;
-				INFOPLIST_FILE = "Target Support Files/AppWheel/ResourceBundle-awPurchase-AppWheel-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PRODUCT_NAME = awPurchase;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		3F3AB1577BA067BEC126F3BB1819CE88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F6690995B24B00775A77747A8EA9EAA /* Pods-SaaSDemo.release.xcconfig */;
@@ -330,6 +320,22 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		6A60D253A45DAA0B5BC26B2E2003E51F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8173F3C037A455F6F1EFE2CA93556F8 /* AppWheel.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AppWheel";
+				IBSC_MODULE = AppWheel;
+				INFOPLIST_FILE = "Target Support Files/AppWheel/ResourceBundle-awPurchase-AppWheel-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_NAME = awPurchase;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
 		};
 		7EE7A78859F657F6BEFC651185B43192 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -393,9 +399,9 @@
 			};
 			name = Release;
 		};
-		A4FB220FC50768D989FC98FB22DDB0C4 /* Debug */ = {
+		B5916BCCEF2C5B8E6B53D5F548663818 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96A0E9523BAC4B53CE045E414053CE07 /* AppWheel.debug.xcconfig */;
+			baseConfigurationReference = 756F16F89F356F3560DDEC6D8D55CA94 /* AppWheel.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AppWheel";
 				IBSC_MODULE = AppWheel;
@@ -407,11 +413,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
-			name = Debug;
+			name = Release;
 		};
 		BF3A74C22B02BC96B2DFE288CBC3F397 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96A0E9523BAC4B53CE045E414053CE07 /* AppWheel.debug.xcconfig */;
+			baseConfigurationReference = B8173F3C037A455F6F1EFE2CA93556F8 /* AppWheel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -428,7 +434,7 @@
 		};
 		C81862FF93A68BE53EAD1E0B8F8D2272 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF54F70E262D19DD9D1A3321FFADAF32 /* AppWheel.release.xcconfig */;
+			baseConfigurationReference = 756F16F89F356F3560DDEC6D8D55CA94 /* AppWheel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -552,11 +558,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		546F5EDEEC1E8B18682DB23DC863B414 /* Build configuration list for PBXNativeTarget "AppWheel-awPurchase" */ = {
+		99AE1D077F14C83419482244E0A4B369 /* Build configuration list for PBXNativeTarget "AppWheel-awPurchase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A4FB220FC50768D989FC98FB22DDB0C4 /* Debug */,
-				006EAF39415AC91343664D8FEF70D567 /* Release */,
+				6A60D253A45DAA0B5BC26B2E2003E51F /* Debug */,
+				B5916BCCEF2C5B8E6B53D5F548663818 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

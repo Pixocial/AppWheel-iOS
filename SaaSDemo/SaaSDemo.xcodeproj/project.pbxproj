@@ -432,7 +432,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.pomelo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match3 Development com.meitu.*";
+				PROVISIONING_PROFILE_SPECIFIER = "match3 Development *";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -455,7 +455,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.pomelo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match3 Development com.meitu.*";
+				PROVISIONING_PROFILE_SPECIFIER = "match3 Development *";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
