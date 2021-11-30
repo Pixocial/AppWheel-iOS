@@ -1,6 +1,6 @@
 {
   "name": "AppWheel",
-  "version": "2.0.0.5",
+  "version": "2.0.0.6",
   "summary": "A short description of AppWheel.",
   "description": "An in-app purchase module for iOS project",
   "homepage": "https://github.com/Pixocial/testSaaS-iOS/blob/master/README.md",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/Pixocial/testSaaS-iOS.git",
-    "tag": "2.0.0.5"
+    "tag": "2.0.0.6"
   },
   "vendored_frameworks": "sdk/PurchaseSDK.framework",
   "frameworks": [
