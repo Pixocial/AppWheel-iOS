@@ -76,7 +76,7 @@
 
 - (void)purchases:(AWPurchaseInfo *)purchaseInfo {
     NSArray<PurchasedProduct *> * purchasedProducts = purchaseInfo.purchasedArray;
-    NSString * str = @"";
+    NSString * str = @""; 
     
     for (PurchasedProduct * product in purchasedProducts) {
         NSString * productId = product.productIdentifier;
