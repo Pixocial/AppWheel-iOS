@@ -88,6 +88,8 @@ FOUNDATION_EXPORT NSString * const kIAPUserInitResult;
 - (BOOL)subscriptionValidCurrently:(NSString *)productId;
 
 - (NSArray<LatestSubscriptionInfo *> *)getAllSubscriptionsInfo;
+
+- (NSDate *)getRemoteTime;
 @end
 
 NS_ASSUME_NONNULL_END
