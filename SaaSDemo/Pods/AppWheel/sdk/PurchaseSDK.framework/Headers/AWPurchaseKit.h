@@ -51,23 +51,25 @@ NS_ASSUME_NONNULL_BEGIN
                                      completion:(void (^)(RetrievedProducts * retrievedProducts))completion;
 
 + (void)purchaseProduct:(AWProduct *)product
+               quantity:(NSInteger)quantity
+            productType:(AWProductType)productType
         paymentDiscount:(AWPaymentDiscountOffer * _Nullable)paymentDiscount
              completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
 + (void)purchaseProductWithProductIdentifier:(NSString *)productIdentifier
                              paymentDiscount:(AWPaymentDiscountOffer * _Nullable)paymentDiscount
                                     quantity:(NSInteger)quantity
-                                 productType:(NSInteger)productType
+                                 productType:(AWProductType)productType
                                   completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
 + (void)purchaseProductWithProductIdentifier:(NSString *)productIdentifier
                                     quantity:(NSInteger)quantity
-                                 productType:(NSInteger)productType
+                                 productType:(AWProductType)productType
                                   completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
 + (void)subscribeProductFromAppStorePromotion:(AWProduct *)product
                                       payment:(SKPayment *)skPayment
-                                  productType:(NSInteger)productType
+                                  productType:(AWProductType)productType
                                    completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
 + (void)fetchSubscriptionOfferWithProductIdentifier:(NSString *)productIdentifier

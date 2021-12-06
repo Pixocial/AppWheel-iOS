@@ -31,6 +31,14 @@ typedef NS_ENUM(NSInteger, DiscountType) {
     DiscountTypeSubscriptionOffer
 };
 
+typedef NS_ENUM(NSInteger, AWProductType) {
+    AWProductTypeConsumable = 0,
+    AWProductTypeNonConsumable = 1,
+    AWProductTypeAutoRenewable = 2,
+    AWProductTypeNonRenewable = 3
+};
+
+
 @interface SubscriptionPeriod : NSObject
 
 @property (nonatomic, assign) NSInteger numberOfDiscountUnits;
@@ -83,7 +91,7 @@ typedef NS_ENUM(NSInteger, DiscountType) {
 
 @property (nonatomic, assign) NSInteger quantity;
 
-@property (nonatomic, assign) NSInteger productType;
+@property (nonatomic, assign) AWProductType productType;
 
 @property (nonnull, strong) NSString *subscriptionGroupIdentifier;
 

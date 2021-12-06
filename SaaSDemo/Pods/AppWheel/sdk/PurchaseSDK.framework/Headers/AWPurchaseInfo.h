@@ -25,13 +25,41 @@ typedef NS_ENUM(NSInteger, InAppPurchaseGracePeriodState) {
     InAppPurchaseGracePeriodStateGracePeriodExpired
 };
 
-@interface AWPurchaseInfo : NSObject
 
+FOUNDATION_EXPORT NSString * const kIAPOriginalTransactionDateKey;
+FOUNDATION_EXPORT NSString * const kIAPLatestSubscriptionInfoKey;
+FOUNDATION_EXPORT NSString * const kIAPSubscriptionStateKey;
+FOUNDATION_EXPORT NSString * const kIAPGracePeriodStateKey;
+FOUNDATION_EXPORT NSString * const kIAPSubscriptionExpiredTimeKey;
+FOUNDATION_EXPORT NSString * const kIAPGracePeriodExpiredTimeKey;
+FOUNDATION_EXPORT NSString * const kIAPPurchasedItemsKey;
+FOUNDATION_EXPORT NSString * const kIAPPurchasedItemInfosKey;
+FOUNDATION_EXPORT NSString * const kIAPValidSubscriptionProductsKey;
+FOUNDATION_EXPORT NSString * const kIAPAllSubscriptionProductsKey;
+FOUNDATION_EXPORT NSString * const kIAPRemoteTimeKey;
+FOUNDATION_EXPORT NSString * const kIAPUserInitResult;
 
-@property (nonatomic, strong, nullable) NSDate * remoteDate;
-
-- (void)updateRemoteTime:(double) remoteDateMS;
-
+@interface AWPurchaseInfo : NSObject {
+    
+    @protected NSLock * _inAppPurchasedValidSubscriptionsLock;
+    @protected NSUserDefaults * _inAppPurchaseInfoUserDefaults;
+    @protected NSDate * _remoteDate;
+    
+    @protected NSLock * _inAppPurchasedItemLock;
+    /// 购买到的商品的id数组，不包含自动续订
+    @protected  NSArray * _purchasedIds;
+    @protected  NSArray<PurchasedProduct *> * _purchasedArray;
+    @protected InAppPurchaseSubcriptionState _inAppPurchaseSubcriptionState;
+    @protected InAppPurchaseGracePeriodState _inAppPurchaseGracePeriodState;
+    @protected NSDate * _subscriptionExpiredDate;
+    @protected NSDate * _gracePeriodExpiredDate;
+    
+    @protected BOOL _isSubscriptionUnlockedUser;
+    
+    @protected NSMutableArray<LatestSubscriptionInfo *> * _validSubscriptions;
+    
+    @protected NSMutableArray<LatestSubscriptionInfo *> * _allSubscriptions;
+}
 - (NSArray *)purchasedIds;
 
 - (NSArray<PurchasedProduct *> *)purchasedArray;
@@ -40,63 +68,28 @@ typedef NS_ENUM(NSInteger, InAppPurchaseGracePeriodState) {
 
 - (BOOL)isSubscriptionUnlockedUser;
 
-- (void)setOriginalTransactionDate:(NSDate * _Nullable)originalTransactionDate;
-
 - (NSDate * _Nullable)originalTransactionDate;
-
-
-- (void)saveLatestSubscriptionInfo:(NSDictionary *)latestSubscriptionInfo;
 
 - (LatestSubscriptionInfo * _Nullable)getLatestSubscriptionInfo;
 
-
-- (void)saveInAppPurchaseItems:(NSArray<NSDictionary *> *)inAppPurchaseItems;
-
-- (BOOL)updateInAppPurchaseItems:(NSString *)productIdentifier quantity:(NSInteger)quantity;
-
 - (BOOL)productUnlocked:(NSString *)productIdentifier;
-
-- (void)removeAllInAppPurchaseItems;
-
-
-- (void)setInAppPurchaseSubcriptionState:(InAppPurchaseSubcriptionState)state;
-
-- (void)setInAppPurchaseGracePeriodState:(InAppPurchaseGracePeriodState)state;
 
 - (void)refreshInAppPurchaseState;
 
-
-- (void)setSubscriptionExpiredDate:(NSDate * _Nullable)subscriptionExpiredDate;
-
-- (void)expireSubscription;
-
 - (NSDate * _Nullable)currentSubscriptionExpiredDate;
-
-
-- (void)checkGracePeriodDate;
 
 - (BOOL)userInGracePeriod;
 
-- (void)setGracePeriodExpiredDate:(NSDate * _Nullable)gracePeriodExpiredDate;
-
-- (void)expireGracePeriod;
-
 - (NSDate * _Nullable)currentGracePeriodExpiredDate;
 
-- (void)saveCurrentValidSubscriptions:(NSArray<NSDictionary *> *)currentValidSubscriptions;
-
-- (NSArray<LatestSubscriptionInfo *> *)getValidSubscriptions;
-
-- (void)removeSubscriptionValidCurrently;
-
+/// 给外部的用户使用的
 - (NSArray<LatestSubscriptionInfo *> *)getCurrentValidSubscriptions;
 
 - (BOOL)subscriptionValidCurrently:(NSString *)productId;
 
-
-- (void)saveAllSubscriptions:(NSArray<NSDictionary *> *)subscriptions;
-
 - (NSArray<LatestSubscriptionInfo *> *)getAllSubscriptionsInfo;
+
+- (NSDate *)getRemoteTime;
 @end
 
 NS_ASSUME_NONNULL_END
