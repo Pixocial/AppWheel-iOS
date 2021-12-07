@@ -19,9 +19,9 @@ typedef NS_ENUM(NSInteger, AWErrorType) {
     AWErrorTypeStoreProductNotAvailable = 5,
     
     AWErrorTypeInvalidOfferIdentifier = 11,
-    AWErrorTypeInvalidOfferPrice = 12,
-    AWErrorTypeInvalidSignature = 13,
-    AWErrorTypeMissingOfferParams = 14,
+    AWErrorTypeInvalidSignature = 12,
+    AWErrorTypeMissingOfferParams = 13,
+    AWErrorTypeInvalidOfferPrice = 14,
     
     AWErrorTypeAPISecretError = 10000,
     AWErrorTypeAPICertError = 10001,

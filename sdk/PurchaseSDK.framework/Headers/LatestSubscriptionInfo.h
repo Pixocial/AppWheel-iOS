@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString * originalTransactionId;
 
+@property (nonatomic, strong) NSString * transactionId;
+
 @property (nonatomic, strong) NSDate * subscriptionExpiredTime;
 
 @property (nonatomic, strong) NSDate * subscriptionGracePeriodExpiredTime;
