@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDate * subscriptionGracePeriodExpiredTime;
 
 @property (nonatomic, strong) NSString * inAppOwnershipType;
+///兑换码
+@property (nonatomic, strong) NSString * offerCodeRefName;
 
 @property (nonatomic, strong) NSString * productType;
 

@@ -1,5 +1,5 @@
 PODS:
-  - AppWheel (2.0.0.8)
+  - AppWheel (2.0.1.1)
 
 DEPENDENCIES:
   - AppWheel (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AppWheel: 1ad0046f4356e501df78c5024b25352c01ba345b
+  AppWheel: 5096c4225981e21daad30a97cbf44622819129fa
 
-PODFILE CHECKSUM: 72fcf912c80c2f5477ebb0dabd89470b8d550fdc
+PODFILE CHECKSUM: 330ca111eead3e8d711b1e63fd5befebfb8c6bc3
 
 COCOAPODS: 1.10.2
