@@ -30,12 +30,14 @@ NS_ASSUME_NONNULL_BEGIN
                         uid:(NSString *)appUserId
               applicationId:(NSString * _Nullable)applicationIdentifier
                     apiKey:(NSString * _Nullable)apiKey
+                    secret:(NSString *)secret
              inAppLanguage:(NSString * _Nullable)inAppLanguage
                 firebaseId:(NSString * _Nullable)firebaseId
                appsflyerId:(NSString * _Nullable)appsflyerId
                 completion:(void (^)(BOOL, AWError * _Nonnull))completion;
 
 + (void)configureWithAppId:(NSInteger)appId
+                    secret:(NSString *)secret
                        uid:(nullable NSString *)appUserId
                 completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
@@ -104,6 +106,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)updateConponStateWithTaskId:(long)taskId
                      withCompletion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
++ (void)requestProductsWithOfferCodeId:(NSInteger)codeId
+                             offerCode:(NSString *)offerCode
+                  productsFetchedBlock:(OfferCodeProductsBlock)offerCodeProductsBlock;
+
++ (void)consumeOfferCodeId:(NSInteger)offercodeId
+                 offerCode:(NSString *)offerCode
+          subscriptionInfo:(LatestSubscriptionInfo *)info
+              withComplete:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

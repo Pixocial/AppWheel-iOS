@@ -29,9 +29,11 @@
 
 - (void)setLabelText {
     AWPurchaseInfo *purchaseInfo = [AWPurchaseKit getPurchaseInfo];
+
     NSString * infoStr = @"Latest subscription info: \n\n";
     LatestSubscriptionInfo * info = [purchaseInfo getLatestSubscriptionInfo];
     if (info) {
+        info.offerCodeRefName;
         infoStr = [infoStr stringByAppendingString:[NSString stringWithFormat:@"Product id: %@\n\n", info.productIdentifier]];
         infoStr = [infoStr stringByAppendingString:[NSString stringWithFormat:@"Is trial period: %@\n\n", info.isTrialPeriod ? @"Yes" : @"No"]];
         infoStr = [infoStr stringByAppendingString:[NSString stringWithFormat:@"Is intro period: %@\n\n", info.isInIntroPeriod ? @"Yes" : @"No"]];

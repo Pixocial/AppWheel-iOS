@@ -27,6 +27,8 @@ typedef void(^ProductsFetchedBlock)(RetrievedProducts * retrievedProducts);
 
 typedef void(^RawProductsBlock)(NSArray<SKProduct *> * rawProducts);
 
+typedef void(^OfferCodeProductsBlock)(AWProduct * _Nullable product, AWError * _Nullable error);
+
 @interface AWProductsRequest : NSObject
 
 - (instancetype)initWithProductIdentifiers:(NSSet<NSString *> *)productIdentifiers rawProducts:(RawProductsBlock)rawProducts completion:(ProductsFetchedBlock)completion;

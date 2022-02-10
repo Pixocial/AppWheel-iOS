@@ -10,6 +10,7 @@
 #import "AWError.h"
 #import "AWProduct.h"
 #import "AWProductsRequest.h"
+#import "LatestSubscriptionInfo.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -49,6 +50,15 @@ typedef enum : NSUInteger {
 - (void)saveSKProducts2Cache:(NSArray<SKProduct *> *)products;
 
 - (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
+
+- (void)requestProductsWithOfferCodeId:(NSInteger) codeId
+                             offerCode:(NSString *)offerCode
+                  productsFetchedBlock:(OfferCodeProductsBlock)offerCodeProductsBlock;
+
+- (void)consumeOfferCodeId:(NSInteger)offercodeId
+                 offerCode:(NSString *)offerCode
+          subscriptionInfo:(LatestSubscriptionInfo *)info
+              withComplete:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
 @end
 

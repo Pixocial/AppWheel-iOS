@@ -89,7 +89,7 @@ FOUNDATION_EXPORT NSString * const kIAPUserInitResult;
 
 - (NSArray<LatestSubscriptionInfo *> *)getAllSubscriptionsInfo;
 
-- (NSDate *)getRemoteTime;
+- (NSDate * _Nullable)getRemoteTime;
 @end
 
 NS_ASSUME_NONNULL_END
