@@ -85,7 +85,7 @@ typedef NS_ENUM(NSInteger, AWProductType) {
 
 @property (nonatomic, strong, nullable) ProductDiscount * introductoryPrice;
 
-@property (nonatomic, strong, nullable) NSArray<ProductDiscount *> * discounts;
+@property (nonatomic, strong) NSArray<ProductDiscount *> * discounts;
 
 @property (nonatomic, assign) BOOL  isFamilyShareable;
 
@@ -93,7 +93,7 @@ typedef NS_ENUM(NSInteger, AWProductType) {
 
 @property (nonatomic, assign) AWProductType productType;
 
-@property (nonatomic, strong, nullable) NSString *subscriptionGroupIdentifier;
+@property (nonnull, strong) NSString *subscriptionGroupIdentifier;
 
 - (instancetype)initWithSKProduct:(SKProduct *)skProduct;
 

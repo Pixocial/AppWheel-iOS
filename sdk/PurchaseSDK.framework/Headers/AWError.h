@@ -59,8 +59,6 @@ typedef NS_ENUM(NSInteger, AWErrorType) {
     AWErrorTypeRetryPeriod = 30013,
     /// 传的product为nil或者没有productId
     AWErrorTypeProductError = 30014,
-    /// 传的product为nil或者没有productId
-    AWErrorTypeRequestOfferCodeProductError = 30016,
 };
 
 @interface AWError : NSObject

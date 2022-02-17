@@ -19,20 +19,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isInIntroPeriod;
 
 @property (nonatomic, strong, nullable) NSString * promotionalIdentifier;
-///因为是2020年6月30日才添加的字段，所以还是有可能为空的
-@property (nonatomic, strong, nullable) NSString * originalTransactionId;
 
-@property (nonatomic, strong, nullable) NSString * transactionId;
+@property (nonatomic, strong) NSString * originalTransactionId;
 
-@property (nonatomic, strong, nullable) NSDate * subscriptionExpiredTime;
+@property (nonatomic, strong) NSString * transactionId;
 
-@property (nonatomic, strong, nullable) NSDate * subscriptionGracePeriodExpiredTime;
+@property (nonatomic, strong) NSDate * subscriptionExpiredTime;
 
-@property (nonatomic, strong, nullable) NSString * inAppOwnershipType;
-///兑换码
-@property (nonatomic, strong, nullable) NSString * offerCodeRefName;
+@property (nonatomic, strong) NSDate * subscriptionGracePeriodExpiredTime;
 
-@property (nonatomic, strong, nullable) NSString * productType;
+@property (nonatomic, strong) NSString * inAppOwnershipType;
+
+@property (nonatomic, strong) NSString * productType;
 
 - (instancetype)initWithSubscriptionInfo:(NSDictionary *)subscriptionInfo;
 

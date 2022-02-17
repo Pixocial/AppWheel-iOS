@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger quantity;
 
-@property (nonatomic, strong, nullable) NSString *originalTransactionId;
+@property (nonatomic, strong) NSString *originalTransactionId;
 
-@property (nonatomic, strong, nullable) NSString *productType;
+@property (nonatomic, strong) NSString *productType;
 
 - (instancetype)initWithPurchasedProduct:(NSDictionary *)purchasedProduct;
 
