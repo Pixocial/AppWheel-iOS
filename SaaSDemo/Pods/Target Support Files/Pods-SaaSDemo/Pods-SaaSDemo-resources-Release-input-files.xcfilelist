@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-SaaSDemo/Pods-SaaSDemo-resources.sh
-${PODS_CONFIGURATION_BUILD_DIR}/AppWheel/awPurchase.bundle
+${PODS_ROOT}/../../sdk/purchaseSDK/awPurchase.bundle
+${PODS_ROOT}/../../sdk/uiSDK/AWUI.bundle

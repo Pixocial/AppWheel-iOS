@@ -7,10 +7,12 @@
 
 #import "ViewController.h"
 #import <PurchaseSDK/AWPurchaseKit.h>
+#import <PurchaseSDK/AWLogUtil.h>
 #import "ProductViewController.h"
 #import "InfoViewController.h"
 #import "UIAlertController+Global.h"
 #import "UIViewController+Loading.h"
+#import "AppWheelUIKit.h"
 
 @interface ViewController ()<AWPurchaseObserver>
 @property (weak, nonatomic) IBOutlet UITextField *userIdTV;
@@ -30,6 +32,8 @@
         NSArray * a = productIdentifiers;
     }];
     [AWPurchaseKit delKC];
+    [AWLogUtil isCanLog:YES];
+//    [AWPurchaseKit setDebug:YES];
     [AWPurchaseKit configureWithAppId:121 secret:@"87481116-6a02-11ec-9266-42010ae30006" uid:self.userIdTV.text completion:^(BOOL success, AWError * _Nonnull error) {
         [AWPurchaseKit getUserId];
     }];
@@ -105,39 +109,50 @@
 }
 
 - (IBAction)restore:(id)sender {
-    [self showLoading];
-    [AWPurchaseKit restorePurchaseWithCompletion:^(BOOL success, NSArray * validSubscriptions, NSArray * purchasedItems, AWError * error) {
-        [self hideLoading];
-        if (success) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-//                NSString * str = @"";
-//                if (purchasedItems.count) {
-//                    for (NSString * productId in purchasedItems) {
-//                        str = [str stringByAppendingString:productId];
-//                        str = [str stringByAppendingString:@"\n"];
-//                    }
-//                }
-
-                UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Restore Success" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
-                }];
-                [alert2 addAction:action2];
-
-                [alert2 show:self];
-            });
-        }else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Restore Failed" message:error.errorMessage preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
-                }];
-                [alert2 addAction:action2];
-
-                [alert2 show:self];
-            });
-        }
+    [AppWheelUIKit getPagesModelWithPageId:@"b247b0b52a72440b80bae282a2088be4" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (result && pageModel) {
+                [AppWheelUIKit presentSubscribeWithModel:pageModel fromViewController:self];
+                return;
+            }
+            [self showDialogWithTitle:@"False" message:errorMsg];
+            
+        });
+        
     }];
+//    [self showLoading];
+//    [AWPurchaseKit restorePurchaseWithCompletion:^(BOOL success, NSArray * validSubscriptions, NSArray * purchasedItems, AWError * error) {
+//        [self hideLoading];
+//        if (success) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+////                NSString * str = @"";
+////                if (purchasedItems.count) {
+////                    for (NSString * productId in purchasedItems) {
+////                        str = [str stringByAppendingString:productId];
+////                        str = [str stringByAppendingString:@"\n"];
+////                    }
+////                }
+//
+//                UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Restore Success" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+//                UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//                }];
+//                [alert2 addAction:action2];
+//
+//                [alert2 show:self];
+//            });
+//        }else {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Restore Failed" message:error.errorMessage preferredStyle:UIAlertControllerStyleAlert];
+//                UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//                }];
+//                [alert2 addAction:action2];
+//
+//                [alert2 show:self];
+//            });
+//        }
+//    }];
 }
 
 - (IBAction)refresh:(id)sender {

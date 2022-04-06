@@ -1,0 +1,1 @@
+../../../../../sdk/uiSDK/classes/model/AWUIFeatureCellModel.h
