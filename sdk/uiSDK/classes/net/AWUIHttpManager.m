@@ -9,7 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "NSString+AWMD5.h"
 
-static NSString *awUISDKVersion = @"2.0.1.0";
+static NSString *awUISDKVersion = @"2.0.3.0";
 
 
 @interface AWUIHttpManager ()

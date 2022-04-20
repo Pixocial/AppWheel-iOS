@@ -63,6 +63,10 @@ Pod::Spec.new do |spec|
 #      'AppWheel' => ['sdk/purchaseSDK/*.pem']
 #    }
     purchase.resources = 'sdk/purchaseSDK/*.bundle'
+    
+    purchase.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+    purchase.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+
   end
 # UI的SDK
   spec.subspec 'subscribeUI' do |ui|
@@ -74,7 +78,7 @@ Pod::Spec.new do |spec|
     # 支付的SDK
     ui.dependency 'AppWheel/purchase'
     #Masonry布局
-    ui.dependency 'Masonry', '1.1.0'
+    ui.dependency 'Masonry'
     #AFNetworking布局
     ui.dependency 'AFNetworking'
     #webImage布局
@@ -82,6 +86,8 @@ Pod::Spec.new do |spec|
     
     ui.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     ui.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+
+
   end
 
 
