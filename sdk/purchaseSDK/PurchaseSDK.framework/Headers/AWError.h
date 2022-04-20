@@ -53,14 +53,14 @@ typedef NS_ENUM(NSInteger, AWErrorType) {
     AWErrorTypeInvalidProductType = 30010,
     /// 初始化错误
     AWErrorTypeInit = 30011,
-    /// 未知的错误(网络错误啊之类的)
-    AWErrorTypeUnknow = 30012,
     /// 解析get_ios_retry_period接口出错
     AWErrorTypeRetryPeriod = 30013,
     /// 传的product为nil或者没有productId
     AWErrorTypeProductError = 30014,
     /// 传的product为nil或者没有productId
     AWErrorTypeRequestOfferCodeProductError = 30016,
+    ///解析stripe的订单数据有问题
+    AWErrorTypeRequestStripeOrderError = 30017,
 };
 
 @interface AWError : NSObject

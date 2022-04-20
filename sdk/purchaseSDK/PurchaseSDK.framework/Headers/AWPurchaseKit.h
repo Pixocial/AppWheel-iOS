@@ -17,6 +17,7 @@
 #import "AWPurchaseInfo.h"
 #import "AWProductManager.h"
 #import "AWCouponModel.h"
+#import "AWStripePurchaseInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -114,6 +115,16 @@ NS_ASSUME_NONNULL_BEGIN
                  offerCode:(NSString *)offerCode
           subscriptionInfo:(LatestSubscriptionInfo *)info
               withComplete:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
-@end
 
+
+
++ (void)queryStripeOrdersWithCompletion:(void (^)(BOOL success,
+                                            AWStripePurchaseInfo * _Nullable info,
+                                                  AWError * _Nullable error))completion;
+
++ (AWStripePurchaseInfo *)getStripePurchaseInfo;
+
+
+
+@end
 NS_ASSUME_NONNULL_END
