@@ -93,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)presentCodeRedemptionSheet API_AVAILABLE(ios(14.0));
 
-+ (void)delKC;
++ (void)delUserId;
 
 + (void)getRetryPeriodWithCompletion:(nullable void (^)(BOOL isInRetryPeriod,  AWError *error))completion;
 

@@ -31,7 +31,7 @@
     [AWPurchaseKit setRevokeEntitlementsBlock:^(NSArray<NSString *> * _Nonnull productIdentifiers) {
         NSArray * a = productIdentifiers;
     }];
-    [AWPurchaseKit delKC];
+    [AWPurchaseKit delUserId];
     [AWLogUtil isCanLog:YES];
 //    [AWPurchaseKit setDebug:YES];
     [AWPurchaseKit configureWithAppId:121 secret:@"87481116-6a02-11ec-9266-42010ae30006" uid:self.userIdTV.text completion:^(BOOL success, AWError * _Nonnull error) {
@@ -67,7 +67,7 @@
 - (IBAction)initSDK:(id)sender {
     [self showLoading];
     __weak __typeof(self) weakSelf = self;
-    [AWPurchaseKit delKC];
+    [AWPurchaseKit delUserId];
     [AWPurchaseKit configureWithAppId:121 secret:@"87481116-6a02-11ec-9266-42010ae30006"
                                   uid:self.userIdTV.text completion:^(BOOL success, AWError * _Nonnull error) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
