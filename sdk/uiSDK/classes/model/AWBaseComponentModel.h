@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithDict: (NSDictionary *)dict;
 /// 把字体、文字啥的设置给label
 - (void)setDataToLabel:(UILabel *)label;
+- (void)setTextColor:(UILabel *)label;
+- (void)setTextAndTextColor:(UILabel *)label;
 @end
 
 NS_ASSUME_NONNULL_END

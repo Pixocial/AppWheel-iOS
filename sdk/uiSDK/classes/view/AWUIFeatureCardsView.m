@@ -7,6 +7,7 @@
 
 #import "AWUIFeatureCardsView.h"
 #import "AWUIFeatureCardsCell.h"
+#import "AWDownloaderManager.h"
 
 @interface AWUIFeatureCardsView() <UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -35,6 +36,7 @@
 
 - (void)dealloc {
     [self stopDisplayLink];
+    [self stopPlayer];
 }
 
 - (void)initConfig {
@@ -51,10 +53,10 @@
 - (UICollectionView *)cardsCollectionV {
     if (!_cardsCollectionV) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-        layout.minimumLineSpacing = 10;
+        layout.minimumLineSpacing = 12;
         layout.itemSize = CGSizeMake(120, 160);
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 0);
+        layout.sectionInset = UIEdgeInsetsMake(0, 12, 0, 0);
         
         _cardsCollectionV = [[UICollectionView alloc]initWithFrame:
                              CGRectMake(0,
@@ -96,6 +98,13 @@
     }
 }
 
+- (void)stopPlayer {
+    for (AWUIFeatureCardsCell *cell in self.cardsCollectionV.visibleCells) {
+        [cell.playerView stop];
+        [cell.playerView removeFromSuperview];
+    }
+}
+
 #pragma mark - 填充数据
 - (void)setData:(AWBaseComponentModel *)scrollingModel {
     self.scrollingModel = scrollingModel;
@@ -103,8 +112,13 @@
     NSMutableArray *scrollingArray = [[NSMutableArray alloc]init];
     for (AWBaseComponentModel *itemModel in scrollingModel.components) {
         AWUIFeatureCellModel *model = [[AWUIFeatureCellModel alloc]init];
-        if (itemModel.attr && itemModel.attr.src) {
-            model.featureImgUrl = itemModel.attr.src;
+        if (itemModel.attr) {
+            if (itemModel.attr.src) {
+                model.featureImgUrl = itemModel.attr.src;
+            }
+            if (itemModel.attr.video) {
+                model.featureVideoUrl = itemModel.attr.video;
+            }
         }
         model.featureName = itemModel.text;
         [scrollingArray addObject:model];
@@ -145,18 +159,31 @@
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     AWUIFeatureCardsCell *cell = (AWUIFeatureCardsCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"AWUIFeatureCardsCell" forIndexPath:indexPath];
     if (!cell) {
         cell = [[AWUIFeatureCardsCell alloc]initWithFrame:CGRectMake(0, 0, 120, 160)];
     }
-    cell.model = self.dataArray[indexPath.row];
-    //设置文案的颜色
-    if (self.scrollingModel) {
-        [self.scrollingModel setDataToLabel:cell.label];
-    }
     
     return cell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    AWUIFeatureCardsCell *cardCell = (AWUIFeatureCardsCell *)cell;
+    cardCell.model = self.dataArray[indexPath.row];
+    //设置文案的颜色
+    if (self.scrollingModel) {
+        //因为setDataToLabel这个方法有判断text，但是scrollingModel这个是父控件的，没有text，所以临时给他设置一个
+        self.scrollingModel.text = cardCell.model.featureName;
+        [self.scrollingModel setDataToLabel:cardCell.label];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    AWUIFeatureCardsCell *cardCell = (AWUIFeatureCardsCell *)cell;
+    [cardCell.playerView stop];
+}
+
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.displayLink setPaused:YES];

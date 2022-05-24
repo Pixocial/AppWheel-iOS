@@ -28,6 +28,7 @@
     } else {
         self.available = YES;
     }
+    self.video = dict[@"video"];
     
 }
 @end

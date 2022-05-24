@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(strong, nonatomic)NSString *featureName;
 
+@property(strong, nonatomic)NSString *featureVideoUrl;
+
 
 @end
 

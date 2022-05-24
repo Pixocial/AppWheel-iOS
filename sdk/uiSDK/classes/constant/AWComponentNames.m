@@ -41,6 +41,8 @@ NSString * const awPage1skuDuration = @"duration";
 
 /// 提交按钮父控件
 NSString * const awPage1ActionButton = @"actionButton";
+///提交按钮的文案：放在了订阅按钮的子控件下面
+NSString * const awPage1ActionText = @"actionButtonText";
 ///     提交按钮主标题
 NSString * const awPage1ActionButtonSubHint = @"subHint";
 ///     提交按钮副标题

@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AppWheelUIKit : NSObject
 
++ (void)config;
+
 + (void)getPagesModelWithPageId:(NSString *)pageId
                        complete:(void (^)(BOOL,AWPageModel * _Nullable,NSString * _Nullable))complete;
 + (void)presentSubscribeWithModel:(AWPageModel *)uiModel

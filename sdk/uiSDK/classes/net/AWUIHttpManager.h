@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setDebug:(BOOL)isDebug;
 //post的请求接口
 - (void)requestWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+
+
+- (void)download:(NSString *)sourceUrl
+        savePath:(NSURL *)path
+      completion:(nullable void (^)(NSURL *savePath, NSError * _Nullable error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

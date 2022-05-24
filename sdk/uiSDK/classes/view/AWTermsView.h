@@ -35,6 +35,11 @@ typedef NS_ENUM(NSInteger, AWTermsViewType) {
 @property(strong, nonatomic)UILabel *protocolLabel;
 /// 隐私政策
 @property(strong, nonatomic)UILabel *privacyLabel;
+/// 左边的“｜”
+@property(strong, nonatomic)UILabel *leftLabel;
+/// right的“｜”
+@property(strong, nonatomic)UILabel *rightLabel;
+
 
 @property(weak, nonatomic)id<AWTermsViewDelegate> delegate;
 
