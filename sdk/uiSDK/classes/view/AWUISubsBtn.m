@@ -35,16 +35,6 @@
 
 @implementation AWUISubsBtn
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-//        [self makeUI];
-    }
-    return self;
-}
-
-
 - (void)setSelected:(BOOL)selected {
     [self changeBGState: selected];
 }
@@ -55,16 +45,25 @@
         
         [self checkRightLabelShow];
         [self checkLeftLabelShow];
-//        if (self.model.skuType == AWSKUType_Year || self.model.skuType == AWSKUType_Month) {
-//            [self.rightTopLabel setHidden:NO];
-//        }
-//        if (self.model.skuType == AWSKUType_Year) {
-//            [self.leftTopLabel setHidden:NO];
-//        }
+        
+        self.fullPriceLabel.alpha = 1;
+        self.fullPeriodLabel.alpha = 1;
+        self.perPriceLabel.alpha = 1;
+        self.perPriceLabel.alpha = 1;
+        self.perPriceLabel2.alpha = 1;
+
+        self.backgroundColor = [AWRGBUtil RGBHex:@"#1E1E26"];
     } else {
         [self.selectedView setHidden:YES];
         [self.leftTopLabel setHidden:YES];
         [self.rightTopLabel setHidden:YES];
+        
+        self.fullPriceLabel.alpha = 0.5;
+        self.fullPeriodLabel.alpha = 0.5;
+        self.perPriceLabel.alpha = 0.5;
+        self.perPriceLabel.alpha = 0.5;
+        self.perPriceLabel2.alpha = 0.5;
+        self.backgroundColor = [AWRGBUtil RGBHex:@"0A0A0D" opacity:0.5];
     
     }
 }
@@ -74,6 +73,7 @@
         self.fullPriceLabel.textColor = [AWRGBUtil RGBHex:model.color opacity:model.opacity];
         self.fullPeriodLabel.textColor = [AWRGBUtil RGBHex:model.color opacity:model.opacity];
         self.perPriceLabel.textColor = [AWRGBUtil RGBHex:model.color opacity:model.opacity];
+        self.perPriceLabel2.textColor = [AWRGBUtil RGBHex:model.color opacity:model.opacity];
     }
 }
 
@@ -82,18 +82,19 @@
     //左上角
     AWBaseComponentModel *leftModel = [AWComponentNames findModelInComponents:model.componentModel.components withName:awPage1skuPopularHint];
     if (leftModel && !IS_EMPTY_STRING(leftModel.text)) {
-        [leftModel setDataToLabel:self.leftTopLabel];
+//        [leftModel setDataToLabel:self.leftTopLabel];
+        [leftModel setTextAndTextColor:self.leftTopLabel];
     }
     //右上角
     AWBaseComponentModel *rightModel = [AWComponentNames findModelInComponents:model.componentModel.components withName:awPage1skuDiscountHint];
     if (rightModel && !IS_EMPTY_STRING(rightModel.text)) {
-        [rightModel setDataToLabel:self.rightTopLabel];
+        [rightModel setTextAndTextColor:self.rightTopLabel];
     }
     [self updateMark];
     //总价：¥49.99
     AWBaseComponentModel *price = [AWComponentNames findModelInComponents:model.componentModel.components withName:awPage1skuPrice];
     if (price) {
-        [price setDataToLabel:self.fullPriceLabel];
+        [price setTextAndTextColor:self.fullPriceLabel];
         
         //每日价格：0.99/日
         if (price.attr && !IS_EMPTY_STRING(price.attr.comparePrice)) {
@@ -107,7 +108,8 @@
     AWBaseComponentModel *duration = [AWComponentNames findModelInComponents:model.componentModel.components withName:awPage1skuDuration];
     if (duration) {
         [duration setDataToLabel:self.fullPeriodLabel];
-        [self.fullPeriodLabel setText:[NSString stringWithFormat:@"/%@", [self getDuration:self.fullPeriodLabel.text] ]];
+//        [duration setTextColor:self.fullPeriodLabel];
+        [self.fullPeriodLabel setText:[NSString stringWithFormat:@" / %@", [self getDuration:self.fullPeriodLabel.text] ]];
     }
 }
 
@@ -154,7 +156,7 @@
     if ([@"P1W" isEqualToString:price]) {
         return @"Week";
     } else if ([@"P4W" isEqualToString:price]) {
-        return @"28Days";
+        return @"28 Days";
     } else if ([@"P1M" isEqualToString:price]) {
         return @"Month";
     } else if ([@"P2M" isEqualToString:price]) {
@@ -210,10 +212,11 @@
 
 - (void)makeUI {
     self.isMakeUI = YES;
-    int selectViewHeight = [self getHeight] - 10;
+    int selectViewHeight = [self getHeight];
     
     [self.rightTopLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.right.mas_equalTo(self);
+        make.top.mas_equalTo(self).offset(-8);//往上凸出8个像素
+        make.right.mas_equalTo(self);
         make.height.mas_equalTo(22);
     }];
     
@@ -226,7 +229,7 @@
     [self sendSubviewToBack:self.selectedView];
     [self.selectedView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self);
-        make.top.mas_equalTo(self).offset(10);
+        make.top.mas_equalTo(self);
         make.height.mas_equalTo(selectViewHeight);
     }];
     
@@ -267,7 +270,7 @@
         _leftTopLabel.textColor = [AWRGBUtil RGB:0x8995FF];
         _leftTopLabel.font = [UIFont systemFontOfSize:10];
         _leftTopLabel.text = @"Trending";
-        _leftTopLabel.layer.borderWidth = 1;
+        _leftTopLabel.layer.borderWidth = 2;
         _leftTopLabel.layer.borderColor = [AWRGBUtil RGB:0x8995FF].CGColor;
         _leftTopLabel.layer.masksToBounds = YES;
         _leftTopLabel.layer.cornerRadius = 4;
@@ -343,7 +346,7 @@
     if (!_selectedView) {
         _selectedView = [[UIView alloc]initWithFrame:CGRectZero];
         _selectedView.layer.borderColor = [AWRGBUtil RGB:0x8995FF].CGColor;
-        _selectedView.layer.borderWidth = 1;
+        _selectedView.layer.borderWidth = 2;
         _selectedView.layer.masksToBounds = YES;
         _selectedView.layer.cornerRadius = 8;
         [self addSubview:_selectedView];

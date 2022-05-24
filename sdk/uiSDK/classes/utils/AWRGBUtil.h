@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
                     g:(float)g
                     b:(float)b;
 
++ (UIColor *)RGBWithR:(float)r
+                    g:(float)g
+                    b:(float)b
+                    a:(float)a;
+
 + (UIColor *)RGB:(int)hexValue;
 
 + (UIColor *)RGBHex:(NSString *)hexValue;

@@ -9,7 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "NSString+AWMD5.h"
 
-static NSString *awUISDKVersion = @"2.0.3.0";
+//static NSString *awUISDKVersion = @"2.0.1.0";
 
 
 @interface AWUIHttpManager ()
@@ -131,31 +131,6 @@ static NSString *awUISDKVersion = @"2.0.3.0";
 
 - (NSDictionary *)basicParams {
     NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
-    
-//    NSInteger timeStamp = [[NSDate date] timeIntervalSince1970];
-//    NSString * idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString] ? [[[UIDevice currentDevice] identifierForVendor] UUIDString] : @"";
-//
-//    NSString * deviceLanguage = [[NSLocale preferredLanguages] count] > 0 ? [[NSLocale preferredLanguages] firstObject] : @"en";
-//    NSString * regionCode = [NSLocale currentLocale].countryCode ? [NSLocale currentLocale].countryCode : @"";
-//    NSString * language = self.inAppLanguage ? self.inAppLanguage : @"en";
-//
-//    [params setObject:@(timeStamp) forKey:@"timeStamp"];
-    
-//    NSString * version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-//    if ([version isKindOfClass:[NSString class]] && version.length) {
-//        [params setObject:version forKey:@"appVer"];
-//    }else {
-//        [params setObject:@"0.0.0.0" forKey:@"appVer"];
-//    }
-    
-    [params setObject:@([self standardizedVersion:awUISDKVersion]) forKey:@"version"];
-
-//    [params setObject:@(self.appId) forKey:@"appId"];
-//    [params setObject:idfv forKey:@"uDeviceId"];
-//    [params setObject:deviceLanguage forKey:@"deviceLanguage"];
-//    [params setObject:regionCode forKey:@"regionCode"];
-//    [params setObject:language forKey:@"language"];
-    
     return params;
 }
 
@@ -220,6 +195,34 @@ static NSString *awUISDKVersion = @"2.0.3.0";
             });
         }];
     });
+}
+
+#pragma mark:-下载
+- (void)download:(NSString *)sourceUrl
+        savePath:(NSURL *)path
+       completion:(nullable void (^)(NSURL *savePath, NSError * _Nullable error))completion {
+    NSURL *url = [NSURL URLWithString:sourceUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    /* 开始请求下载 */
+    NSURLSessionDownloadTask *downloadTask = [_sessionManager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //如果需要进行UI操作，需要获取主线程进行操作
+        });
+        /* 设定下载到的位置 */
+        return path;
+                
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //如果需要进行UI操作，需要获取主线程进行操作
+            if (!error) {
+                completion(filePath,nil);
+                return;
+            }
+            completion(filePath,error);
+        });
+    }];
+   [downloadTask resume];
 }
 
 @end

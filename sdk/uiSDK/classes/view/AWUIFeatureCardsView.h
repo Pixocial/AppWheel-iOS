@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setData:(AWBaseComponentModel *)scrollingModel;
 
+- (void)stopDisplayLink;
+- (void)stopPlayer;
+
 @end
 
 NS_ASSUME_NONNULL_END

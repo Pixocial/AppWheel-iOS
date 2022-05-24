@@ -19,7 +19,7 @@
 + (UIColor *)RGBWithR:(float)r
                     g:(float)g
                     b:(float)b
-                    a:(float)a{
+                    a:(float)a {
     return [UIColor colorWithRed:r / 255.f green:g / 255.f blue:b / 255.f alpha:a];
 }
 

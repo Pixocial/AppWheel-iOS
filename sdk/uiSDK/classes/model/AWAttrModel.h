@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, AWUIScrollType) {
 @interface AWAttrModel : NSObject
 /// 图片的地址
 @property(nonatomic, strong)NSString *src;
+/// 视频的地址
+@property(nonatomic, strong)NSString *video;
 /// 链接地址
 @property(nonatomic, strong)NSString *herf;
 /// 滚轮的滚动方式

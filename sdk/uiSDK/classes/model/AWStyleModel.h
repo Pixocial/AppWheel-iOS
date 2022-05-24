@@ -14,10 +14,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 字体大小
 @property (strong, nonatomic) NSString *fontSize;
+/// 斜体：italic & normal
+@property (strong, nonatomic) NSString *fontStyle;
+///下划线
+@property (strong, nonatomic) NSString *textDecoration;
+///粗体
+@property (strong, nonatomic) NSString *fontWeight;
 /// 背景颜色 16位进制
 @property (strong, nonatomic) NSString *backgroundColor;
 /// 字体颜色 16位进制
 @property (strong, nonatomic) NSString *color;
+/// 渐变色颜色 16位进制
+@property (strong, nonatomic) NSMutableArray<NSString *> *colors;
 /// 透明度0-1
 @property (assign, nonatomic) CGFloat opacity;
 

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)querySKUs: (NSSet<NSString *> *)skus
         intoModel: (NSArray<AWSubscribeBtnModel *> *)models
-     withComplete:(void (^)(BOOL success))completion;
+     withComplete:(void (^)(BOOL success, NSString * _Nullable errorMsg))completion;
 
 - (void)purchaseWithProduct:(AWProduct *)product
              withCompletion:(void (^)(BOOL success, AWError * error))completion;

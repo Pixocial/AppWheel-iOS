@@ -6,12 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AWGradientButton.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AWUISubmitBtn : UIButton
+@interface AWUISubmitBtn : AWGradientButton
 
 @property(strong, nonatomic)UILabel *mainTitleLabel;
+
+- (void)setGradientColors:(NSArray *)colors;
 
 @end
 

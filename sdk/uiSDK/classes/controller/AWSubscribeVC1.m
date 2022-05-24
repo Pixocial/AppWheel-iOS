@@ -73,10 +73,6 @@ NSString *const Success = @"Success";
     [super viewDidLoad];
 
     [self makeUI];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
     [self setData];
 }
 
@@ -97,6 +93,8 @@ NSString *const Success = @"Success";
         [self setTopBanner];
         /// 滚轮
         [self setScrolling];
+        ///提交按钮
+        [self setSubmitBtn];
         /// 订阅按钮
         [self setSubsBtn];
         ///协议
@@ -128,31 +126,6 @@ NSString *const Success = @"Success";
     AWBaseComponentModel *subTitle = [AWComponentNames findModelInComponents:self.pageModel.components withName:awPage1TitleMessage];
     if (subTitle) {
         [subTitle setDataToLabel:self.titleMessageLabel];
-
-//        if (!IS_EMPTY_STRING(subTitle.text)) {
-//            //默认字体是24
-//            UIFont *font = [UIFont systemFontOfSize:24];
-//            //如果有配置的话，获取配置的字体大小
-//            if (subTitle.style && !IS_EMPTY_STRING(subTitle.style.fontSize)) {
-//                int fontSize = [subTitle.style.fontSize extractNumber];
-//                font = [UIFont systemFontOfSize:fontSize];
-//            }
-//
-//            CGFloat titleHeight = [subTitle.text heightWithFont:font constrainedToWidth: self.screenWidth];
-//            //最大展示三行
-//            CGFloat maxHeight = [@"" heightWithFont:font constrainedToWidth: self.screenWidth] * 3;
-//            if (titleHeight > maxHeight) {
-//                titleHeight = maxHeight;
-//            }
-//            //不足三行的高度给marginTop
-//            CGFloat topMargin = maxHeight - titleHeight;
-//            [self.titleMessageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-//                make.left.mas_equalTo(self.view).offset(16);
-//                make.right.mas_equalTo(self.view).offset(-14);
-//                make.height.mas_equalTo(titleHeight);
-//                make.top.mas_equalTo(self.mainTitleLabel.mas_bottom).offset(self.titleMsgTop + topMargin);
-//            }];
-//        }
     }
 }
 
@@ -176,11 +149,11 @@ NSString *const Success = @"Success";
 - (void)setSubsBtn {
     NSMutableSet *skuSet = [[NSMutableSet alloc]init];
     NSMutableArray *btnModelArray = [[NSMutableArray alloc]init];
+    NSMutableArray *btnArray = [[NSMutableArray alloc]init];
     AWBaseComponentModel *subsContainerModel = [AWComponentNames findModelInComponents:self.pageModel.components withName:awPage1skuOfferings];
     if (subsContainerModel && subsContainerModel.components.count > 0) {
         /// 默认选中的sku的model
         AWSubscribeBtnModel *defaultSelectedModel;
-        int topMargin = 0;
         //实际需要展示的按钮的个数
         int availabelBtnCount = 0;
         for (int i = 0; i < subsContainerModel.components.count; i++) {
@@ -191,6 +164,8 @@ NSString *const Success = @"Success";
             }
             availabelBtnCount = availabelBtnCount + 1;
             AWUISubsBtn *btn = [[AWUISubsBtn alloc] init];
+            [btnArray addObject:btn];
+            btn.layer.cornerRadius = 8;
             [btn setTextColor:subsContainerModel.style];
             AWSubscribeBtnModel *btnModel = [[AWSubscribeBtnModel alloc]init];
             btnModel.componentModel = model;
@@ -212,16 +187,30 @@ NSString *const Success = @"Success";
             
             [self addActionToSubsBtn:btn];
             [self.subsBtnContainer addSubview:btn];
-            //设置约束
+        }
+        ///设置按钮的约束
+        //首个按钮的marginTop
+        int topMargin = (availabelBtnCount == 2) ? 8 : 0;
+        //按钮的高度
+        int btnHeight = (availabelBtnCount == 2) ? 80 : 60;
+        //按钮之间的margin
+        int btnMargin = (availabelBtnCount == 2) ? 12 : 4;
+        for (AWUISubsBtn *btn in btnArray) {
             [btn mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.right.mas_equalTo(self.subsBtnContainer);
                 make.top.mas_equalTo(self.subsBtnContainer).offset(topMargin);
-                make.height.mas_equalTo(60);
+                make.height.mas_equalTo(btnHeight);
             }];
-            topMargin = topMargin + 60;
+            topMargin = topMargin + btnHeight + btnMargin;
         }
-        /// 重新设置订阅按钮父控件的高度:每个按钮60+8（左右上角突出的像素）
-        CGFloat containerHeight = (availabelBtnCount * 60) + 8;
+        
+        /// 重新设置订阅按钮父控件的高度:每个按钮间隔4个像素
+        CGFloat containerHeight = 0;
+        if (availabelBtnCount == 2) {
+            containerHeight = (availabelBtnCount * btnHeight + btnMargin) + (availabelBtnCount * 8);
+        } else {
+            containerHeight = (availabelBtnCount * (btnHeight + btnMargin)) - btnMargin;
+        }
         [self.subsBtnContainer mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.view).offset(16);
             make.right.mas_equalTo(self.view).offset(-16);
@@ -232,16 +221,21 @@ NSString *const Success = @"Success";
         if (skuSet.count > 0) {
             [self showLoading];
             __weak __typeof(self) weakSelf = self;
-            [self.viewModel querySKUs:skuSet intoModel:btnModelArray withComplete:^(BOOL success) {
+            [self.viewModel querySKUs:skuSet intoModel:btnModelArray withComplete:^(BOOL success,NSString *errorMsg) {
                 __strong __typeof(weakSelf) strongSelf = weakSelf;
                 [strongSelf hideLoading];
                 if (success) {
                     if (defaultSelectedModel && defaultSelectedModel.product) {
                         strongSelf.product = defaultSelectedModel.product;
                     }
-                } else {
-                    [strongSelf showDialogWithTitle:Failed message:AWUIErrorTypeRequestSkuErrorMsg];
+                    return;
                 }
+                if (errorMsg) {
+                    [strongSelf showDialogWithTitle:Failed message:errorMsg];
+                    return;
+                }
+                [strongSelf showDialogWithTitle:Failed message:AWUIErrorTypeRequestSkuErrorMsg];
+                
             }];
         } else {
             [self showDialogWithTitle:Failed message:AWUIErrorTypeSkuConfigErrorMsg];
@@ -249,25 +243,70 @@ NSString *const Success = @"Success";
     }
 }
 
+///设置提交按钮
+- (void)setSubmitBtn {
+    AWBaseComponentModel *actionModel = [AWComponentNames findModelInComponents:self.pageModel.components
+                                                                        withName:awPage1ActionButton];
+    if (actionModel) {
+//        [self setSubmitTextStyle:@""];
+        //组装渐变色
+        if (actionModel.style.colors && actionModel.style.colors.count > 0) {
+            NSMutableArray *colors = [[NSMutableArray alloc]init];
+            //设置纯色
+            if (actionModel.style.colors.count == 1) {
+                [self.submitBtn setBackgroundColor:[AWRGBUtil RGBHex:[actionModel.style.colors firstObject]]];
+                return;
+            }
+            //设置渐变按钮颜色
+            for (NSString *colorHex in actionModel.style.colors) {
+                [colors addObject:(__bridge id)[AWRGBUtil RGBHex:colorHex].CGColor];
+            }
+            if (colors.count > 0) {
+                [self.submitBtn setGradientColors:colors];
+            }
+        }
+    }
+}
+
+- (void)setSubmitTextStyle:(NSString *)text {
+        AWBaseComponentModel *mainTitleModel = [AWComponentNames findModelInComponents:self.pageModel.components
+                                                                            withName:awPage1ActionButtonSubHint];
+        if (mainTitleModel) {
+            mainTitleModel.text = text;
+            [mainTitleModel setDataToLabel:self.submitBtn.mainTitleLabel];
+        }
+}
+
 - (void)setTerms {
     AWBaseComponentModel *restoreModel = [AWComponentNames findModelInComponents:self.pageModel.components withName:awPage1TermsRestore];
     if (restoreModel) {
-        [restoreModel setDataToLabel:self.termsView.restoreLabel];
+        if (!IS_EMPTY_STRING(restoreModel.text)) {
+            [self.termsView.restoreLabel setText:restoreModel.text];
+        }
     }
     AWBaseComponentModel *privacyModel = [AWComponentNames findModelInComponents:self.pageModel.components withName:awPage1TermsPrivacy];
     if (privacyModel) {
-        [privacyModel setDataToLabel:self.termsView.privacyLabel];
+        if (!IS_EMPTY_STRING(privacyModel.text)) {
+            [self.termsView.privacyLabel setText:privacyModel.text];
+        }
     }
     AWBaseComponentModel *protocolModel = [AWComponentNames findModelInComponents:self.pageModel.components withName:awPage1TermsProtocol];
     if (protocolModel) {
-        [protocolModel setDataToLabel:self.termsView.protocolLabel];
+        if (!IS_EMPTY_STRING(protocolModel.text)) {
+            [self.termsView.protocolLabel setText:protocolModel.text];
+        }
     }
     //重新设置一遍样式，为啥上面设置完了要重新设置呢？因为web嫌麻烦在外层添加了样式，神奇脑回路
     AWBaseComponentModel *termsModel = [AWComponentNames findModelInComponents:self.pageModel.components withName:awPage1TermsColumn];
     if (termsModel) {
+        termsModel.text = restoreModel.text;
         [termsModel setDataToLabel:self.termsView.restoreLabel];
+        termsModel.text = privacyModel.text;
         [termsModel setDataToLabel:self.termsView.privacyLabel];
+        termsModel.text = protocolModel.text;
         [termsModel setDataToLabel:self.termsView.protocolLabel];
+        [termsModel setTextColor:self.termsView.leftLabel];
+        [termsModel setTextColor:self.termsView.rightLabel];
     }
     
     //隐私政策链接
@@ -280,8 +319,9 @@ NSString *const Success = @"Success";
     }
     [self.termsView update];
     
-    CGFloat bottomMargin = IS_IPHONE_X_SERIES ? -34 - 7 : -7;
+    CGFloat bottomMargin = IS_IPHONE_X_SERIES ? -34 : -7;
     [self.termsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
         make.width.mas_equalTo(self.view);
         make.height.mas_equalTo(self.termsView.maxHeight);
         make.bottom.mas_equalTo(self.view.mas_bottom).offset(bottomMargin);
@@ -300,7 +340,7 @@ NSString *const Success = @"Success";
 - (void)makeUI {
     [self addToParent];
     
-    CGFloat navibarHeight =  getNavibarHeight();
+    CGFloat navibarHeight =  [self getTopMargin];
     
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(self.view);
@@ -340,7 +380,7 @@ NSString *const Success = @"Success";
         make.left.mas_equalTo(self.titleMessageParent);
         make.right.mas_equalTo(self.titleMessageParent);
 //        make.height.mas_equalTo(subTitleHeight);
-        make.bottom.mas_equalTo(self.titleMessageParent.mas_bottom);
+        make.bottom.mas_equalTo(self.titleMessageParent.mas_bottom).offset(-4);
     }];
     
     /// topBanner
@@ -356,15 +396,16 @@ NSString *const Success = @"Success";
     [self.scrollingView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.width.mas_equalTo(self.view);
         make.height.mas_equalTo(160);
-        make.top.mas_equalTo(self.titleMessageLabel.mas_bottom).offset(16);
+        //因为副标题有marginBottom=4，所以这边的marginTop = 16+4
+        make.top.mas_equalTo(self.titleMessageLabel.mas_bottom).offset(20);
     }];
     
-    [self.subsBtnContainer mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view).offset(16);
-        make.right.mas_equalTo(self.view).offset(-16);
-        make.height.mas_equalTo(188);
-        make.top.mas_equalTo(self.scrollingView.mas_bottom).offset(16);
-    }];
+//    [self.subsBtnContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.view).offset(16);
+//        make.right.mas_equalTo(self.view).offset(-16);
+//        make.height.mas_equalTo(188);
+//        make.top.mas_equalTo(self.scrollingView.mas_bottom).offset(16);
+//    }];
     
     [self.submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.view).offset(16);
@@ -372,12 +413,23 @@ NSString *const Success = @"Success";
         make.height.mas_equalTo(52);
         make.top.mas_equalTo(self.subsBtnContainer.mas_bottom).offset(16);
     }];
-    CGFloat bottomMargin = IS_IPHONE_X_SERIES ? -34 - 7 : -7;
-    [self.termsView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(self.view);
-//        make.height.mas_equalTo(14);
-        make.bottom.mas_equalTo(self.view.mas_bottom).offset(bottomMargin);
-    }];
+    
+//    CGFloat bottomMargin = IS_IPHONE_X_SERIES ? -34: -7;
+//    [self.termsView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(self.view);
+//        make.height.mas_equalTo(28);
+//        make.bottom.mas_equalTo(self.view.mas_bottom).offset(bottomMargin);
+//    }];
+}
+
+- (CGFloat)getTopMargin {
+    if (IS_IPHONE_X_SERIES) {
+        return 44;
+    } else if (IS_IPHONE_PLUS_SERIES) {
+        return 20;
+    } else {
+        return 2;
+    }
 }
 
 ///控制一下视图的层级
@@ -483,7 +535,7 @@ NSString *const Success = @"Success";
     if (!_submitBtn) {
         _submitBtn = [[AWUISubmitBtn alloc]initWithFrame:CGRectZero];
         _submitBtn.layer.masksToBounds = YES;
-        _submitBtn.layer.cornerRadius = 28;
+        _submitBtn.layer.cornerRadius = 26;
         [_submitBtn addTarget:self action:@selector(submitAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _submitBtn;
@@ -499,6 +551,8 @@ NSString *const Success = @"Success";
 
 #pragma mark:- action
 - (void)closeAction {
+    [self.scrollingView stopDisplayLink];
+    [self.scrollingView stopPlayer];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -506,7 +560,7 @@ NSString *const Success = @"Success";
     [btn addTarget:self action:@selector(subsBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 
 }
-/// 点击订阅按钮
+/// 点击SKU按钮
 - (void)subsBtnAction: (AWUISubsBtn *)sender {
     for (AWUISubsBtn *btn in self.subsBtnContainer.subviews) {
         [btn setSelected: NO];
@@ -517,8 +571,11 @@ NSString *const Success = @"Success";
     AWBaseComponentModel *model = sender.model.componentModel;
     if (model) {
         AWBaseComponentModel *actionModel = [AWComponentNames findModelInComponents:model.components
-                                                                           withName:awPage1ActionButton];
-        [actionModel setDataToLabel:self.submitBtn.mainTitleLabel];
+                                                                           withName:awPage1ActionText];
+        if (!IS_EMPTY_STRING(actionModel.text)) {
+            [self setSubmitTextStyle:actionModel.text];
+//            [self.submitBtn.mainTitleLabel setText:actionModel.text];
+        }
     }
 }
 /// 点击提交按钮
@@ -538,7 +595,9 @@ NSString *const Success = @"Success";
             }
             [strongSelf showDialogWithTitle:Failed message:[NSString stringWithFormat:@"Error code: %ld, msg:%@",(long)error.errorCode, error.errorMessage]];
         }];
+        return;
     }
+    [self showDialogWithTitle:Failed message:@"product is null"];
     
 }
 

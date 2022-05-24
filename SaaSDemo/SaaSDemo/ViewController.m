@@ -156,28 +156,40 @@
 }
 
 - (IBAction)refresh:(id)sender {
-    [AWPurchaseKit refreshInAppPurchaseInfoWithCompletion:^(BOOL success, AWError * error) {
-        if (success) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Refresh Success" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }];
-                [alert2 addAction:action2];
-                
-                [alert2 show:self];
-            });
-        }else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Refresh Failed" message:error.errorMessage preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }];
-                [alert2 addAction:action2];
-                
-                [alert2 show:self];
-            });
-        }
+//    [AWPurchaseKit refreshInAppPurchaseInfoWithCompletion:^(BOOL success, AWError * error) {
+//        if (success) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Refresh Success" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+//                UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//                }];
+//                [alert2 addAction:action2];
+//
+//                [alert2 show:self];
+//            });
+//        }else {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"Refresh Failed" message:error.errorMessage preferredStyle:UIAlertControllerStyleAlert];
+//                UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//                }];
+//                [alert2 addAction:action2];
+//
+//                [alert2 show:self];
+//            });
+//        }
+//    }];
+    
+    [AppWheelUIKit getPagesModelWithPageId:@"a697095a91f64649a939b2451219a969" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (result && pageModel) {
+                [AppWheelUIKit presentSubscribeWithModel:pageModel fromViewController:self];
+                return;
+            }
+            [self showDialogWithTitle:@"False" message:errorMsg];
+            
+        });
+        
     }];
 }
 

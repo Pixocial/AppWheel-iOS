@@ -46,6 +46,8 @@ FOUNDATION_EXPORT NSString * const awPage1skuDuration;
 
 /// 提交按钮父控件
 FOUNDATION_EXPORT NSString * const awPage1ActionButton;
+/// 提交按钮的文案：放在了订阅按钮的子控件下面
+FOUNDATION_EXPORT NSString * const awPage1ActionText;
 ///     提交按钮主标题
 FOUNDATION_EXPORT NSString * const awPage1ActionButtonSubHint;
 ///     提交按钮副标题

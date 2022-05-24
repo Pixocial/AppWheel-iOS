@@ -14,10 +14,15 @@
 #pragma mark:- 订阅相关
 - (void)querySKUs: (NSSet<NSString *> *)skus
         intoModel: (NSArray<AWSubscribeBtnModel *> *)models
-     withComplete:(void (^)(BOOL success))completion {
+     withComplete:(void (^)(BOOL success,NSString * _Nullable errorMsg))completion {
     [AWPurchaseKit getProductsInfoWithProductIdentifiers:skus completion:^(RetrievedProducts * _Nonnull retrievedProducts) {
         if (!retrievedProducts) {
-            completion(NO);
+            completion(NO,nil);
+            return;
+        }
+        if (retrievedProducts.invalidProductIdentifiers && retrievedProducts.invalidProductIdentifiers.count > 0) {
+            NSString *errorMsg = [NSString stringWithFormat:@"invalidProductId:%@",[retrievedProducts.invalidProductIdentifiers componentsJoinedByString:@","]];
+            completion(NO,errorMsg);
             return;
         }
         for (AWProduct *product in retrievedProducts.validProducts) {
@@ -29,7 +34,7 @@
                 }
             }
         }
-        completion(YES);
+        completion(YES,nil);
     }];
 }
 

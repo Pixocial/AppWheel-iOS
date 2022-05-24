@@ -13,6 +13,10 @@
 
 @implementation AppWheelUIKit
 
++ (void)config {
+    
+}
+
 + (void)getPagesModelWithPageId:(NSString *)pageId complete:(void (^)(BOOL, AWPageModel * _Nullable, NSString * _Nullable))complete {
     
     [[[AWPagesRequestManger alloc]init] getPagesModelWithPageId:pageId complete:complete];
