@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger timestamp;
 
+@property (nonatomic, strong) NSString *awOrderId;
+
 @end
 
 NS_ASSUME_NONNULL_END
