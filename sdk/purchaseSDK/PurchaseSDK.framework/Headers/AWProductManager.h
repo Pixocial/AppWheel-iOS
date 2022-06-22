@@ -38,10 +38,16 @@ typedef enum : NSUInteger {
 
 + (instancetype)sharedInstance;
 /// 获取优惠签名
-- (void)getDiscountSignWithProductId:(NSString *)productId
-                            discountId:(NSString *)discountId
-                            completion:(PaymentDiscountBlock)completion;
+///
+- (void)getDiscountSignWithProduct:(AWProduct *)product
+                       productType:(AWProductType)type
+                        discountId:(NSString *)discountId
+                        completion:(PaymentDiscountBlock)completion;
 
+- (void)getSKProductWithSkuId:(NSString *)skuId
+                       discount: (AWPaymentDiscountOffer * _Nullable)paymentDiscount
+                    productType: (NSInteger)productType
+                    withBlock: (void (^)(SKProduct * _Nullable product, AWError * _Nullable error))block;
 - (void)requestProductsWithIds:(NSSet<NSString *> *)productIdentifiers
           productsFetchedBlock:(ProductsFetchedBlock)productsFetchedBlock;
 
@@ -51,14 +57,6 @@ typedef enum : NSUInteger {
 
 - (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
 
-- (void)requestProductsWithOfferCodeId:(NSInteger) codeId
-                             offerCode:(NSString *)offerCode
-                  productsFetchedBlock:(OfferCodeProductsBlock)offerCodeProductsBlock;
-
-- (void)consumeOfferCodeId:(NSInteger)offercodeId
-                 offerCode:(NSString *)offerCode
-          subscriptionInfo:(LatestSubscriptionInfo *)info
-              withComplete:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
 @end
 

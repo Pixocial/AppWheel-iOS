@@ -210,17 +210,7 @@
 }
 
 - (IBAction)getRetryPeriodWithCompletion:(id)sender {
-    [AWPurchaseKit getRetryPeriodWithCompletion:^(BOOL isInRetryPeriod, AWError * _Nonnull error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"retryPeriod" message:[NSString stringWithFormat:@"result:%d",isInRetryPeriod]  preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            [alert2 addAction:action2];
-            
-            [alert2 show:self];
-        });
-    }];
+
 }
 
 

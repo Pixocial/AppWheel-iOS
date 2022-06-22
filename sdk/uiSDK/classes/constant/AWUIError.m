@@ -8,7 +8,7 @@
 #import "AWUIError.h"
 
 NSString * const AWUIErrorTypeNetFailedMsg = @"Network request failed";
-NSString * const AWUIErrorTypePageIdNotFoundMsg = @"Page ID not found";
+NSString * const AWUIErrorTypePageIdNotFoundMsg = @"Page Link illegal";
 NSString * const AWUIErrorTypeSkuConfigErrorMsg = @"Sku not found";
 NSString * const AWUIErrorTypeRequestSkuErrorMsg = @"Can't find the subscription product";
 

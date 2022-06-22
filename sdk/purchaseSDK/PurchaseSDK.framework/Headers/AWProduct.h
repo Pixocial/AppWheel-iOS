@@ -97,6 +97,8 @@ typedef NS_ENUM(NSInteger, AWProductType) {
 
 - (instancetype)initWithSKProduct:(SKProduct *)skProduct;
 
+- (NSString *)getSubscriptionPeriod;
+
 @end
 
 NS_ASSUME_NONNULL_END
