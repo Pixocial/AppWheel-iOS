@@ -17,9 +17,9 @@
     
 }
 
-+ (void)getPagesModelWithPageId:(NSString *)pageId complete:(void (^)(BOOL, AWPageModel * _Nullable, NSString * _Nullable))complete {
++ (void)getPagesModelWithPageId:(NSString *)linkUrl complete:(void (^)(BOOL, AWPageModel * _Nullable, NSString * _Nullable))complete {
     
-    [[[AWPagesRequestManger alloc]init] getPagesModelWithPageId:pageId complete:complete];
+    [[[AWPagesRequestManger alloc]init] getPagesModelWithPageId:linkUrl complete:complete];
 }
 
 + (void)presentSubscribeWithModel:(AWPageModel *)uiModel fromViewController:(UIViewController *)vc {

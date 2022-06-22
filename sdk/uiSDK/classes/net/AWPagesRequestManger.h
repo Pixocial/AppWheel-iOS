@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AWPagesRequestManger : NSObject
 
-- (void)getPagesModelWithPageId:(NSString *)pageId
+- (void)getPagesModelWithPageId:(NSString *)linkUrl
                        complete:(void (^)(BOOL,AWPageModel * _Nullable, NSString * errorMsg))complete;
 @end
 
