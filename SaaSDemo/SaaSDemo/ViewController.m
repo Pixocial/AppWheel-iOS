@@ -109,7 +109,7 @@
 }
 
 - (IBAction)restore:(id)sender {
-    [AppWheelUIKit getPagesModelWithPageId:@"b247b0b52a72440b80bae282a2088be4" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
+    [AppWheelUIKit getPagesModelWithPageId:@"app.appwheel.com/paywall?pageId=f92169aeba334f91993866f97797cc7d&allowPay=false" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (result && pageModel) {
                 [AppWheelUIKit presentSubscribeWithModel:pageModel fromViewController:self];
@@ -210,17 +210,7 @@
 }
 
 - (IBAction)getRetryPeriodWithCompletion:(id)sender {
-    [AWPurchaseKit getRetryPeriodWithCompletion:^(BOOL isInRetryPeriod, AWError * _Nonnull error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertController * alert2 = [UIAlertController alertControllerWithTitle:@"retryPeriod" message:[NSString stringWithFormat:@"result:%d",isInRetryPeriod]  preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            [alert2 addAction:action2];
-            
-            [alert2 show:self];
-        });
-    }];
+    
 }
 
 

@@ -75,9 +75,11 @@ NS_ASSUME_NONNULL_BEGIN
                                   productType:(AWProductType)productType
                                    completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
-+ (void)fetchSubscriptionOfferWithProductIdentifier:(NSString *)productIdentifier
-                        subscriptionOfferIdentifier:(NSString *)subscriptionOfferIdentifier
-                                         completion:(void (^)(AWPaymentDiscountOffer * _Nullable paymentDiscount, AWError * error))completion;
+
++ (void)getSubscriptionOfferWithProduct:(AWProduct *)product
+                            productType:(AWProductType)type
+              subscriptionOfferId:(NSString *)subscriptionOfferIdentifier
+                             completion:(void (^)(AWPaymentDiscountOffer * _Nullable paymentDiscount, AWError * error))completion;
 
 + (void)restorePurchaseWithCompletion:(nullable void (^)(BOOL isInSubscriptionPeriod, NSArray * validSubscriptions, NSArray * restoredPurchasedItems, AWError * restoredSubscriptionResult))completion;
 
@@ -95,8 +97,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)delUserId;
 
-+ (void)getRetryPeriodWithCompletion:(nullable void (^)(BOOL isInRetryPeriod,  AWError *error))completion;
-
 + (NSString *)getUserId;
 
 + (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
@@ -106,16 +106,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)updateConponStateWithTaskId:(long)taskId
                      withCompletion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
-
-+ (void)requestProductsWithOfferCodeId:(NSInteger)codeId
-                             offerCode:(NSString *)offerCode
-                  productsFetchedBlock:(OfferCodeProductsBlock)offerCodeProductsBlock;
-
-+ (void)consumeOfferCodeId:(NSInteger)offercodeId
-                 offerCode:(NSString *)offerCode
-          subscriptionInfo:(LatestSubscriptionInfo *)info
-              withComplete:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
-
 
 
 + (void)queryStripeOrdersWithCompletion:(void (^)(BOOL success,

@@ -252,7 +252,7 @@
     for (ProductDiscount * subscriptionDiscount in self.product.discounts) {
         UIAlertAction * action = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Purchase promotional offer: %@", subscriptionDiscount.discountIdentifier] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             // Get Discounts Signature
-            [AWPurchaseKit fetchSubscriptionOfferWithProductIdentifier:self.product.productIdentifier subscriptionOfferIdentifier:subscriptionDiscount.discountIdentifier completion:^(AWPaymentDiscountOffer * _Nullable paymentDiscount, AWError * error) {
+            [AWPurchaseKit getSubscriptionOfferWithProduct:self.product productType:self.productType subscriptionOfferId:subscriptionDiscount.discountIdentifier completion:^(AWPaymentDiscountOffer * _Nullable paymentDiscount, AWError * error) {
                 
                 if (error.errorCode != 0) {
                     [self hideLoading];
