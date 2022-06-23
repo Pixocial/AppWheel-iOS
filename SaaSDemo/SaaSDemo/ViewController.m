@@ -109,7 +109,7 @@
 }
 
 - (IBAction)restore:(id)sender {
-    [AppWheelUIKit getPagesModelWithPageId:@"b247b0b52a72440b80bae282a2088be4" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
+    [AppWheelUIKit getPagesModelWithPageId:@"app.appwheel.com/paywall?pageId=f92169aeba334f91993866f97797cc7d&allowPay=false" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (result && pageModel) {
                 [AppWheelUIKit presentSubscribeWithModel:pageModel fromViewController:self];
@@ -210,7 +210,7 @@
 }
 
 - (IBAction)getRetryPeriodWithCompletion:(id)sender {
-
+    
 }
 
 
