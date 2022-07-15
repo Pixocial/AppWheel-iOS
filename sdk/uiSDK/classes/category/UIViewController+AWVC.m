@@ -10,19 +10,19 @@
 
 @interface UIViewController (Private)
 
-@property (strong, nonatomic) UIActivityIndicatorView *loadingView;
+@property (strong, nonatomic) UIActivityIndicatorView *awLoadingView;
 
 @end
 @implementation UIViewController (Private)
 
-@dynamic loadingView;
+@dynamic awLoadingView;
 
-- (void)setLoadingView:(UIWindow *)loadingView {
-    objc_setAssociatedObject(self, @selector(loadingView),loadingView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setAwLoadingView:(UIWindow *)loadingView {
+    objc_setAssociatedObject(self, @selector(awLoadingView),loadingView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIWindow *)loadingView {
-    return objc_getAssociatedObject(self, @selector(loadingView));
+- (UIWindow *)awLoadingView {
+    return objc_getAssociatedObject(self, @selector(awLoadingView));
 }
 
 
@@ -32,19 +32,19 @@
 @implementation UIViewController (AWVC)
 
 #pragma mark:- loading
-- (void)showLoading {
-    if (!self.loadingView) {
-        self.loadingView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        [self.view addSubview:self.loadingView];
-        self.loadingView.center = self.view.center;
-        self.loadingView.backgroundColor = UIColor.blackColor;
+- (void)showAWLoading {
+    if (!self.awLoadingView) {
+        self.awLoadingView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [self.view addSubview:self.awLoadingView];
+        self.awLoadingView.center = self.view.center;
+        self.awLoadingView.backgroundColor = UIColor.blackColor;
         self.view.userInteractionEnabled = NO;
     }
-    [self.loadingView startAnimating];
+    [self.awLoadingView startAnimating];
 }
-- (void)hideLoading {
-    if (self.loadingView && self.loadingView.isAnimating) {
-        [self.loadingView stopAnimating];
+- (void)hideAWLoading {
+    if (self.awLoadingView && self.awLoadingView.isAnimating) {
+        [self.awLoadingView stopAnimating];
     }
     self.view.userInteractionEnabled = YES;
 }
