@@ -14,19 +14,19 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - AppWheel (2.0.6.1):
-    - AppWheel/purchase (= 2.0.6.1)
-    - AppWheel/subscribeUI (= 2.0.6.1)
-  - AppWheel/purchase (2.0.6.1)
-  - AppWheel/subscribeUI (2.0.6.1):
+  - AppWheel (2.0.7.0):
+    - AppWheel/purchase (= 2.0.7.0)
+    - AppWheel/subscribeUI (= 2.0.7.0)
+  - AppWheel/purchase (2.0.7.0)
+  - AppWheel/subscribeUI (2.0.7.0):
     - AFNetworking
     - AppWheel/purchase
     - Masonry
     - SDWebImage
   - Masonry (1.1.0)
-  - SDWebImage (5.12.3):
-    - SDWebImage/Core (= 5.12.3)
-  - SDWebImage/Core (5.12.3)
+  - SDWebImage (5.13.0):
+    - SDWebImage/Core (= 5.13.0)
+  - SDWebImage/Core (5.13.0)
 
 DEPENDENCIES:
   - AppWheel (from `../`)
@@ -43,10 +43,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  AppWheel: 0e600f341575d517d118c7981a033327aa47b694
+  AppWheel: cfb84c34f2e10c97474c4c8de30aa88c1951e81a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
+  SDWebImage: 0327043dbb9533e75f2eff8445b3df0f2ceca6ac
 
-PODFILE CHECKSUM: 482699dbd1988e81ca6fae7385cd328c9de32cdc
+PODFILE CHECKSUM: f0559ad34385cef04f77b45209e9cd92d5430dc4
 
 COCOAPODS: 1.11.3

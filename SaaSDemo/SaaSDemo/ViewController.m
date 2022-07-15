@@ -33,6 +33,7 @@
     }];
     [AWPurchaseKit delUserId];
     [AWLogUtil isCanLog:YES];
+//    [AppWheelUIKit setDebug:YES];
 //    [AWPurchaseKit setDebug:YES];
     [AWPurchaseKit configureWithAppId:121 secret:@"87481116-6a02-11ec-9266-42010ae30006" uid:self.userIdTV.text completion:^(BOOL success, AWError * _Nonnull error) {
         [AWPurchaseKit getUserId];
@@ -109,7 +110,7 @@
 }
 
 - (IBAction)restore:(id)sender {
-    [AppWheelUIKit getPagesModelWithPageId:@"app.appwheel.com/paywall?pageId=f92169aeba334f91993866f97797cc7d&allowPay=false" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
+    [AppWheelUIKit getPagesModelWithPageId:@"dashboard.appwheel.com/paywall?pageId=6640e99691b1457382742e243d277f02&allowPay=false" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (result && pageModel) {
                 [AppWheelUIKit presentSubscribeWithModel:pageModel fromViewController:self];
