@@ -7,7 +7,7 @@
 
 #import "AWPagesRequestManger.h"
 #import "AWUIHttpManager.h"
-#import "AWCommonUtils.h"
+#import <PurchaseSDK/AWCommonUtils.h>
 #import "AWUIError.h"
 #import <PurchaseSDK/AWNewApiManager.h>
 
