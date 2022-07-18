@@ -1,21 +1,26 @@
 //
-//  AWCommonUtil.h
-//  AppWheel
+//  AWCommonUtils.h
+//  PurchaseSDK
 //
-//  Created by yikunHuang on 2021/9/9.
+//  Created by Yk Huang on 2021/8/19.
 //
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AWCommonUtil : NSObject
+@interface AWCommonUtils : NSObject
 
-/// 把字典转换为jsonString
++ (BOOL)isSandBox;
+
++ (BOOL)checkReceiptInfoAvailable;
+
++ (BOOL)isJailbroken;
+
 + (NSString *)getJSONStringFromDictionary:(NSDictionary *)dictionary;
 
-/// 把jsonString转换为NSDictionary
 + (NSDictionary *)getDictFromjsonString:(NSString *)jsonString;
+
 @end
 
 NS_ASSUME_NONNULL_END

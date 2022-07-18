@@ -7,7 +7,7 @@
 
 #import "AWPagesRequestManger.h"
 #import "AWUIHttpManager.h"
-#import "AWCommonUtil.h"
+#import "AWCommonUtils.h"
 #import "AWUIError.h"
 #import <PurchaseSDK/AWNewApiManager.h>
 
@@ -34,7 +34,7 @@
         }
         NSString *configString = data[@"pageConfig"];
         if (configString) {
-            NSDictionary *dict = [AWCommonUtil getDictFromjsonString:configString];
+            NSDictionary *dict = [AWCommonUtils getDictFromjsonString:configString];
             if (!dict) {
                 complete(NO, nil, @"parse json error");
                 return;
