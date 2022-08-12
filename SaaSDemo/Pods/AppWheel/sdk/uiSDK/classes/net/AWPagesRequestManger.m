@@ -7,8 +7,9 @@
 
 #import "AWPagesRequestManger.h"
 #import "AWUIHttpManager.h"
-#import "AWCommonUtil.h"
+#import <PurchaseSDK/AWCommonUtils.h>
 #import "AWUIError.h"
+#import <PurchaseSDK/AWNewApiManager.h>
 
 @implementation AWPagesRequestManger
 
@@ -22,7 +23,7 @@
     NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
     [params setObject:pageId forKey:@"pageId"];
 
-    [[AWUIHttpManager sharedInstance] requestWithPath:@"/api/sub/pages" extraParams:params completion:^(NSInteger result, NSString * _Nonnull msg, NSDictionary * _Nullable data) {
+    [[AWNewApiManager sharedInstance] postWithPath:@"/v1/subpage" extraParams:params completion:^(NSInteger result, NSString * _Nonnull msg, NSDictionary * _Nullable data) {
         if (result != 0) {
             complete(NO, nil, msg);
             return;
@@ -33,7 +34,7 @@
         }
         NSString *configString = data[@"pageConfig"];
         if (configString) {
-            NSDictionary *dict = [AWCommonUtil getDictFromjsonString:configString];
+            NSDictionary *dict = [AWCommonUtils getDictFromjsonString:configString];
             if (!dict) {
                 complete(NO, nil, @"parse json error");
                 return;
@@ -46,8 +47,8 @@
         }
 
         complete(NO, nil, AWUIErrorTypePageIdNotFoundMsg);
-
     }];
+    
 }
 
 ///解析url中的pageId

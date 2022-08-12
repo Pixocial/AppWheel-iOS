@@ -10,8 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (AWVC)
 
-- (void)showLoading;
-- (void)hideLoading;
+- (void)showAWLoading;
+- (void)hideAWLoading;
 
 - (void)showDialogWithTitle:(NSString *)title
                     message:(NSString *)msg;

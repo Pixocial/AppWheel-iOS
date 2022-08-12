@@ -219,11 +219,11 @@ NSString *const Success = @"Success";
         }];
         /// 请求SKU的信息
         if (skuSet.count > 0) {
-            [self showLoading];
+            [self showAWLoading];
             __weak __typeof(self) weakSelf = self;
             [self.viewModel querySKUs:skuSet intoModel:btnModelArray withComplete:^(BOOL success,NSString *errorMsg) {
                 __strong __typeof(weakSelf) strongSelf = weakSelf;
-                [strongSelf hideLoading];
+                [strongSelf hideAWLoading];
                 if (success) {
                     if (defaultSelectedModel && defaultSelectedModel.product) {
                         strongSelf.product = defaultSelectedModel.product;
@@ -581,11 +581,11 @@ NSString *const Success = @"Success";
 /// 点击提交按钮
 - (void)submitAction {
     if (self.product) {
-        [self showLoading];
+        [self showAWLoading];
         __weak __typeof(self) weakSelf = self;
         [self.viewModel purchaseWithProduct:self.product withCompletion:^(BOOL success, AWError * _Nonnull error) {
             __strong __typeof(weakSelf) strongSelf = weakSelf;
-            [strongSelf hideLoading];
+            [strongSelf hideAWLoading];
             if (success) {
                 [strongSelf closeAction];
                 return;
@@ -605,11 +605,11 @@ NSString *const Success = @"Success";
 
 - (void)termsView:(AWTermsView *)termsView clickItem:(AWTermsViewType)type {
     if (type == AWTermsViewType_Restore) {
-        [self showLoading];
+        [self showAWLoading];
         __weak __typeof(self) weakSelf = self;
         [self.viewModel restoreWithCompletion:^(BOOL isInSubscriptionPeriod, NSArray * _Nonnull validSubscriptions, NSArray * _Nonnull restoredPurchasedItems, AWError * _Nonnull restoredSubscriptionResult) {
             __strong __typeof(weakSelf) strongSelf = weakSelf;
-            [strongSelf hideLoading];
+            [strongSelf hideAWLoading];
             if (isInSubscriptionPeriod) {
                 [strongSelf closeAction];
             } else {

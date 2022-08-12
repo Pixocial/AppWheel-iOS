@@ -38,10 +38,16 @@ typedef enum : NSUInteger {
 
 + (instancetype)sharedInstance;
 /// 获取优惠签名
-- (void)getDiscountSignWithProductId:(NSString *)productId
-                            discountId:(NSString *)discountId
-                            completion:(PaymentDiscountBlock)completion;
+///
+- (void)getDiscountSignWithProduct:(AWProduct *)product
+                       productType:(AWProductType)type
+                        discountId:(NSString *)discountId
+                        completion:(PaymentDiscountBlock)completion;
 
+- (void)getSKProductWithSkuId:(NSString *)skuId
+                       discount: (AWPaymentDiscountOffer * _Nullable)paymentDiscount
+                    productType: (NSInteger)productType
+                    withBlock: (void (^)(SKProduct * _Nullable product, AWError * _Nullable error))block;
 - (void)requestProductsWithIds:(NSSet<NSString *> *)productIdentifiers
           productsFetchedBlock:(ProductsFetchedBlock)productsFetchedBlock;
 
@@ -49,16 +55,10 @@ typedef enum : NSUInteger {
 
 - (void)saveSKProducts2Cache:(NSArray<SKProduct *> *)products;
 
+///该方法支持查询单个SKU的试用与付费历史状态，回调中的ProductFreeTrialStatus与ProductPaidStatus分为未试用/付费与试用过/付费过两种状态。当本地收据为空时，会查询该设备的所有历史记录（包括该设备使用过的所有Apple账号）。该方法仅支持查询当前输入的SKU信息，不包含是否试用过该SKU同组下的其他SKU。
+///第一个参数就是：是否被试用过了。第二个就是是否付费过了。
 - (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
 
-- (void)requestProductsWithOfferCodeId:(NSInteger) codeId
-                             offerCode:(NSString *)offerCode
-                  productsFetchedBlock:(OfferCodeProductsBlock)offerCodeProductsBlock;
-
-- (void)consumeOfferCodeId:(NSInteger)offercodeId
-                 offerCode:(NSString *)offerCode
-          subscriptionInfo:(LatestSubscriptionInfo *)info
-              withComplete:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
 @end
 

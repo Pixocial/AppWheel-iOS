@@ -110,7 +110,7 @@
 }
 
 - (IBAction)restore:(id)sender {
-    [AppWheelUIKit getPagesModelWithPageId:@"dashboard.appwheel.com/paywall?pageId=6640e99691b1457382742e243d277f02&allowPay=false" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
+    [AppWheelUIKit getPagesModelWithPageLink:@"dashboard.appwheel.com/paywall?pageId=6640e99691b1457382742e243d277f02&allowPay=false" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (result && pageModel) {
                 [AppWheelUIKit presentSubscribeWithModel:pageModel fromViewController:self];
@@ -181,7 +181,7 @@
 //        }
 //    }];
     
-    [AppWheelUIKit getPagesModelWithPageId:@"a697095a91f64649a939b2451219a969" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
+    [AppWheelUIKit getPagesModelWithPageLink:@"a697095a91f64649a939b2451219a969" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (result && pageModel) {
                 [AppWheelUIKit presentSubscribeWithModel:pageModel fromViewController:self];

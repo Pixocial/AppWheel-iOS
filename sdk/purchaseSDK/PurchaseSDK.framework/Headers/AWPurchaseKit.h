@@ -53,6 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getProductsInfoWithProductIdentifiers:(NSSet<NSString *> *)productIdentifiers
                                      completion:(void (^)(RetrievedProducts * retrievedProducts))completion;
 
++ (void)getProductHasPaiedWithProductId:(NSString *)productId
+                         withcompletion:(void (^)(BOOL success, AWProductPurchaseState * _Nullable state, AWError * _Nullable error))completion;
+
 + (void)purchaseProduct:(AWProduct *)product
                quantity:(NSInteger)quantity
             productType:(AWProductType)productType

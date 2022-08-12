@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSString * offerCodeRefName;
 
 @property (nonatomic, strong, nullable) NSString * productType;
+/// 状态 订单状态：0 未付款 1 付款正常使用 2 过期 3 宽限期 4 暂停 5 保留期'
+@property (nonatomic, assign) NSInteger status;
 
 - (instancetype)initWithSubscriptionInfo:(NSDictionary *)subscriptionInfo;
 

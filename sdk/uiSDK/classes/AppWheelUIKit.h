@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)config;
 
-+ (void)getPagesModelWithPageId:(NSString *)linkUrl
++ (void)getPagesModelWithPageLink:(NSString *)linkUrl
                        complete:(void (^)(BOOL,AWPageModel * _Nullable,NSString * _Nullable))complete;
 + (void)presentSubscribeWithModel:(AWPageModel *)uiModel
                fromViewController:(UIViewController *)vc;

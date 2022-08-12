@@ -11,6 +11,7 @@
 #import "AWProduct.h"
 #import "AWProductsRequest.h"
 #import "LatestSubscriptionInfo.h"
+#import "AWProductPurchaseState.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -60,6 +61,9 @@ typedef enum : NSUInteger {
 - (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
 
 
+///通过服务器获取商品是否付费过
+- (void)getProductHasPaiedWithProductId:(NSString *)productId
+                         withcompletion:(void (^)(BOOL success, AWProductPurchaseState * _Nullable state, AWError * _Nullable error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

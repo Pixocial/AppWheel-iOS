@@ -17,7 +17,7 @@
     
 }
 
-+ (void)getPagesModelWithPageId:(NSString *)linkUrl complete:(void (^)(BOOL, AWPageModel * _Nullable, NSString * _Nullable))complete {
++ (void)getPagesModelWithPageLink:(NSString *)linkUrl complete:(void (^)(BOOL, AWPageModel * _Nullable, NSString * _Nullable))complete {
     
     [[[AWPagesRequestManger alloc]init] getPagesModelWithPageId:linkUrl complete:complete];
 }

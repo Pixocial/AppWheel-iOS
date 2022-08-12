@@ -8,6 +8,7 @@
 #import "AWUIHttpManager.h"
 #import <AFNetworking/AFNetworking.h>
 #import "NSString+AWMD5.h"
+#import <PurchaseSDK/AWLogUtil.h>
 
 //static NSString *awUISDKVersion = @"2.0.1.0";
 
@@ -76,9 +77,9 @@
 
 - (NSString *)getHost {
     if (self.isDebug) {
-        return @"https://api-test.appwheel.com";
+        return @"http://sdk-test.api.appwheel.com";
     } else {
-        return @"https://api.appwheel.com";
+        return @"https://sdk.api.appwheel.com";
     }
 }
 
@@ -166,10 +167,15 @@
 }
 
 - (void)requestWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * msg, NSDictionary * _Nullable data))completion {
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", [self getHost], path];
+    if ([AWLogUtil getCanLog]) {
+        [AWLogUtil print:[NSString stringWithFormat:@"request url:%@,params:%@",url,params]];
+    }
     __weak typeof(self) weakSelf = self;
     
     dispatch_async(self.networkQueue, ^{
-        [weakSelf.sessionManager POST:[NSString stringWithFormat:@"%@%@", [weakSelf getHost], path] parameters:[weakSelf processedParamsWithExtraParams:params] headers:[weakSelf basicHeader] progress:^(NSProgress * _Nonnull uploadProgress) {
+        [weakSelf.sessionManager POST:url parameters:[weakSelf processedParamsWithExtraParams:params] headers:[weakSelf basicHeader] progress:^(NSProgress * _Nonnull uploadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             dispatch_async(weakSelf.networkQueue, ^{
