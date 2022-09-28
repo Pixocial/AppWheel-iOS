@@ -49,6 +49,8 @@ Pod::Spec.new do |spec|
   # }
   spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  spec.user_target_xcconfig = {'GENERATE_INFOPLIST_FILE' => 'YES'}
+  spec.pod_target_xcconfig = {'GENERATE_INFOPLIST_FILE' => 'YES'}
 
 
   # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
