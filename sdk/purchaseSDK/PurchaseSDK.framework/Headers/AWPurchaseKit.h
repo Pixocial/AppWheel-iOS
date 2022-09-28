@@ -18,6 +18,7 @@
 #import "AWProductManager.h"
 #import "AWCouponModel.h"
 #import "AWStripePurchaseInfo.h"
+#import "AWMarvelManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -116,6 +117,8 @@ NS_ASSUME_NONNULL_BEGIN
                                                   AWError * _Nullable error))completion;
 
 + (AWStripePurchaseInfo *)getStripePurchaseInfo;
+
++ (AWMarvelManager *)getMarvelManager;
 
 
 
