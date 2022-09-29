@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AppWheel"
-  spec.version      = "2.0.9.0.2"
+  spec.version      = "2.0.9.0.3"
   spec.summary      = "A short description of AppWheel."
 
   spec.description  = 'An in-app purchase module for iOS project'
@@ -47,10 +47,12 @@ Pod::Spec.new do |spec|
   # spec.pod_target_xcconfig = {
   #   'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
   # }
-  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-  spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-  spec.user_target_xcconfig = {'GENERATE_INFOPLIST_FILE' => 'YES'}
-  spec.pod_target_xcconfig = {'GENERATE_INFOPLIST_FILE' => 'YES'}
+  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
+   'GENERATE_INFOPLIST_FILE' => 'YES',
+    'VALID_ARCHS' => 'x86_64 armv7 arm64'}
+  spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
+   'GENERATE_INFOPLIST_FILE' => 'YES',
+    'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 
 
   # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
