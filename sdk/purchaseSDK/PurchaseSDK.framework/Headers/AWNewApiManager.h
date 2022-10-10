@@ -37,6 +37,13 @@ NS_ASSUME_NONNULL_BEGIN
           completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
 - (void)mGetWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+
+- (void)mPostWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+
+- (void)mPostWithPath:(NSString *)path
+          pathParams:(NSString * _Nullable)pathParams
+         extraParams:(NSDictionary * _Nullable)
+    params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 @end
 
 NS_ASSUME_NONNULL_END

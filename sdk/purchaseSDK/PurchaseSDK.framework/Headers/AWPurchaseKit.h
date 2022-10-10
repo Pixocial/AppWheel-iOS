@@ -111,6 +111,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)updateConponStateWithTaskId:(long)taskId
                      withCompletion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
++ (void)setUserAttributes:(NSDictionary *)params
+               completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
 + (void)queryStripeOrdersWithCompletion:(void (^)(BOOL success,
                                             AWStripePurchaseInfo * _Nullable info,

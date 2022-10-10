@@ -121,6 +121,7 @@
         });
         
     }];
+    
 //    [self showLoading];
 //    [AWPurchaseKit restorePurchaseWithCompletion:^(BOOL success, NSArray * validSubscriptions, NSArray * purchasedItems, AWError * error) {
 //        [self hideLoading];
