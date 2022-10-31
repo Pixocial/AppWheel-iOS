@@ -1,1 +1,0 @@
-../../../../../sdk/uiSDK/classes/viewModel/AWSUbscribeViewModel1.h

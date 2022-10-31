@@ -1,51 +1,17 @@
 PODS:
-  - AFNetworking (4.0.1):
-    - AFNetworking/NSURLSession (= 4.0.1)
-    - AFNetworking/Reachability (= 4.0.1)
-    - AFNetworking/Security (= 4.0.1)
-    - AFNetworking/Serialization (= 4.0.1)
-    - AFNetworking/UIKit (= 4.0.1)
-  - AFNetworking/NSURLSession (4.0.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (4.0.1)
-  - AFNetworking/Security (4.0.1)
-  - AFNetworking/Serialization (4.0.1)
-  - AFNetworking/UIKit (4.0.1):
-    - AFNetworking/NSURLSession
-  - AppWheel (2.0.10.0):
-    - AppWheel/purchase (= 2.0.10.0)
-    - AppWheel/subscribeUI (= 2.0.10.0)
-  - AppWheel/purchase (2.0.10.0)
-  - AppWheel/subscribeUI (2.0.10.0):
-    - AFNetworking
-    - AppWheel/purchase
-    - Masonry
-    - SDWebImage
-  - Masonry (1.1.0)
-  - SDWebImage (5.13.1):
-    - SDWebImage/Core (= 5.13.1)
-  - SDWebImage/Core (5.13.1)
+  - AppWheel (2.0.10.1):
+    - AppWheel/purchase (= 2.0.10.1)
+  - AppWheel/purchase (2.0.10.1)
 
 DEPENDENCIES:
   - AppWheel (from `../`)
-
-SPEC REPOS:
-  trunk:
-    - AFNetworking
-    - Masonry
-    - SDWebImage
 
 EXTERNAL SOURCES:
   AppWheel:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  AppWheel: 4e21df729093720740667caf10f0c712a048a7cd
-  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  SDWebImage: fb26a455eeda4c7a55e4dcb6172dbb258af7a4ca
+  AppWheel: ac15f14f124b54bb09f90beb883d5536415b61d1
 
 PODFILE CHECKSUM: b76d494928ecb6933bec32af1c9ef44314473716
 

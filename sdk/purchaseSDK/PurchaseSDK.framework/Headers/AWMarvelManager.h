@@ -66,6 +66,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 获取预发布密码
 - (void)getPreviewPwdWithCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+
+///首页配置
+- (void)getHomeConfigWithLanguage:(NSString *)language
+               withCountryCode:(NSString *)countryCode
+                    withPhrase:(NSString * _Nullable)phrase
+                    withUpdate:(NSString * _Nullable)update
+           withEffectiveFilter:(int)effectiveFilter
+               withTimezoneOffset:(int)timezoneOffset
+                       completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 @end
 
 NS_ASSUME_NONNULL_END

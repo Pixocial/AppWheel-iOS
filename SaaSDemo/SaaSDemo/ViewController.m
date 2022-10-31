@@ -12,7 +12,6 @@
 #import "InfoViewController.h"
 #import "UIAlertController+Global.h"
 #import "UIViewController+Loading.h"
-#import "AppWheelUIKit.h"
 
 @interface ViewController ()<AWPurchaseObserver>
 @property (weak, nonatomic) IBOutlet UITextField *userIdTV;
@@ -110,17 +109,6 @@
 }
 
 - (IBAction)restore:(id)sender {
-    [AppWheelUIKit getPagesModelWithPageLink:@"dashboard.appwheel.com/paywall?pageId=6640e99691b1457382742e243d277f02&allowPay=false" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (result && pageModel) {
-                [AppWheelUIKit presentSubscribeWithModel:pageModel fromViewController:self];
-                return;
-            }
-            [self showDialogWithTitle:@"False" message:errorMsg];
-            
-        });
-        
-    }];
     
 //    [self showLoading];
 //    [AWPurchaseKit restorePurchaseWithCompletion:^(BOOL success, NSArray * validSubscriptions, NSArray * purchasedItems, AWError * error) {
@@ -182,17 +170,7 @@
 //        }
 //    }];
     
-    [AppWheelUIKit getPagesModelWithPageLink:@"a697095a91f64649a939b2451219a969" complete:^(BOOL result, AWPageModel *pageModel, NSString * errorMsg) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (result && pageModel) {
-                [AppWheelUIKit presentSubscribeWithModel:pageModel fromViewController:self];
-                return;
-            }
-            [self showDialogWithTitle:@"False" message:errorMsg];
-            
-        });
-        
-    }];
+   
 }
 
 - (IBAction)info:(id)sender {

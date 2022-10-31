@@ -98,11 +98,9 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/../../sdk/purchaseSDK/awPurchase.bundle"
-  install_resource "${PODS_ROOT}/../../sdk/uiSDK/AWUI.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/../../sdk/purchaseSDK/awPurchase.bundle"
-  install_resource "${PODS_ROOT}/../../sdk/uiSDK/AWUI.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

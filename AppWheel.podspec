@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AppWheel"
-  spec.version      = "2.0.10.0"
+  spec.version      = "2.0.10.1"
   spec.summary      = "A short description of AppWheel."
 
   spec.description  = 'An in-app purchase module for iOS project'
@@ -73,26 +73,26 @@ Pod::Spec.new do |spec|
 
   end
 # UI的SDK
-  spec.subspec 'subscribeUI' do |ui|
-    # 代码
-    ui.source_files = 'sdk/uiSDK/classes/**/*.{h,m}'
-    ui.public_header_files = "sdk/uiSDK/classes/**/*.h"
-    # 资源文件
-    ui.resources = 'sdk/uiSDK/*.bundle'
-    # 支付的SDK
-    ui.dependency 'AppWheel/purchase'
-    #Masonry布局
-    ui.dependency 'Masonry'
-    #AFNetworking布局
-    ui.dependency 'AFNetworking'
-    #webImage布局
-    ui.dependency 'SDWebImage'
+  # spec.subspec 'subscribeUI' do |ui|
+  #   # 代码
+  #   ui.source_files = 'sdk/uiSDK/classes/**/*.{h,m}'
+  #   ui.public_header_files = "sdk/uiSDK/classes/**/*.h"
+  #   # 资源文件
+  #   ui.resources = 'sdk/uiSDK/*.bundle'
+  #   # 支付的SDK
+  #   ui.dependency 'AppWheel/purchase'
+  #   #Masonry布局
+  #   ui.dependency 'Masonry'
+  #   #AFNetworking布局
+  #   ui.dependency 'AFNetworking'
+  #   #webImage布局
+  #   ui.dependency 'SDWebImage'
     
-    # ui.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-    # ui.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  #   # ui.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  #   # ui.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
 
-  end
+  # end
 
 
 
