@@ -18,6 +18,7 @@
 #import "AWProductManager.h"
 #import "AWCouponModel.h"
 #import "AWStripePurchaseInfo.h"
+#import "AWMarvelManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -52,6 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)getProductsInfoWithProductIdentifiers:(NSSet<NSString *> *)productIdentifiers
                                      completion:(void (^)(RetrievedProducts * retrievedProducts))completion;
+
++ (void)getProductHasPaiedWithProductId:(NSString *)productId
+                         withcompletion:(void (^)(BOOL success, AWProductPurchaseState * _Nullable state, AWError * _Nullable error))completion;
 
 + (void)purchaseProduct:(AWProduct *)product
                quantity:(NSInteger)quantity
@@ -107,12 +111,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)updateConponStateWithTaskId:(long)taskId
                      withCompletion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
++ (void)setUserAttributes:(NSDictionary *)params
+               completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
 + (void)queryStripeOrdersWithCompletion:(void (^)(BOOL success,
                                             AWStripePurchaseInfo * _Nullable info,
                                                   AWError * _Nullable error))completion;
 
 + (AWStripePurchaseInfo *)getStripePurchaseInfo;
+
++ (AWMarvelManager *)getMarvelManager;
 
 
 
