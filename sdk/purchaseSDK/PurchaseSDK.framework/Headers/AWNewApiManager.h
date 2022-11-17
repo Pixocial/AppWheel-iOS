@@ -21,12 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
         extraParams:(NSDictionary * _Nullable)params
          completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
-- (void)postWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+- (void)postWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data,NSString * _Nonnull traceId))completion;
 
 - (void)postWithPath:(NSString *)path
           pathParams:(NSString * _Nullable)pathParams
          extraParams:(NSDictionary * _Nullable)
-    params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+    params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data,NSString * _Nonnull traceId))completion;
 
 - (void)putWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 

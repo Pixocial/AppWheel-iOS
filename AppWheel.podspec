@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AppWheel"
-  spec.version      = "2.0.10.2"
+  spec.version      = "2.0.11.0"
   spec.summary      = "A short description of AppWheel."
 
   spec.description  = 'An in-app purchase module for iOS project'

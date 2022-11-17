@@ -46,7 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
                 withCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
 /// 获取产品配置
-- (void)getProductConfigWithCountryCode:(NSString *)countryCode
+- (void)getProductConfigWithLanguage:(NSString *)language
+                withCountryCode:(NSString *)countryCode
                     withPhrase:(NSString * _Nullable)phrase
                     withUpdate:(NSString * _Nullable)update
            withEffectiveFilter:(int)effectiveFilter

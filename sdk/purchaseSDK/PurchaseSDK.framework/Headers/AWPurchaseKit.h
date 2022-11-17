@@ -103,7 +103,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)getUserId;
 
-+ (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
+//+ (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
 
 /// 请求优惠券
 + (void)queryCouponDetail:(nullable void (^)(BOOL success,AWCouponModel * _Nullable model, AWError * _Nullable error))completion;
