@@ -7,7 +7,7 @@
 
 #import "ViewController.h"
 #import <PurchaseSDK/AWPurchaseKit.h>
-#import <PurchaseSDK/AWLogUtil.h>
+#import <AWCore/AWLogUtil.h>
 #import "ProductViewController.h"
 #import "InfoViewController.h"
 #import "UIAlertController+Global.h"

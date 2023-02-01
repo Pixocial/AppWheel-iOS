@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AWPaymentDiscountOffer.h"
-#import "AWError.h"
+#import  <AWCore/AWError.h>
 #import "AWProduct.h"
 #import "AWProductsRequest.h"
 #import "LatestSubscriptionInfo.h"

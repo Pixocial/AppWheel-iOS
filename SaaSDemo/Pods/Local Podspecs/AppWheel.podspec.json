@@ -35,9 +35,21 @@
   },
   "subspecs": [
     {
+      "name": "core",
+      "vendored_frameworks": "sdk/core/AWCore.framework"
+    },
+    {
+      "name": "analytics",
+      "vendored_frameworks": "sdk/analytics/AWAnalytics.framework"
+    },
+    {
       "name": "purchase",
       "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
       "resources": "sdk/purchaseSDK/*.bundle"
+    },
+    {
+      "name": "marvel",
+      "vendored_frameworks": "sdk/marvel/AWMarvel.framework"
     }
   ]
 }

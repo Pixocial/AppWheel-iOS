@@ -54,23 +54,29 @@ Pod::Spec.new do |spec|
    'GENERATE_INFOPLIST_FILE' => 'YES',
     'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 
+# core
+  spec.subspec 'core' do |core|
+    # 第三方非开源framework(多个)
+    core.vendored_frameworks = 'sdk/core/AWCore.framework'
+  end
 
-  # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  # spec.exclude_files = "Classes/Exclude"
-
+# analytics
+  spec.subspec 'analytics' do |analytics|
+    # 第三方非开源framework(多个)
+    analytics.vendored_frameworks = 'sdk/analytics/AWAnalytics.framework'
+  end
 
 # 购买的SDK
   spec.subspec 'purchase' do |purchase|
     # 第三方非开源framework(多个)
     purchase.vendored_frameworks = 'sdk/purchaseSDK/PurchaseSDK.framework'
-#    purchase.resource_bundles = {
-#      'AppWheel' => ['sdk/purchaseSDK/*.pem']
-#    }
     purchase.resources = 'sdk/purchaseSDK/*.bundle'
-    
-    # purchase.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-    # purchase.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  end
 
+# marvel
+  spec.subspec 'marvel' do |marvel|
+    # 第三方非开源framework(多个)
+    marvel.vendored_frameworks = 'sdk/marvel/AWMarvel.framework'
   end
 # UI的SDK
   # spec.subspec 'subscribeUI' do |ui|

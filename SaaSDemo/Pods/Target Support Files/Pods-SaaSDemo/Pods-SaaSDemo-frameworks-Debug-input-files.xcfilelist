@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-SaaSDemo/Pods-SaaSDemo-frameworks.sh
+${PODS_ROOT}/../../sdk/analytics/AWAnalytics.framework
+${PODS_ROOT}/../../sdk/core/AWCore.framework
+${PODS_ROOT}/../../sdk/marvel/AWMarvel.framework
+${PODS_ROOT}/../../sdk/purchaseSDK/PurchaseSDK.framework
