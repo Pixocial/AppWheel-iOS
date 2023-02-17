@@ -1,7 +1,7 @@
 PODS:
-  - AppWheel (2.0.13.0):
-    - AppWheel/purchase (= 2.0.13.0)
-  - AppWheel/purchase (2.0.13.0)
+  - AppWheel (2.1.0.0):
+    - AppWheel/purchase (= 2.1.0.0)
+  - AppWheel/purchase (2.1.0.0)
 
 DEPENDENCIES:
   - AppWheel (from `../`)
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AppWheel: 6819fbd35a997ccd17b240d2ffe7f95fca1149fe
+  AppWheel: 13c80f16e71f586c281d8f949a37e1a1c4807979
 
 PODFILE CHECKSUM: 3aa62eeb18ac8f8a9f1119c76db4427578d39405
 
