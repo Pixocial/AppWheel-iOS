@@ -1,13 +1,13 @@
 PODS:
-  - AppWheel (2.0.13.0):
-    - AppWheel/analytics (= 2.0.13.0)
-    - AppWheel/core (= 2.0.13.0)
-    - AppWheel/marvel (= 2.0.13.0)
-    - AppWheel/purchase (= 2.0.13.0)
-  - AppWheel/analytics (2.0.13.0)
-  - AppWheel/core (2.0.13.0)
-  - AppWheel/marvel (2.0.13.0)
-  - AppWheel/purchase (2.0.13.0)
+  - AppWheel (2.1.1.0):
+    - AppWheel/analytics (= 2.1.1.0)
+    - AppWheel/core (= 2.1.1.0)
+    - AppWheel/marvel (= 2.1.1.0)
+    - AppWheel/purchase (= 2.1.1.0)
+  - AppWheel/analytics (2.1.1.0)
+  - AppWheel/core (2.1.1.0)
+  - AppWheel/marvel (2.1.1.0)
+  - AppWheel/purchase (2.1.1.0)
 
 DEPENDENCIES:
   - AppWheel (from `../`)
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AppWheel: b8306ebf26251531aafdbf67281079ba1784b06d
+  AppWheel: ff5424be5185ff1b0cbca53350c63f1fff6e1239
 
 PODFILE CHECKSUM: 3aa62eeb18ac8f8a9f1119c76db4427578d39405
 
