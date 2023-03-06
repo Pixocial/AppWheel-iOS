@@ -1,0 +1,6 @@
+framework module AWAnalytics {
+  umbrella header "AWAnalytics.h"
+
+  export *
+  module * { export * }
+}

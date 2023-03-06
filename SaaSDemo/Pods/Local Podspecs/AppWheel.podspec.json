@@ -1,6 +1,6 @@
 {
   "name": "AppWheel",
-  "version": "2.1.0.0",
+  "version": "2.1.1.0",
   "summary": "A short description of AppWheel.",
   "description": "An in-app purchase module for iOS project",
   "homepage": "https://github.com/Pixocial/testSaaS-iOS/blob/master/README.md",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/Pixocial/testSaaS-iOS.git",
-    "tag": "2.1.0.0"
+    "tag": "2.1.1.0"
   },
   "frameworks": [
     "UIKit",
@@ -35,9 +35,21 @@
   },
   "subspecs": [
     {
+      "name": "core",
+      "vendored_frameworks": "sdk/core/AWCore.framework"
+    },
+    {
+      "name": "analytics",
+      "vendored_frameworks": "sdk/analytics/AWAnalytics.framework"
+    },
+    {
       "name": "purchase",
       "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
       "resources": "sdk/purchaseSDK/*.bundle"
+    },
+    {
+      "name": "marvel",
+      "vendored_frameworks": "sdk/marvel/AWMarvel.framework"
     }
   ]
 }

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 #import "AWProduct.h"
-#import "AWError.h"
+#import <AWCore/AWError.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

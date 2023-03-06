@@ -12,13 +12,12 @@
 #import "AWProduct.h"
 #import "AWProductsRequest.h"
 #import "PurchasedProduct.h"
-#import "AWError.h"
+#import <AWCore/AWError.h>
 #import "AWPurchaseObserver.h"
 #import "AWPurchaseInfo.h"
 #import "AWProductManager.h"
 #import "AWCouponModel.h"
-#import "AWStripePurchaseInfo.h"
-#import "AWMarvelManager.h"
+#import "AWEntitlementPurchaseInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -114,13 +113,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setUserAttributes:(NSDictionary *)params
                completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
-+ (void)queryStripeOrdersWithCompletion:(void (^)(BOOL success,
-                                            AWStripePurchaseInfo * _Nullable info,
++ (void)queryEntitlementsWithCompletion:(void (^)(BOOL success,
+                                                  AWEntitlementPurchaseInfo * _Nullable info,
                                                   AWError * _Nullable error))completion;
 
-+ (AWStripePurchaseInfo *)getStripePurchaseInfo;
-
-+ (AWMarvelManager *)getMarvelManager;
++ (AWEntitlementPurchaseInfo *)getEntitlementsPurchaseInfo;
 
 
 
