@@ -15,13 +15,23 @@
     "git": "https://github.com/Pixocial/testSaaS-iOS.git",
     "tag": "2.1.1.1"
   },
-  "frameworks": [
-    "UIKit",
-    "StoreKit",
-    "Security"
-  ],
+  "ios": {
+    "frameworks": [
+      "UIKit",
+      "StoreKit",
+      "Security"
+    ]
+  },
+  "osx": {
+    "frameworks": [
+      "UIKit",
+      "StoreKit",
+      "Security"
+    ]
+  },
   "platforms": {
-    "ios": "10.0"
+    "ios": "10.0",
+    "osx": "10.15"
   },
   "user_target_xcconfig": {
     "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64",
@@ -36,20 +46,41 @@
   "subspecs": [
     {
       "name": "core",
-      "vendored_frameworks": "sdk/core/AWCore.framework"
+      "ios": {
+        "vendored_frameworks": "sdk/core/AWCore.framework"
+      },
+      "osx": {
+        "vendored_frameworks": "sdk/core/AWCore.framework"
+      }
     },
     {
       "name": "analytics",
-      "vendored_frameworks": "sdk/analytics/AWAnalytics.framework"
+      "ios": {
+        "vendored_frameworks": "sdk/analytics/AWAnalytics.framework"
+      },
+      "osx": {
+        "vendored_frameworks": "sdk/analytics/AWAnalytics.framework"
+      }
     },
     {
       "name": "purchase",
-      "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
-      "resources": "sdk/purchaseSDK/*.bundle"
+      "ios": {
+        "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
+        "resources": "sdk/purchaseSDK/*.bundle"
+      },
+      "osx": {
+        "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
+        "resources": "sdk/purchaseSDK/*.bundle"
+      }
     },
     {
       "name": "marvel",
-      "vendored_frameworks": "sdk/marvel/AWMarvel.framework"
+      "ios": {
+        "vendored_frameworks": "sdk/marvel/AWMarvel.framework"
+      },
+      "osx": {
+        "vendored_frameworks": "sdk/marvel/AWMarvel.framework"
+      }
     }
   ]
 }

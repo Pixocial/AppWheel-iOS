@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AppWheel"
-  spec.version      = "2.1.1.1"
+  spec.version      = "2.1.1.2"
   spec.summary      = "A short description of AppWheel."
 
   spec.description  = 'An in-app purchase module for iOS project'
@@ -31,13 +31,13 @@ Pod::Spec.new do |spec|
 
   spec.source       = { :git => "https://github.com/Pixocial/testSaaS-iOS.git", :tag => "#{spec.version}" }
 
-
-  # 第三方非开源framework(多个)
-  # spec.vendored_frameworks = 'sdk/PurchaseSDK.framework'
   # 系统动态库(多个)
-  spec.frameworks = 'UIKit','StoreKit','Security'
+  spec.ios.frameworks = 'UIKit','StoreKit','Security'
+  spec.osx.frameworks = 'AppKit','StoreKit','Security'
   # iOS限制版本
   spec.ios.deployment_target = '10.0'
+  # mac限制版本
+  spec.osx.deployment_target = '10.15'
 
 
   # spec.resource_bundles = {
@@ -57,26 +57,31 @@ Pod::Spec.new do |spec|
 # core
   spec.subspec 'core' do |core|
     # 第三方非开源framework(多个)
-    core.vendored_frameworks = 'sdk/core/AWCore.framework'
+    core.ios.vendored_frameworks = 'sdk/core/AWCore.framework'
+    core.osx.vendored_frameworks = 'sdk/core/AWCore.framework'
   end
 
 # analytics
   spec.subspec 'analytics' do |analytics|
     # 第三方非开源framework(多个)
-    analytics.vendored_frameworks = 'sdk/analytics/AWAnalytics.framework'
+    analytics.ios.vendored_frameworks = 'sdk/analytics/AWAnalytics.framework'
+    analytics.osx.vendored_frameworks = 'sdk/analytics/AWAnalytics.framework'
   end
 
 # 购买的SDK
   spec.subspec 'purchase' do |purchase|
     # 第三方非开源framework(多个)
-    purchase.vendored_frameworks = 'sdk/purchaseSDK/PurchaseSDK.framework'
-    purchase.resources = 'sdk/purchaseSDK/*.bundle'
+    purchase.ios.vendored_frameworks = 'sdk/purchaseSDK/PurchaseSDK.framework'
+    purchase.osx.vendored_frameworks = 'sdk/purchaseSDK/PurchaseSDK.framework'
+    purchase.ios.resources = 'sdk/purchaseSDK/*.bundle'
+    purchase.osx.resources = 'sdk/purchaseSDK/*.bundle'
   end
 
 # marvel
   spec.subspec 'marvel' do |marvel|
     # 第三方非开源framework(多个)
-    marvel.vendored_frameworks = 'sdk/marvel/AWMarvel.framework'
+    marvel.ios.vendored_frameworks = 'sdk/marvel/AWMarvel.framework'
+    marvel.osx.vendored_frameworks = 'sdk/marvel/AWMarvel.framework'
   end
 # UI的SDK
   # spec.subspec 'subscribeUI' do |ui|
