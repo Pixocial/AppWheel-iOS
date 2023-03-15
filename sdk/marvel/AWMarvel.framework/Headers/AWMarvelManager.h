@@ -53,6 +53,14 @@ NS_ASSUME_NONNULL_BEGIN
            withEffectiveFilter:(NSInteger)effectiveFilter
                      withTimezoneOffset:(NSInteger)timezoneOffset
                          withCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+/// 获取产品配置V2
+- (void)getProductConfigV2WithLanguage:(NSString *)language
+                withCountryCode:(NSString *)countryCode
+                    withPhrase:(NSString * _Nullable)phrase
+                    withUpdate:(NSString * _Nullable)update
+           withEffectiveFilter:(NSInteger)effectiveFilter
+                     withTimezoneOffset:(NSInteger)timezoneOffset
+                         withCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
 /// 获取banner
 - (void)getBannerWithLanguage:(NSString *)language
