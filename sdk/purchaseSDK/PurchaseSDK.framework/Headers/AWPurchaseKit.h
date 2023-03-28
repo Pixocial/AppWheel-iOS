@@ -113,12 +113,17 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setUserAttributes:(NSDictionary *)params
                completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
++ (void)manualUnlockWithCompletion:(void (^)(NSInteger result, NSString * _Nullable errorMsg, NSDictionary * _Nullable data))completion;
+
 + (void)queryEntitlementsWithCompletion:(void (^)(BOOL success,
                                                   AWEntitlementPurchaseInfo * _Nullable info,
                                                   AWError * _Nullable error))completion;
 
 + (AWEntitlementPurchaseInfo *)getEntitlementsPurchaseInfo;
 
++ (void)getTrendingWithLanguage:(NSString *)language
+                                 withType:(NSString * _Nullable)type
+                 withCompletion:(void (^)(BOOL, NSDictionary * _Nullable, AWError * _Nullable))completion;
 
 
 @end

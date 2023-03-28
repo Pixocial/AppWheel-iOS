@@ -85,8 +85,6 @@ NS_ASSUME_NONNULL_BEGIN
                withTimezoneOffset:(NSInteger)timezoneOffset
                        completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
-/// 手动解锁
-- (void)manualUnlockWithCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 ///高级开关
 - (void)advancedSwitchWith:(NSString *)language
             withCountryCode:(NSString *)countryCode

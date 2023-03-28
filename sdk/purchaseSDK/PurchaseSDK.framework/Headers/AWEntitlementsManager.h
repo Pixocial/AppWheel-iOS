@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AWEntitlementsManager : NSObject
 
-+ (id)sharedInstance;
+//+ (id)sharedInstance;
 
 - (void)queryOrdersWithCompletion:(void (^)(BOOL success,
                                             AWEntitlementPurchaseInfo * _Nullable info,

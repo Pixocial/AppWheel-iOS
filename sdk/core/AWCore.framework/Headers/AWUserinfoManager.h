@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)getFirebaseId;
 
 - (NSString *)getAppsFlyerId;
+///手动解锁
+- (void)manualUnlockWithCompletion:(nullable void (^)(NSInteger result, NSString * _Nullable errorMsg, NSDictionary * _Nullable data))completion;
 
 @end
 
