@@ -1,6 +1,6 @@
 {
   "name": "AppWheel",
-  "version": "2.1.2.0",
+  "version": "2.1.3.0",
   "summary": "A short description of AppWheel.",
   "description": "An in-app purchase module for iOS project",
   "homepage": "https://github.com/Pixocial/testSaaS-iOS/blob/master/README.md",
@@ -13,25 +13,15 @@
   },
   "source": {
     "git": "https://github.com/Pixocial/testSaaS-iOS.git",
-    "tag": "2.1.2.0"
+    "tag": "2.1.3.0"
   },
-  "ios": {
-    "frameworks": [
-      "UIKit",
-      "StoreKit",
-      "Security"
-    ]
-  },
-  "osx": {
-    "frameworks": [
-      "AppKit",
-      "StoreKit",
-      "Security"
-    ]
-  },
+  "frameworks": [
+    "UIKit",
+    "StoreKit",
+    "Security"
+  ],
   "platforms": {
-    "ios": "10.0",
-    "osx": "10.15"
+    "ios": "10.0"
   },
   "user_target_xcconfig": {
     "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64",
@@ -46,41 +36,20 @@
   "subspecs": [
     {
       "name": "core",
-      "ios": {
-        "vendored_frameworks": "sdk/core/AWCore.framework"
-      },
-      "osx": {
-        "vendored_frameworks": "sdk/core/AWCore.framework"
-      }
+      "vendored_frameworks": "sdk/core/AWCore.framework"
     },
     {
       "name": "analytics",
-      "ios": {
-        "vendored_frameworks": "sdk/analytics/AWAnalytics.framework"
-      },
-      "osx": {
-        "vendored_frameworks": "sdk/analytics/AWAnalytics.framework"
-      }
+      "vendored_frameworks": "sdk/analytics/AWAnalytics.framework"
     },
     {
       "name": "purchase",
-      "ios": {
-        "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
-        "resources": "sdk/purchaseSDK/*.bundle"
-      },
-      "osx": {
-        "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
-        "resources": "sdk/purchaseSDK/*.bundle"
-      }
+      "vendored_frameworks": "sdk/purchaseSDK/PurchaseSDK.framework",
+      "resources": "sdk/purchaseSDK/*.bundle"
     },
     {
       "name": "marvel",
-      "ios": {
-        "vendored_frameworks": "sdk/marvel/AWMarvel.framework"
-      },
-      "osx": {
-        "vendored_frameworks": "sdk/marvel/AWMarvel.framework"
-      }
+      "vendored_frameworks": "sdk/marvel/AWMarvel.framework"
     }
   ]
 }
