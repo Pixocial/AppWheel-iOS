@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL isInIntroPeriod;
 
+@property (nonatomic, assign) BOOL autoRenewStatus;
+
 @property (nonatomic, strong, nullable) NSString * promotionalIdentifier;
 ///因为是2020年6月30日才添加的字段，所以还是有可能为空的
 @property (nonatomic, strong, nullable) NSString * originalTransactionId;
@@ -39,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSString * productType;
 /// 状态 订单状态：0 未付款 1 付款正常使用 2 过期 3 宽限期 4 暂停 5 保留期'
 @property (nonatomic, assign) NSInteger status;
+/// groupId
+@property (nonatomic, strong, nullable) NSString * subscriptionGroupIdentifier;
 
 - (instancetype)initWithSubscriptionInfo:(NSDictionary *)subscriptionInfo;
 

@@ -1,7 +1,7 @@
 //
 //  AWMarvelManager.h
 //  PurchaseSDK
-//
+//marvel文档：https://docs.appwheel.com/Marvel/%E8%AE%A2%E9%98%85%E7%AE%A1%E7%90%86
 //  Created by yikunHuang on 2022/8/10.
 //
 

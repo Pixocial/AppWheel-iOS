@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger hasPaid;
 /// 当前是否在宽限期
 @property (nonatomic, assign) NSInteger inGracePeriod;
+///
+@property (nonatomic, assign) NSInteger autoRenewStatus;
 
 - (instancetype)initWithDictionary:(NSDictionary *)purchaseState;
 
