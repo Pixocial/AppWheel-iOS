@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUserAttributes:(NSDictionary *)params
                completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
+- (void)getUserAttributes:(void (^)(BOOL success, NSDictionary* attributs, AWError * error)) completion;
 - (NSString *)getUserId;
 
 - (void)delUserId;

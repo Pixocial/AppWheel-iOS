@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
                withCountryCode:(NSString *)countryCode
                     withPhrase:(NSString * _Nullable)phrase
                     withUpdate:(NSString * _Nullable)update
-           withEffectiveFilter:(int)effectiveFilter
-          withTimezoneOffset:(int)timezoneOffset
+           withEffectiveFilter:(NSInteger)effectiveFilter
+          withTimezoneOffset:(NSInteger)timezoneOffset
                   withCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 /// 弹窗id预览
 - (void)getPopupPreviewWithRid:(NSString *)rid
@@ -32,8 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
                withCountryCode:(NSString *)countryCode
                     withPhrase:(NSString * _Nullable)phrase
                     withUpdate:(NSString * _Nullable)update
-             withEffectiveFilter:(int)effectiveFilter
-              withTimezoneOffset:(int)timezoneOffset
+             withEffectiveFilter:(NSInteger)effectiveFilter
+              withTimezoneOffset:(NSInteger)timezoneOffset
                   withCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
 ///获取订阅列表
@@ -41,16 +41,25 @@ NS_ASSUME_NONNULL_BEGIN
                withCountryCode:(NSString *)countryCode
                     withPhrase:(NSString * _Nullable)phrase
                     withUpdate:(NSString * _Nullable)update
-           withEffectiveFilter:(int)effectiveFilter
-            withTimezoneOffset:(int)timezoneOffset
+           withEffectiveFilter:(NSInteger)effectiveFilter
+            withTimezoneOffset:(NSInteger)timezoneOffset
                 withCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
 /// 获取产品配置
-- (void)getProductConfigWithCountryCode:(NSString *)countryCode
+- (void)getProductConfigWithLanguage:(NSString *)language
+                withCountryCode:(NSString *)countryCode
                     withPhrase:(NSString * _Nullable)phrase
                     withUpdate:(NSString * _Nullable)update
-           withEffectiveFilter:(int)effectiveFilter
-                     withTimezoneOffset:(int)timezoneOffset
+           withEffectiveFilter:(NSInteger)effectiveFilter
+                     withTimezoneOffset:(NSInteger)timezoneOffset
+                         withCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+/// 获取产品配置V2
+- (void)getProductConfigV2WithLanguage:(NSString *)language
+                withCountryCode:(NSString *)countryCode
+                    withPhrase:(NSString * _Nullable)phrase
+                    withUpdate:(NSString * _Nullable)update
+           withEffectiveFilter:(NSInteger)effectiveFilter
+                     withTimezoneOffset:(NSInteger)timezoneOffset
                          withCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
 /// 获取banner
@@ -59,8 +68,8 @@ NS_ASSUME_NONNULL_BEGIN
                     withPhrase:(NSString * _Nullable)phrase
                     withUpdate:(NSString * _Nullable)update
                   withAbcodes:(NSString * _Nullable)abcodes
-           withEffectiveFilter:(int)effectiveFilter
-           withTimezoneOffset:(int)timezoneOffset
+           withEffectiveFilter:(NSInteger)effectiveFilter
+           withTimezoneOffset:(NSInteger)timezoneOffset
                withCompletion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
 
@@ -72,9 +81,16 @@ NS_ASSUME_NONNULL_BEGIN
                withCountryCode:(NSString *)countryCode
                     withPhrase:(NSString * _Nullable)phrase
                     withUpdate:(NSString * _Nullable)update
-           withEffectiveFilter:(int)effectiveFilter
-               withTimezoneOffset:(int)timezoneOffset
+           withEffectiveFilter:(NSInteger)effectiveFilter
+               withTimezoneOffset:(NSInteger)timezoneOffset
                        completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+
+///高级开关
+- (void)advancedSwitchWith:(NSString *)language
+            withCountryCode:(NSString *)countryCode
+                 withKey:(NSString * _Nullable)key
+                 withUpdate:(NSString * _Nullable)update
+                completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 @end
 
 NS_ASSUME_NONNULL_END

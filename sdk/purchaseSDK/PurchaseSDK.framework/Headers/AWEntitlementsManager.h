@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
                                             AWEntitlementPurchaseInfo * _Nullable info,
                                             AWError * _Nullable error))completion;
 
-- (AWEntitlementPurchaseInfo *)getPurchaseInfo;
+- (nullable AWEntitlementPurchaseInfo *)getPurchaseInfo;
 @end
 
 NS_ASSUME_NONNULL_END

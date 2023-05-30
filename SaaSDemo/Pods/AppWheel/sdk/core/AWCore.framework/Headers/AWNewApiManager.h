@@ -9,9 +9,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+@protocol AWNewApiManagerDelegate <NSObject>
+@optional
+- (void)managerRequestStartWithUrl:(NSString *)url;
+@optional
+- (void)managerResponSuccessWithUrl:(NSString *)url withTraceId:(NSString * _Nullable)traceId;
+@optional
+- (void)managerResponFailedWithUrl:(NSString *)url withTraceId:(NSString * _Nullable)traceId withMsg:(NSString *)msg;
+
+@end
+
+
 @interface AWNewApiManager : NSObject
 
 + (instancetype)sharedInstance;
+@property(nonatomic, weak)id<AWNewApiManagerDelegate> delegate;
 
 
 - (void)getWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
@@ -21,12 +34,12 @@ NS_ASSUME_NONNULL_BEGIN
         extraParams:(NSDictionary * _Nullable)params
          completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
-- (void)postWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+- (void)postWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data,NSString * _Nonnull traceId))completion;
 
 - (void)postWithPath:(NSString *)path
           pathParams:(NSString * _Nullable)pathParams
          extraParams:(NSDictionary * _Nullable)
-    params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+    params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data,NSString * _Nonnull traceId))completion;
 
 - (void)putWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
@@ -36,7 +49,10 @@ NS_ASSUME_NONNULL_BEGIN
         extraParams:(NSDictionary * _Nullable)params
           completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
-- (void)mGetWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+- (void)originGetWithPath:(NSString *)path
+          pathParams:(NSString * _Nullable)pathParams
+         extraParams:(NSDictionary * _Nullable)params
+               completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 
 - (void)mPostWithPath:(NSString *)path extraParams:(NSDictionary * _Nullable)params completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 

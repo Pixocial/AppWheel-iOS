@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AWProductPurchaseState : NSObject
 ///商品id
 @property (nonatomic, strong) NSString * productId;
-/// 是否试用过
+/// 是否试用过：试过用就是1，没有试过就是0
 @property (nonatomic, assign) NSInteger hasTrialed;
 /// 是否付费过
 @property (nonatomic, assign) NSInteger hasPaid;

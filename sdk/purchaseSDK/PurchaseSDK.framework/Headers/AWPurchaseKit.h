@@ -104,14 +104,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 //+ (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
 
-/// 请求优惠券
-+ (void)queryCouponDetail:(nullable void (^)(BOOL success,AWCouponModel * _Nullable model, AWError * _Nullable error))completion;
+///// 请求优惠券
+//+ (void)queryCouponDetail:(nullable void (^)(BOOL success,AWCouponModel * _Nullable model, AWError * _Nullable error))completion;
 
-+ (void)updateConponStateWithTaskId:(long)taskId
-                     withCompletion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
+//+ (void)updateConponStateWithTaskId:(long)taskId
+//                     withCompletion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
 + (void)setUserAttributes:(NSDictionary *)params
                completion:(nullable void (^)(BOOL success, AWError * error))completion;
++ (void)getUserAttributes:(nullable void (^)(BOOL success,NSDictionary * attributes, AWError * error))completion;
 
 + (void)manualUnlockWithCompletion:(void (^)(NSInteger result, NSString * _Nullable errorMsg, NSDictionary * _Nullable data))completion;
 

@@ -1,0 +1,6 @@
+framework module AWMarvel {
+  umbrella header "AWMarvel.h"
+
+  export *
+  module * { export * }
+}

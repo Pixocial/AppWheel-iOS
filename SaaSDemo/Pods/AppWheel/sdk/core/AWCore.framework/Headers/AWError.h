@@ -63,6 +63,9 @@ typedef NS_ENUM(NSInteger, AWErrorType) {
     AWErrorTypeRequestStripeOrderError = 30017,
     ///生成order异常
     AWErrorTypeCreateOrderError = 30018,
+    
+    ///参数异常
+    AWErrorTypeParamsError = 40000,
 };
 
 @interface AWError : NSObject

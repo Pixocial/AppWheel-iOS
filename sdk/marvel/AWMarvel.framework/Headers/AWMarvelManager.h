@@ -99,6 +99,13 @@ NS_ASSUME_NONNULL_BEGIN
    withEffectiveFilter:(NSInteger)effectiveFilter
        withTimezoneOffset:(NSInteger)timezoneOffset
                 completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
+/// 获取coupon列表
+- (void)getCouponWithLanguage:(NSString *)language
+               withCountryCode:(NSString *)countryCode
+                    withPhrase:(NSString * _Nullable)phrase
+                    withUpdate:(NSString * _Nullable)update
+           withEffectiveFilter:(NSInteger)effectiveFilter
+                   completion:(nullable void (^)(NSInteger result, NSString * errorMsg, NSDictionary * _Nullable data))completion;
 @end
 
 NS_ASSUME_NONNULL_END

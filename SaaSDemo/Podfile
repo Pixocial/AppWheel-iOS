@@ -1,9 +1,9 @@
-#use_frameworks!
+use_frameworks!
 
 platform :ios, '10.0'
 
 target 'SaaSDemo' do
-# pod 'AppWheel', '2.0.10.2'
+# pod 'AppWheel', '2.1.4.0'
   pod 'AppWheel', :path => '../'
   
 

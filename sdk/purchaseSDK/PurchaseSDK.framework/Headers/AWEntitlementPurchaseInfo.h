@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 权益
 @property (nonatomic, strong, nullable) NSMutableDictionary<NSString *,AWEntitlementModel *> *entitlement;
+/// 过期权益
+@property (nonatomic, strong, nullable) NSMutableDictionary<NSString *,AWEntitlementModel *> *invalidEntitlement;
 
 
 - (instancetype)initWithDic:(NSDictionary *)dic;

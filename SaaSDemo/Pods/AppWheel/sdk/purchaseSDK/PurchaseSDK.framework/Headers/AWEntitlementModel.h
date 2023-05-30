@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AWStripeEntitlementModel : NSObject
+@interface AWEntitlementModel : NSObject
 ///过期时间
 @property (nonatomic, assign) long expiresDateMs;
 ///首次购买时间

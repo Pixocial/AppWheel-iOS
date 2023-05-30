@@ -12,13 +12,12 @@
 #import "AWProduct.h"
 #import "AWProductsRequest.h"
 #import "PurchasedProduct.h"
-#import "AWError.h"
+#import <AWCore/AWError.h>
 #import "AWPurchaseObserver.h"
 #import "AWPurchaseInfo.h"
 #import "AWProductManager.h"
 #import "AWCouponModel.h"
-#import "AWStripePurchaseInfo.h"
-#import "AWMarvelManager.h"
+#import "AWEntitlementPurchaseInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -103,7 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)getUserId;
 
-+ (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
+//+ (void)checkProductPurchaseHistoryStatus:(NSString *)productIdentifier completion:(nullable void (^)(ProductFreeTrialStatus productFreeTrialStatus, ProductPaidStatus productPaidStatus))completion;
 
 /// 请求优惠券
 + (void)queryCouponDetail:(nullable void (^)(BOOL success,AWCouponModel * _Nullable model, AWError * _Nullable error))completion;
@@ -114,14 +113,17 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setUserAttributes:(NSDictionary *)params
                completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
-+ (void)queryStripeOrdersWithCompletion:(void (^)(BOOL success,
-                                            AWStripePurchaseInfo * _Nullable info,
++ (void)manualUnlockWithCompletion:(void (^)(NSInteger result, NSString * _Nullable errorMsg, NSDictionary * _Nullable data))completion;
+
++ (void)queryEntitlementsWithCompletion:(void (^)(BOOL success,
+                                                  AWEntitlementPurchaseInfo * _Nullable info,
                                                   AWError * _Nullable error))completion;
 
-+ (AWStripePurchaseInfo *)getStripePurchaseInfo;
++ (AWEntitlementPurchaseInfo *)getEntitlementsPurchaseInfo;
 
-+ (AWMarvelManager *)getMarvelManager;
-
++ (void)getTrendingWithLanguage:(NSString *)language
+                                 withType:(NSString * _Nullable)type
+                 withCompletion:(void (^)(BOOL, NSDictionary * _Nullable, AWError * _Nullable))completion;
 
 
 @end

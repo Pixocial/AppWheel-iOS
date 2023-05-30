@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49FB48786CFFECB4C863CBC5 /* Pods_SaaSDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59059D9E2A37E846F3F416C3 /* Pods_SaaSDemo.framework */; };
 		64B7240E27152F8C0084BCEA /* ProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B7240C27152F8C0084BCEA /* ProductDetailVC.m */; };
 		64B7241027152FC10084BCEA /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B7240F27152FC10084BCEA /* ProductViewController.xib */; };
 		D4609A7B25C9387600019B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4609A7A25C9387600019B32 /* AppDelegate.m */; };
@@ -24,11 +25,10 @@
 		D4FF9122260B609F00686502 /* EBDropdownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FF911E260B609F00686502 /* EBDropdownListView.m */; };
 		D4FF912C260B616900686502 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FF912B260B616900686502 /* InfoViewController.xib */; };
 		D4FF9136260B638100686502 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4FF9134260B638100686502 /* Main.storyboard */; };
-		EE3DFB7022ACB68B5F6243E4 /* libPods-SaaSDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F4C2F21ED86FA68AD1F666 /* libPods-SaaSDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		09F4C2F21ED86FA68AD1F666 /* libPods-SaaSDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SaaSDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59059D9E2A37E846F3F416C3 /* Pods_SaaSDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaaSDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B7240C27152F8C0084BCEA /* ProductDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailVC.m; sourceTree = "<group>"; };
 		64B7240D27152F8C0084BCEA /* ProductDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailVC.h; sourceTree = "<group>"; };
 		64B7240F27152FC10084BCEA /* ProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductViewController.xib; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE3DFB7022ACB68B5F6243E4 /* libPods-SaaSDemo.a in Frameworks */,
+				49FB48786CFFECB4C863CBC5 /* Pods_SaaSDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +76,7 @@
 		4F68E625F6C50380A70BE3B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				09F4C2F21ED86FA68AD1F666 /* libPods-SaaSDemo.a */,
+				59059D9E2A37E846F3F416C3 /* Pods_SaaSDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
