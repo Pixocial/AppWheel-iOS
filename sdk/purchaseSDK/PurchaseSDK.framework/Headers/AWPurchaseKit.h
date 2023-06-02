@@ -126,6 +126,8 @@ NS_ASSUME_NONNULL_BEGIN
                                  withType:(NSString * _Nullable)type
                  withCompletion:(void (^)(BOOL, NSDictionary * _Nullable, AWError * _Nullable))completion;
 
-
+///当有多个账号的时候，恢复购买、续订都会触发服务器的恢复购买接口，有的app不想要把多个账号的订单都绑定到同一个账号
+///就可以设置这个接口，默认是绑定的，如果不绑定，请设置NO
++ (void)isMergeOrders:(BOOL)isMerge;
 @end
 NS_ASSUME_NONNULL_END
