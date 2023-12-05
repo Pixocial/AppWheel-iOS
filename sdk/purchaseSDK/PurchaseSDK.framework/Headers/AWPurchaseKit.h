@@ -42,6 +42,13 @@ NS_ASSUME_NONNULL_BEGIN
                        uid:(nullable NSString *)appUserId
                 completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
+///登录或退出登录时, 更新config
+///appUserId 登录时为用户ID, 未登录一般使用gid.
+///isLogin是否登录,未登录时使用gid去请求服务端userid
++ (void)updateConfigWithUID:(NSString *)appUserId
+                   isLogin:(BOOL)isLogin
+                 completion:(nullable void (^)(BOOL success, AWError * error))completion;
+
 + (void)setShouldAddStorePaymentBlock:(void (^)(AWProduct * product, SKPayment * payment))completion;
 
 + (void)setRevokeEntitlementsBlock:(void (^)(NSArray<NSString *> * productIdentifiers))completion;
@@ -126,8 +133,8 @@ NS_ASSUME_NONNULL_BEGIN
                                  withType:(NSString * _Nullable)type
                  withCompletion:(void (^)(BOOL, NSDictionary * _Nullable, AWError * _Nullable))completion;
 
-///当有多个账号的时候，恢复购买、续订都会触发服务器的恢复购买接口，有的app不想要把多个账号的订单都绑定到同一个账号
-///就可以设置这个接口，默认是绑定的，如果不绑定，请设置NO
-+ (void)isMergeOrders:(BOOL)isMerge;
++ (void)bindWithCompletion:(nullable void (^)(BOOL success, AWError * error))completion;
+
+
 @end
 NS_ASSUME_NONNULL_END

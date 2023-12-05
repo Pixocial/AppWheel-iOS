@@ -1,6 +1,6 @@
 framework module AWCore {
   umbrella header "AWCore.h"
-
   export *
+
   module * { export * }
 }

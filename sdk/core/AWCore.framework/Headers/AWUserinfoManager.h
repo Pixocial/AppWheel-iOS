@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
                completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
 - (void)getUserAttributes:(void (^)(BOOL success, NSDictionary* attributs, AWError * error)) completion;
+
+- (void)requestUserIDWithcompletion:(nullable void (^)(BOOL success, AWError * error))completion;
+
+- (void)saveUserId:(NSString *)userId;
 - (NSString *)getUserId;
 
 - (void)delUserId;
@@ -31,8 +35,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)getFirebaseId;
 
 - (NSString *)getAppsFlyerId;
+
+- (void)setIsLogin:(BOOL)isLogin;
+
+- (BOOL)getIsLogin;
+
 ///手动解锁
 - (void)manualUnlockWithCompletion:(nullable void (^)(NSInteger result, NSString * _Nullable errorMsg, NSDictionary * _Nullable data))completion;
+
+- (void)bindWithCompletion:(nullable void (^)(BOOL success, AWError * error))completion;
 
 @end
 
