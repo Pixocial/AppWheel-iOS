@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedInstance;
 
 - (void)initUserWithAppId:(NSInteger)appId
+                  isLogin:(BOOL)isLogin
                       uid:(NSString *)uid
                firebaseId:(NSString * _Nullable)firebaseId
               appsflyerId:(NSString * _Nullable)appsflyerId
@@ -25,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)getUserAttributes:(void (^)(BOOL success, NSDictionary* attributs, AWError * error)) completion;
 
-- (void)requestUserIDWithcompletion:(nullable void (^)(BOOL success, AWError * error))completion;
+- (void)requestUserIDWithcompletion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
 - (void)saveUserId:(NSString *)userId;
 - (NSString *)getUserId;
@@ -43,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///手动解锁
 - (void)manualUnlockWithCompletion:(nullable void (^)(NSInteger result, NSString * _Nullable errorMsg, NSDictionary * _Nullable data))completion;
 
-- (void)bindWithCompletion:(nullable void (^)(BOOL success, AWError * error))completion;
+- (void)bindWithCompletion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
 @end
 

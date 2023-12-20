@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getVersion;
 
 + (void)configureWithAppId:(NSInteger)appId
+                   isLogin:(BOOL)isLogin
                         uid:(NSString *)appUserId
               applicationId:(NSString * _Nullable)applicationIdentifier
                     apiKey:(NSString * _Nullable)apiKey
@@ -47,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///isLogin是否登录,未登录时使用gid去请求服务端userid
 + (void)updateConfigWithUID:(NSString *)appUserId
                    isLogin:(BOOL)isLogin
-                 completion:(nullable void (^)(BOOL success, AWError * error))completion;
+                 completion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
 + (void)setShouldAddStorePaymentBlock:(void (^)(AWProduct * product, SKPayment * payment))completion;
 
@@ -133,7 +134,7 @@ NS_ASSUME_NONNULL_BEGIN
                                  withType:(NSString * _Nullable)type
                  withCompletion:(void (^)(BOOL, NSDictionary * _Nullable, AWError * _Nullable))completion;
 
-+ (void)bindWithCompletion:(nullable void (^)(BOOL success, AWError * error))completion;
++ (void)bindWithCompletion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
 
 @end
