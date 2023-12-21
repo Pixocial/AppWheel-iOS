@@ -66,6 +66,8 @@ typedef NS_ENUM(NSInteger, AWErrorType) {
     
     ///参数异常
     AWErrorTypeParamsError = 40000,
+    
+    AWErrorTypeUserIdError = 50000
 };
 
 @interface AWError : NSObject
