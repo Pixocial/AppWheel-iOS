@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  parameters:(nullable id)parameters
     headers:(nullable NSDictionary <NSString *, NSString *> *)headers
     success:(nullable void (^)(NSURLSessionTask *task, id _Nullable responseObject, NSString * _Nullable traceId))success
-    failure:(nullable void (^)(NSURLSessionTask * _Nullable task, NSError *error, NSString * _Nullable traceId))failure;
+    failure:(nullable void (^)(NSURLSessionTask * _Nullable task, id _Nullable responseObject, NSError *error, NSString * _Nullable traceId))failure;
 
 
 - (void)put:(NSString *)URLString
@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  parameters:(nullable id)parameters
     headers:(nullable NSDictionary <NSString *, NSString *> *)headers
     success:(nullable void (^)(NSURLSessionTask *task, id _Nullable responseObject, NSString * _Nullable traceId))success
-    failure:(nullable void (^)(NSURLSessionTask * _Nullable task, NSError *error, NSString * _Nullable traceId))failure;
+    failure:(nullable void (^)(NSURLSessionTask * _Nullable task, id _Nullable responseObject, NSError *error, NSString * _Nullable traceId))failure;
 
 
 - (void)get:(NSString *)URLString
@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
  parameters:(nullable id)parameters
     headers:(nullable NSDictionary <NSString *, NSString *> *)headers
     success:(nullable void (^)(NSURLSessionTask *task, id _Nullable responseObject, NSString * _Nullable traceId))success
-    failure:(nullable void (^)(NSURLSessionTask * _Nullable task, NSError *error, NSString * _Nullable traceId))failure;
+    failure:(nullable void (^)(NSURLSessionTask * _Nullable task, id _Nullable responseObject, NSError *error, NSString * _Nullable traceId))failure;
 
 @end
 
