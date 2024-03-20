@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isUserOld;
 ///是否调用过init
 @property (nonatomic, assign) BOOL isCalledInit;
+///多个账号的时候，恢复购买的时候订单是否需要从账号1合并到账号2的标识，默认是需要合并
+@property (nonatomic, assign) BOOL isMergeOrders;
 
 
 + (instancetype)sharedInstance;
