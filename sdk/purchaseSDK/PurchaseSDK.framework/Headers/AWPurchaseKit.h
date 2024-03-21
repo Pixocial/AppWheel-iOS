@@ -68,23 +68,23 @@ NS_ASSUME_NONNULL_BEGIN
                quantity:(NSInteger)quantity
             productType:(AWProductType)productType
         paymentDiscount:(AWPaymentDiscountOffer * _Nullable)paymentDiscount
-             completion:(nullable void (^)(BOOL success, AWError * error))completion;
+             completion:(nullable void (^)(BOOL success, NSString * _Nullable awTransID, AWError * error))completion;
 
 + (void)purchaseProductWithProductIdentifier:(NSString *)productIdentifier
                              paymentDiscount:(AWPaymentDiscountOffer * _Nullable)paymentDiscount
                                     quantity:(NSInteger)quantity
                                  productType:(AWProductType)productType
-                                  completion:(nullable void (^)(BOOL success, AWError * error))completion;
+                                  completion:(nullable void (^)(BOOL success, NSString * _Nullable awTransID, AWError * error))completion;
 
 + (void)purchaseProductWithProductIdentifier:(NSString *)productIdentifier
                                     quantity:(NSInteger)quantity
                                  productType:(AWProductType)productType
-                                  completion:(nullable void (^)(BOOL success, AWError * error))completion;
+                                  completion:(nullable void (^)(BOOL success, NSString * _Nullable awTransID, AWError * error))completion;
 
 + (void)subscribeProductFromAppStorePromotion:(AWProduct *)product
                                       payment:(SKPayment *)skPayment
                                   productType:(AWProductType)productType
-                                   completion:(nullable void (^)(BOOL success, AWError * error))completion;
+                                   completion:(nullable void (^)(BOOL success, NSString * _Nullable awTransID, AWError * error))completion;
 
 
 + (void)getSubscriptionOfferWithProduct:(AWProduct *)product
@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)restorePurchaseWithCompletion:(nullable void (^)(BOOL isInSubscriptionPeriod, NSArray * validSubscriptions, NSArray * restoredPurchasedItems, AWError * restoredSubscriptionResult))completion;
 
-+ (void)refreshInAppPurchaseInfoWithCompletion:(nullable void (^)(BOOL success, AWError * error))completion;
++ (void)refreshInAppPurchaseInfoWithCompletion:(nullable void (^)(BOOL success, NSString * _Nullable awTransID, AWError * error))completion;
 
 + (void)changeToPreproduction:(BOOL)isPreHost;
 
