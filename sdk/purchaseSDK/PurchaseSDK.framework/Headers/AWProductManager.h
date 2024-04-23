@@ -64,6 +64,11 @@ typedef enum : NSUInteger {
 ///通过服务器获取商品是否付费过
 - (void)getProductHasPaiedWithProductId:(NSString *)productId
                          withcompletion:(void (^)(BOOL success, AWProductPurchaseState * _Nullable state, AWError * _Nullable error))completion;
+
+- (void)checkGroupPurchasedIntroductoryOfferWithGroupId:(NSString *)groupId
+                                                    gid:(NSString *)gid
+                                                    uid:(NSString * _Nullable)uid
+                                                    completion:(void (^)(BOOL success, BOOL purchased, AWError * _Nullable error))completion;
 @end
 
 NS_ASSUME_NONNULL_END
