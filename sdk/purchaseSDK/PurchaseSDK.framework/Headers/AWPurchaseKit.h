@@ -50,6 +50,8 @@ NS_ASSUME_NONNULL_BEGIN
                    isLogin:(BOOL)isLogin
                  completion:(nullable void (^)(BOOL success, AWError * _Nullable error))completion;
 
++ (void)updateAdID:(NSString * _Nullable)adID;
+
 + (void)setShouldAddStorePaymentBlock:(void (^)(AWProduct * product, SKPayment * payment))completion;
 
 + (void)setRevokeEntitlementsBlock:(void (^)(NSArray<NSString *> * productIdentifiers))completion;

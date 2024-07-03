@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
               appsflyerId:(NSString * _Nullable)appsflyerId
                completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
+- (void)updateAdID:(NSString * _Nullable)adID;
+
 - (void)setUserAttributes:(NSDictionary *)params
                completion:(nullable void (^)(BOOL success, AWError * error))completion;
 
